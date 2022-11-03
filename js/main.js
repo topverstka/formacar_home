@@ -137,11 +137,20 @@ function menu() {
 	})
 }
 
-const swiper = new Swiper('.home-slider', {
+const logoSlider = new Swiper('.header__logo-slider', {
+	effect: "fade",
+	allowTouchMove: false,
+	watchSlidesProgress: true,
+  });
+
+new Swiper('.home-slider', {
 	autoHeight: true,
 	slidesPerView: 1,
 	direction: "vertical",
+	simulateTouch: false,
 	// effect: "fade",
+	// slidesPerView: "auto",
+	// freeMode: true,
 	mousewheel: {
 		releaseOnEdges: true,
 		// eventsTarget: '.swiper-slide'
@@ -153,10 +162,9 @@ const swiper = new Swiper('.home-slider', {
 	scrollbar: {
 		el: '.home-slider__scrollbar',
 	},
-});
-
-const logoSlider = new Swiper('.header__logo-slider', {
-  slidesPerView: 1,
+	thumbs: {
+		swiper: logoSlider,
+	},
 });
 
 document.querySelectorAll('.section__videos').forEach((videoNode) => {
@@ -168,7 +176,7 @@ document.querySelectorAll('.section__videos').forEach((videoNode) => {
 
 
 // Функции для модальных окон
-modal()
+modal();
 function modal() {
     
     // Открытие модальных окон при клике по кнопке

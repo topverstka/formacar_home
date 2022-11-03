@@ -7,9 +7,10 @@
     @return $px/(1920 / 100vw);
 }
 
+@import './animation';
+
 // Библиотеки
-// @import './libs/_lightgallery';
-@import './libs/_swiper';
+@import './libs/swiper';
 
 body {
     font-family: $ffMain;

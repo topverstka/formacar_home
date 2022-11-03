@@ -1,132 +1,51 @@
-
-/* Стили анимации пульсации кругов */
-@keyframes pulse {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.7;
-    }
-    100% {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-}
-/* Стили кроссбраузерной анимации пульсации кругов */
-@-webkit-keyframes pulse {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.7;
-    }
-    100% {
-        transform: scale(0.9);
-        opacity: 0;
-    }
+@keyframes fade-down {
+	from {
+		opacity: 0;
+		transform: translateY(-100px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
-/* Стили анимации блика для кнопок */
-@keyframes sheens {
-    0%,79% {
-        opacity: 0;
-        filter: alpha(opacity=0);
-        -webkit-transform: rotateZ(60deg) translate(-5em,7.5em);
-        transform: rotateZ(60deg) translate(-5em,7.5em)
-    }
-
-    80% {
-        opacity: 1;
-        filter: alpha(opacity=100);
-        -webkit-transform: rotateZ(60deg) translate(-5em,7.5em);
-        transform: rotateZ(60deg) translate(-5em,7.5em)
-    }
-
-    95% {
-        opacity: 1;
-        filter: alpha(opacity=100);
-        -webkit-transform: rotateZ(60deg) translate(1em,-11em);
-        transform: rotateZ(60deg) translate(1em,-11em)
-    }
-
-    to {
-        opacity: 0;
-        filter: alpha(opacity=0);
-        -webkit-transform: rotateZ(60deg) translate(1em,-9em);
-        transform: rotateZ(60deg) translate(1em,-9em)
-    }
+@keyframes zoom-in {
+	from {
+		opacity: 0;
+		transform: scale(.2);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 
-/* Стили кроссбраузерной анимации блика для кнопок */
-@-webkit-keyframes sheens {
-    0%,79% {
-        opacity: 0;
-        filter: alpha(opacity=0);
-        -webkit-transform: rotateZ(60deg) translate(-5em,7.5em);
-        transform: rotateZ(60deg) translate(-5em,7.5em)
-    }
+.swiper-slide-active {
+	.home-slider__title,
+	.home-slider__box-1,
+	.home-slider__box-2,
+	.home-slider__box-3,
+	.section__videos {
+		opacity: 0;
+	}
 
-    80% {
-        opacity: 1;
-        filter: alpha(opacity=100);
-        -webkit-transform: rotateZ(60deg) translate(-5em,7.5em);
-        transform: rotateZ(60deg) translate(-5em,7.5em)
-    }
+	.home-slider__title {
+		animation: fade-down $tr .15s forwards;
+	}
 
-    95% {
-        opacity: 1;
-        filter: alpha(opacity=100);
-        -webkit-transform: rotateZ(60deg) translate(1em,-11em);
-        transform: rotateZ(60deg) translate(1em,-11em)
-    }
+	.home-slider__box-1 {
+		animation: fade-down $tr .25s forwards;
+	}
 
-    to {
-        opacity: 0;
-        filter: alpha(opacity=0);
-        -webkit-transform: rotateZ(60deg) translate(1em,-9em);
-        transform: rotateZ(60deg) translate(1em,-9em)
-    }
-}
+	.home-slider__box-2 {
+		animation: fade-down $tr .30s forwards;
+	}
 
+	.home-slider__box-3 {
+		animation: fade-down $tr .35s forwards;
+	}
 
-/* Стили анимации полоски в квизе */
-@keyframes moveIt{
-    from{
-        background-position: 0 center
-    }
-        
-    to{
-        background-position: 48px center
-    }
-}
-
-/* Стили кроссбраузерной анимации полоски в квизе */
-@-webkit-keyframes moveIt{
-    from{
-        background-position: 0 center
-    }
-        
-    to{
-        background-position: 48px center
-    }
-}
-
-@keyframes showElem {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes sendPreloader {
-    from {
-        transform: translate(-50%, -50%) rotate(0);
-    }
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+	.section__videos {
+		animation: zoom-in $tr .15s forwards;
+	}
 }
