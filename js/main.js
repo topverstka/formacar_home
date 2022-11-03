@@ -159,6 +159,14 @@ const logoSlider = new Swiper('.header__logo-slider', {
   slidesPerView: 1,
 });
 
+document.querySelectorAll('.section__videos').forEach((videoNode) => {
+	lightGallery(videoNode, {
+		download: false,
+		plugins: [lgVideo],
+	});
+});
+
+
 // Функции для модальных окон
 modal()
 function modal() {

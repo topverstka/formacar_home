@@ -8,6 +8,8 @@
 	<title>ТопВерстка | FormaCar</title>
 	<meta name="description" content="Описание сайта">
 	<!-- <link rel="stylesheet" href="./css/swiper-bundle.min.css"> -->
+	<link rel="stylesheet" href="./css/lg-video.min.css">
+	<link rel="stylesheet" href="./css/lightgallery.min.css">
 	<link rel="stylesheet" href="./css/style.css">
 </head>
 
@@ -100,7 +102,7 @@
 										</div>
 					
 										<div class="section__videos section__videos_bottom">
-											<a class="section__videos-item" href="#">
+											<a class="section__videos-item" data-lg-size="1280-720" data-video='{"source": [{"src":"./video/video.mp4", "type":"video/mp4"}], "attributes": {"preload": false, "controls": true}}' data-poster="./img/videos/videos-1.jpg">
 												<img class="section__videos-poster" src="./img/videos/videos-1.jpg" alt="Formacar Promo">
 												<div class="section__videos-item-bottom">
 													<p class="section__videos-title">Formacar Promo</p>
@@ -112,8 +114,8 @@
 												</div>
 											</a>
 					
-											<a class="section__videos-item section__videos-item_back" href="#">
-												<img class="section__videos-poster" src="./img/videos/videos-2.jpg" alt="configurator formacar">
+											<a class="section__videos-item section__videos-item_back" data-video='{"source": [{"src":"./video/video.mp4", "type":"video/mp4"}], "attributes": {"preload": false, "controls": true}}' data-poster="./img/videos/videos-2.jpg">
+												<img class="section__videos-poster" src="./img/videos/videos-2.jpg" alt="Configurator Formacar">
 												<div class="section__videos-item-bottom">
 													<p class="section__videos-title">configurator formacar</p>
 													<div class="section__videos-play">
@@ -221,7 +223,7 @@
 										</div>
 					
 										<div class="section__videos">
-											<a class="section__videos-item" href="#">
+											<a class="section__videos-item" data-lg-size="1280-720" data-video='{"source": [{"src":"./video/video.mp4", "type":"video/mp4"}], "attributes": {"preload": false, "controls": true}}' data-poster="./img/videos/videos-2.jpg">
 												<img class="section__videos-poster" src="./img/videos/videos-3.jpg" alt="gamefi project">
 												<div class="section__videos-item-bottom">
 													<p class="section__videos-title">gamefi project</p>
@@ -353,6 +355,8 @@
 	</div>
 
 	<!-- Подключение скриптов -->
+	<script src="./js/libs/lightGallary/lg-video.min.js"></script>
+	<script src="./js/libs/lightGallary/lightgallery.min.js"></script>
 	<script src="./js/libs/swiper-bundle.min.js"></script>
 	<script src="./js/main.js"></script>
 </body>
