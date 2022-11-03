@@ -1,23 +1,22 @@
 .container {
     max-width: $container;
     width: 100%;
-    padding: 0 24px;
+    padding: 0 20px;
     margin: 0 auto;
 
-    @media (max-width: $mobile-l) {
-        padding: 0 16px;
-    }
-}
+	@media (max-width: 1599px) {
+		max-width: 1320px;
+	}
 
+	@media (max-width: 1439px) {
+		max-width: 1220px;
+	}
 
-.section {
-    margin: 62px 0;
+	@media (max-width: 1179px) {
+		padding: 0 80px;
+	}
 
-    @media (max-width: $tablet) {
-        margin: 40px 0;
-    }
-
-    @media (max-width: $mobile-m) {
-        margin: 30px 0;
-    }
+	@media (max-width: 767px) {
+		padding: 0 20px;
+	}
 }

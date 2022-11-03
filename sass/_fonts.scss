@@ -9,4 +9,8 @@
     }
 }
 
-// @include font('Noto Sans', normal, 400, '../fonts/noto-sans.woff2');
+@include font('Montserrat', normal, 500, '../fonts/Montserrat/Montserrat-Medium.ttf');
+@include font('Montserrat', normal, 600, '../fonts/Montserrat/Montserrat-SemiBold.ttf');
+@include font('Montserrat', normal, 700, '../fonts/Montserrat/Montserrat-Bold.ttf');
+@include font('Steppe', normal, 400, '../fonts/Steppe/Steppe-Regular.ttf');
+@include font('Oswald', normal, 400, '../fonts/Oswald/Oswald-Regular.ttf');

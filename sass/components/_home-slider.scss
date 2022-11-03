@@ -1,0 +1,43 @@
+.home-slider {
+	overflow: hidden;
+	height: 100vh;
+}
+
+.home-slider__navigate {
+	position: fixed;
+	top: 50%;
+	left: 0;
+	right: 0;
+
+	@media (max-width: 1179px) {
+		display: none;
+	}
+}
+
+.home-slider__navigate-container {
+	position: relative;
+}
+
+.home-slider__navigate-inner {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.home-slider__scrollbar {
+	margin: 20px 0;
+	width: 2px;
+	height: 65vh;
+	background-color: rgba(255, 255, 255, .3);
+
+	.swiper-scrollbar-drag {
+		background-color: $main;
+	}
+
+	@media (max-width: 1599px) {
+		height: 40vh;
+	}
+}

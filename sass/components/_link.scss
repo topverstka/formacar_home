@@ -1,0 +1,28 @@
+.link {
+	color: $main;
+	transition: color $tr, border-color $tr;
+
+	svg {
+		transition: fill $tr;
+	}
+
+	&:active {
+		color: $accent-hover;
+		border-color: $accent-hover;
+
+		svg {
+			fill: $accent-hover;
+		}
+	}
+
+	@media (min-width: $minHover) {
+		&:hover {
+			color: $accent-hover;
+			border-color: $accent-hover;
+	
+			svg {
+				fill: $accent-hover;
+			}
+		}
+	}
+}

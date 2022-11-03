@@ -1,0 +1,69 @@
+.download-app {
+	
+}
+
+.download-app__title {
+	margin-bottom: 5px;
+	font-size: 14px;
+	line-height: 17px;
+}
+
+.download-app__list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 20px;
+
+	@media (max-width: 767px) {
+		display: grid;
+	}
+}
+
+.download-app__item {
+	min-width: 190px;
+}
+
+.download-app__link {
+	display: flex;
+	align-items: center;
+	padding: 8px 25px;
+	color: $main;
+	border: 1px solid $main;
+	border-radius: 5px;
+
+	@media (max-width: 767px) {
+		justify-content: center;
+	}
+}
+
+.download-app__link-icon {
+	flex-shrink: 0;
+	margin-right: 15px;
+	width: unset;
+	height: unset;
+	fill: $main;
+}
+
+.download-app__link-subtitle {
+	display: block;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 9px;
+	line-height: 11px;
+}
+
+.download-app__link-title {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 20px;
+}
+
+.download-app__soon {
+	color: $accent;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 24px;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}

@@ -1,0 +1,42 @@
+.social {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px 40px;
+
+	@media (max-width: 767px) {
+		justify-content: space-between;
+		gap: 20px;
+	}
+}
+
+.social__link {
+	display: flex;
+	align-items: center;
+	color: $main;
+}
+
+.social__icon {
+	width: 30px;
+	height: 30px;
+	fill: $main;
+}
+
+.social__link-text {
+	margin-left: 20px;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 27px;
+	letter-spacing: 0.015em;
+	text-transform: uppercase;
+
+	@media (max-width: 767px) {
+		display: none;
+	}
+}
+
+.social__link-text_visible {
+	@media (max-width: 767px) {
+		display: unset;
+	}
+}

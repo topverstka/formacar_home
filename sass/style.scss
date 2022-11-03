@@ -7,6 +7,10 @@
     @return $px/(1920 / 100vw);
 }
 
+// Библиотеки
+@import './libs/_lightgallery';
+@import './libs/_swiper';
+
 body {
     font-family: $ffMain;
     color: $main;
@@ -36,9 +40,12 @@ body {
 // @import './_animation';
 
 // Компоненты
-@import './components/_buttons';
-@import './components/_forms';
-// @import './components/_modal';
+@import './components/link';
+@import './components/buttons';
+@import './components/forms';
+@import './components/social';
+@import './components/download-app';
+@import './components/home-slider';
  
 // Текстовые компоненты
 @import './components/text/_text';
@@ -46,11 +53,6 @@ body {
 
 // Секции
 @import './sections/_header';
-// @import './sections/_footer';
+@import './sections/section';
 
 // Страницы
-
-// Библиотеки
-// @import './libs/_aos';
-@import './libs/_lightgallery';
-@import './libs/_swiper';

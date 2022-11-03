@@ -66,7 +66,7 @@ function validationForm() {
 }
 
 // Отправка формы
-sumbitForm()
+// sumbitForm();
 function sumbitForm() {
     const form = find('.modal__form')
 
@@ -137,42 +137,26 @@ function menu() {
 	})
 }
 
-const swiper = new Swiper('.swiper-container', {
-  
-  slidesPerView: 1, // Кол-во показываемых слайдов
-  spaceBetween: 0, // Расстояние между слайдами
-  loop: true, // Бесконечный слайдер
-  freeMode: true, // Слайдеры не зафиксированны
-  centeredSlides: false, // Размещать слайдеры по центру
+const swiper = new Swiper('.home-slider', {
+	autoHeight: true,
+	slidesPerView: 1,
+	direction: "vertical",
+	// effect: "fade",
+	mousewheel: {
+		releaseOnEdges: true,
+		// eventsTarget: '.swiper-slide'
+	},
+	navigation: {
+		nextEl: '.home-slider__next',
+		prevEl: '.home-slider__prev',
+	},
+	scrollbar: {
+		el: '.home-slider__scrollbar',
+	},
+});
 
-  autoplay: { // автопрокрутка
-      delay: 5000, // задержка
-  },
-
-  breakpoints: {
-    1200: {
-
-    },
-    700: {
-
-    },
-    400: {
-
-    }
-  },
-
-  pagination: {
-    el: '.swiper-pagination',
-  },
-
-  navigation: {
-    nextEl: '.swiper__arrow-next',
-    prevEl: '.swiper__arrow-prev',
-  },
-
-  scrollbar: {
-    el: '.swiper-scrollbar',
-  },
+const logoSlider = new Swiper('.header__logo-slider', {
+  slidesPerView: 1,
 });
 
 // Функции для модальных окон
