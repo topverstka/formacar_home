@@ -146,17 +146,13 @@ const logoSlider = new Swiper('.header__logo-slider', {
 const homeSlider = new Swiper('.home-slider', {
 	direction: "vertical",
 	simulateTouch: false,
-	// freeMode: {
-	// 	sticky: true,
-	// },
 	keyboard: true,
 	// mousewheel: true,
 	on: {
 		init(swiper) {
-			console.log(swiper);
 			swiper.slides.forEach((slider) => {
                 let timeId;
-				slider.addEventListener('mousewheel', (evt) => {
+				slider.addEventListener('wheel', (evt) => {
                     clearTimeout(timeId);
 
                     timeId = setTimeout(() => {
