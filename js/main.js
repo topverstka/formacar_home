@@ -143,24 +143,41 @@ const logoSlider = new Swiper('.header__logo-slider', {
 	watchSlidesProgress: true,
   });
 
-new Swiper('.home-slider', {
-	autoHeight: true,
-	slidesPerView: 1,
+const homeSlider = new Swiper('.home-slider', {
 	direction: "vertical",
 	simulateTouch: false,
-	// effect: "fade",
-	// slidesPerView: "auto",
-	// freeMode: true,
-	mousewheel: {
-		releaseOnEdges: true,
-		// eventsTarget: '.swiper-slide'
-	},
+	// freeMode: {
+	// 	sticky: true,
+	// },
+	keyboard: true,
+	// mousewheel: true,
+	on: {
+		init(swiper) {
+			console.log(swiper);
+			swiper.slides.forEach((slider) => {
+                let timeId;
+				slider.addEventListener('mousewheel', (evt) => {
+                    clearTimeout(timeId);
+
+                    timeId = setTimeout(() => {
+                        if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight && evt.wheelDeltaY < 0) {
+                            swiper.slideNext();
+                        }
+                        if (slider.scrollTop <= 0 && evt.wheelDeltaY > 0) {
+                            swiper.slidePrev();
+                        }
+                    }, 250);
+				});
+			});
+		}
+    },
 	navigation: {
 		nextEl: '.home-slider__next',
 		prevEl: '.home-slider__prev',
 	},
 	scrollbar: {
 		el: '.home-slider__scrollbar',
+		draggable: true,
 	},
 	thumbs: {
 		swiper: logoSlider,

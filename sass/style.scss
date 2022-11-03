@@ -7,6 +7,7 @@
     @return $px/(1920 / 100vw);
 }
 
+// Анимация
 @import './animation';
 
 // Библиотеки
@@ -36,9 +37,6 @@ body {
 }
 
 @import '_grid'; // Сетка
-
-// Анимация
-// @import './_animation';
 
 // Компоненты
 @import './components/link';

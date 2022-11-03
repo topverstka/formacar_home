@@ -9,6 +9,17 @@
 	}
 }
 
+@keyframes fade-right {
+	from {
+		opacity: 0;
+		transform: translate(300px, -100px);
+	}
+	to {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
 @keyframes zoom-in {
 	from {
 		opacity: 0;
@@ -25,7 +36,8 @@
 	.home-slider__box-1,
 	.home-slider__box-2,
 	.home-slider__box-3,
-	.section__videos {
+	.section__videos,
+	.section__body-img {
 		opacity: 0;
 	}
 
@@ -47,5 +59,9 @@
 
 	.section__videos {
 		animation: zoom-in $tr .15s forwards;
+	}
+
+	.section__body-img {
+		animation: fade-right $tr .15s forwards;
 	}
 }
