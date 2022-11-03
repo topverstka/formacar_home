@@ -173,6 +173,16 @@ h6 {
     transform: translateY(0);
   }
 }
+@keyframes fade-right {
+  from {
+    opacity: 0;
+    transform: translate(300px, -100px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
 @keyframes zoom-in {
   from {
     opacity: 0;
@@ -187,7 +197,8 @@ h6 {
 .swiper-slide-active .home-slider__box-1,
 .swiper-slide-active .home-slider__box-2,
 .swiper-slide-active .home-slider__box-3,
-.swiper-slide-active .section__videos {
+.swiper-slide-active .section__videos,
+.swiper-slide-active .section__body-img {
   opacity: 0;
 }
 .swiper-slide-active .home-slider__title {
@@ -204,6 +215,9 @@ h6 {
 }
 .swiper-slide-active .section__videos {
   animation: zoom-in var(--tr) 0.15s forwards;
+}
+.swiper-slide-active .section__body-img {
+  animation: fade-right var(--tr) 0.15s forwards;
 }
 
 .swiper {
@@ -232,9 +246,6 @@ h6 {
 
 .swiper-slide {
   flex-shrink: 0;
-  position: relative;
-  width: 100%;
-  height: 100%;
   transition-property: transform;
 }
 
@@ -519,12 +530,16 @@ body._lock {
   overflow: hidden;
   height: 100vh;
 }
+.home-slider .swiper-slide {
+  overflow: auto;
+}
 
 .home-slider__navigate {
   position: fixed;
   top: 50%;
   left: 0;
   right: 0;
+  z-index: 10;
 }
 @media (max-width: 1179px) {
   .home-slider__navigate {
