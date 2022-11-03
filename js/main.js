@@ -147,23 +147,28 @@ const homeSlider = new Swiper('.home-slider', {
 	direction: "vertical",
 	simulateTouch: false,
 	keyboard: true,
+	allowTouchMove: false,
 	// mousewheel: true,
 	on: {
 		init(swiper) {
 			swiper.slides.forEach((slider) => {
                 let timeId;
-				slider.addEventListener('wheel', (evt) => {
-                    clearTimeout(timeId);
+
+				slider.addEventListener('wheel', handleMove);
+				slider.addEventListener('touchmove', handleMove);
+
+				function handleMove() {
+					clearTimeout(timeId);
 
                     timeId = setTimeout(() => {
-                        if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight && evt.wheelDeltaY < 0) {
+                        if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight) {
                             swiper.slideNext();
                         }
-                        if (slider.scrollTop <= 0 && evt.wheelDeltaY > 0) {
+                        if (slider.scrollTop <= 0) {
                             swiper.slidePrev();
                         }
-                    }, 250);
-				});
+                    }, 100);
+				}
 			});
 		}
     },
