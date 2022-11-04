@@ -157,7 +157,8 @@ const homeSlider = new Swiper('.home-slider', {
 				let touch;
 
 				slider.addEventListener('wheel', (evt) => {
-					moveSlide(evt.deltaY > 0);
+					// moveSlide(evt.deltaY > 0);
+					moveSlide(evt.detail > 0 || evt.wheelDelta < 0);
 				});
 				slider.addEventListener('touchstart', (evt) => {
 					touch = evt.changedTouches[0].pageY;
