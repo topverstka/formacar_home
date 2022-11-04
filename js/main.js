@@ -154,21 +154,26 @@ const homeSlider = new Swiper('.home-slider', {
 			swiper.slides.forEach((slider) => {
                 let timeId;
 
-				slider.addEventListener('wheel', handleMove);
-				slider.addEventListener('touchmove', handleMove);
-
-				function handleMove() {
+				slider.addEventListener('wheel', (evt) => {
 					clearTimeout(timeId);
 
                     timeId = setTimeout(() => {
-                        if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight) {
+                        if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight && evt.deltaY > 0) {
                             swiper.slideNext();
                         }
-                        if (slider.scrollTop <= 0) {
+                        if (slider.scrollTop <= 0 && evt.deltaY < 0) {
                             swiper.slidePrev();
                         }
                     }, 100);
-				}
+				});
+				slider.addEventListener('touchend', (evt) => {
+					if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight) {
+						swiper.slideNext();
+					}
+					if (slider.scrollTop <= 0) {
+						swiper.slidePrev();
+					}
+				});
 			});
 		}
     },
