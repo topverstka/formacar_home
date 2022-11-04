@@ -166,8 +166,8 @@ const homeSlider = new Swiper('.home-slider', {
                         }
                     }, 100);
 				});
-				slider.addEventListener('touchend', (evt) => {
-					if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight) {
+				slider.addEventListener('touchend', () => {
+					if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight - 5) {
 						swiper.slideNext();
 					}
 					if (slider.scrollTop <= 0) {
