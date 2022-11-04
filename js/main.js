@@ -145,6 +145,7 @@ const logoSlider = new Swiper('.header__logo-slider', {
 
 const homeSlider = new Swiper('.home-slider', {
 	direction: "vertical",
+	effect: "fade",
 	simulateTouch: false,
 	keyboard: true,
 	allowTouchMove: false,

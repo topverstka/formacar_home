@@ -1,11 +1,27 @@
 .swiper {
 	width: 100%;
 	overflow: hidden;
+
+	.swiper-wrapper {
+		transition: unset !important;
+	}
+
+	.swiper-slide {
+		opacity: 0 !important;
+		transition-property: opacity;
+		transition-duration: .4s !important;
+	}
+
+	.swiper-slide-active {
+		opacity: 1 !important;
+	}
 }
 
 .swiper-fade {
 	.swiper-slide {
 		opacity: 0 !important;
+		transition-property: opacity;
+		transition-duration: .6s !important;
 	}
 
 	.swiper-slide-visible {
@@ -34,9 +50,4 @@
 
 .swiper-backface-hidden .swiper-slide {
     transform: translateZ(0);
-}
-
-.swiper-fade .swiper-slide {
-    pointer-events: none;
-    transition-property: opacity;
 }

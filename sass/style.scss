@@ -2,16 +2,11 @@
 @import '_variables'; // Переменные
 @import '_reset'; // Сброс css
 
-// Миксин для перевода px в vw
-@function vw($px) {
-    @return $px/(1920 / 100vw);
-}
-
 // Анимация
 @import './animation';
 
 // Библиотеки
-@import './libs/swiper';
+// @import './libs/swiper';
 
 body {
     font-family: $ffMain;
@@ -39,9 +34,10 @@ body {
 @import '_grid'; // Сетка
 
 // Компоненты
+@import './components/logo';
 @import './components/link';
 @import './components/buttons';
-@import './components/forms';
+// @import './components/forms';
 @import './components/social';
 @import './components/download-app';
 @import './components/home-slider';

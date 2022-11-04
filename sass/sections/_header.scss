@@ -17,8 +17,17 @@
 }
 
 .header__logo-slider {
+	margin: 0;
 	max-width: 225px;
-	overflow: hidden;
+	max-height: 40px;
+
+	.swiper-slide {
+		opacity: 0 !important;
+	}
+	
+	.swiper-slide-active {
+		opacity: 1 !important;
+	}
 
 	@media (max-width: 767px) {
 		width: 169px;
