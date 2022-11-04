@@ -220,44 +220,6 @@ h6 {
   animation: fade-right var(--tr) 0.15s forwards;
 }
 
-.swiper {
-  width: 100%;
-  overflow: hidden;
-}
-
-.swiper-fade .swiper-slide {
-  opacity: 0 !important;
-}
-.swiper-fade .swiper-slide-visible {
-  opacity: 1 !important;
-}
-
-.swiper-vertical .swiper-wrapper {
-  flex-direction: column;
-}
-
-.swiper-wrapper {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition-property: transform;
-}
-
-.swiper-slide {
-  flex-shrink: 0;
-  transition-property: transform;
-}
-
-.swiper-backface-hidden .swiper-slide {
-  transform: translateZ(0);
-}
-
-.swiper-fade .swiper-slide {
-  pointer-events: none;
-  transition-property: opacity;
-}
-
 body {
   font-family: var(--ffMain);
   color: var(--main);
@@ -307,6 +269,18 @@ body._lock {
   }
 }
 
+.logo {
+  display: flex;
+}
+
+.logo__icon {
+  display: block;
+  width: unset;
+  height: unset;
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .link {
   color: var(--main);
   transition: color var(--tr), border-color var(--tr);
@@ -329,88 +303,6 @@ body._lock {
   .link:hover svg {
     fill: var(--accent-hover);
   }
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.form-elem {
-  position: relative;
-  width: 100%;
-}
-.form-elem:not(:first-child) {
-  margin: 8px 0 0 0;
-}
-
-.form-elem input {
-  height: 60px;
-}
-
-.form-elem textarea {
-  max-width: 100%;
-  min-width: 100%;
-  min-height: 164px;
-  transition: 0s;
-}
-
-.form-elem__area {
-  width: 100%;
-  background: #F9F9F9;
-  border-radius: 8px;
-  padding: 30px 12px 12px 12px;
-  transition: var(--tr);
-}
-.form-elem__area:hover {
-  background: #F4F4F4;
-}
-.form-elem__area:focus + .form-elem__label {
-  font-size: 10px;
-  color: var(--second);
-  transform: translate(0, calc(-50% - 9px));
-}
-.form-elem__area:not(:placeholder-shown).form-elem__area:not(:focus) + .form-elem__label {
-  font-size: 10px;
-  color: var(--second);
-  transform: translate(0, calc(-50% - 9px));
-}
-.form-elem__area._error {
-  border: 1px solid var(--error) !important;
-}
-.form-elem__area._error + .form-elem__label::after {
-  opacity: 1;
-}
-
-.form-elem__label {
-  position: absolute;
-  top: 30px;
-  left: 12px;
-  width: 100%;
-  transform: translate(0, -50%);
-  font-size: 14px;
-  font-weight: 400;
-  pointer-events: none;
-  transition: var(--tr);
-}
-.form-elem__label::after {
-  content: "Error";
-  font-size: inherit;
-  color: var(--error);
-  margin: 0 0 0 6px;
-  opacity: 0;
-}
-
-.form-elem__required {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  display: block;
-  transform: translate(0, -50%);
-  font-size: 14px;
-  color: var(--main);
-  pointer-events: none;
 }
 
 .social {
@@ -527,8 +419,9 @@ body._lock {
 }
 
 .home-slider {
-  overflow: hidden;
+  margin: 0;
   height: 100vh;
+  overflow: hidden;
 }
 .home-slider .swiper-slide {
   overflow: auto;
@@ -595,8 +488,15 @@ body._lock {
 }
 
 .header__logo-slider {
+  margin: 0;
   max-width: 225px;
-  overflow: hidden;
+  max-height: 40px;
+}
+.header__logo-slider .swiper-slide {
+  opacity: 0 !important;
+}
+.header__logo-slider .swiper-slide-active {
+  opacity: 1 !important;
 }
 @media (max-width: 767px) {
   .header__logo-slider {
@@ -684,7 +584,12 @@ body._lock {
 
 .section {
   position: relative;
+  background-color: var(--bg-page);
   overflow: hidden;
+}
+.section .container {
+  position: relative;
+  z-index: 1;
 }
 
 .section__bg {
@@ -694,7 +599,6 @@ body._lock {
   width: 100%;
   height: 100%;
   opacity: 0.8;
-  z-index: -1;
   user-select: none;
 }
 @media (max-width: 1179px) {
