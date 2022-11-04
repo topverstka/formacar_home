@@ -169,10 +169,10 @@ const homeSlider = new Swiper('.home-slider', {
 					clearTimeout(timeId);
 
 					timeId = setTimeout(() => {
-						if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight && isTop) {
+						if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight - 5 && isTop) {
 							swiper.slideNext();
 						}
-						if (slider.scrollTop <= 0 && !isTop) {
+						if (slider.scrollTop <= 5 && !isTop) {
 							swiper.slidePrev();
 						}
 					}, 100);
