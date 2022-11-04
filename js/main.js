@@ -156,34 +156,27 @@ const homeSlider = new Swiper('.home-slider', {
 				let touch;
 
 				slider.addEventListener('wheel', (evt) => {
-					clearTimeout(timeId);
-
-                    timeId = setTimeout(() => {
-                        if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight && evt.deltaY > 0) {
-                            swiper.slideNext();
-                        }
-                        if (slider.scrollTop <= 0 && evt.deltaY < 0) {
-                            swiper.slidePrev();
-                        }
-                    }, 100);
+					moveSlide(evt.deltaY > 0);
 				});
 				slider.addEventListener('touchstart', (evt) => {
 					touch = evt.changedTouches[0].pageY;
 				});
 				slider.addEventListener('touchmove', (evt) => {
+					moveSlide(touch > evt.changedTouches[0].pageY);
+				});
+
+				function moveSlide(isTop) {
 					clearTimeout(timeId);
 
-					const isTop = touch > evt.changedTouches[0].pageY;
-
-                    timeId = setTimeout(() => {
-						if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight - 5 && isTop) {
+					timeId = setTimeout(() => {
+						if (slider.clientHeight + slider.scrollTop >= slider.scrollHeight && isTop) {
 							swiper.slideNext();
 						}
-						if (slider.scrollTop <= 5 && !isTop) {
+						if (slider.scrollTop <= 0 && !isTop) {
 							swiper.slidePrev();
 						}
 					}, 100);
-				});
+				}
 			});
 		}
     },
