@@ -139,6 +139,7 @@ const logoSlider = new Swiper(".header__logo-slider", {
 });
 
 function toggleMouseWheel(swiper) {
+	swiper.mousewheel.disable();
 	const slide = swiper.slides[swiper.activeIndex];
 	const offsetHeight = slide.offsetHeight;
 	const scrollHeight = slide.scrollHeight;
@@ -146,11 +147,15 @@ function toggleMouseWheel(swiper) {
 
 	const scrollResult = scrollHeight - (offsetHeight + scrollTop);
 
-	if (scrollResult == 0) {
-		console.log("enable", swiper.mousewheel);
-		swiper.mousewheel.enable();
+	console.log(offsetHeight, scrollHeight, scrollTop);
+	console.log(scrollResult);
+	if (scrollTop == 0 && scrollResult == 0) {
+		// console.log("enable", swiper.mousewheel);
+		setTimeout(() => {
+			swiper.mousewheel.enable();
+		}, 100);
 	} else {
-		console.log("disable", swiper.mousewheel);
+		// console.log("disable", swiper.mousewheel);
 		swiper.mousewheel.disable();
 	}
 }
@@ -163,8 +168,6 @@ const homeSlider = new Swiper(".home-slider", {
 	allowTouchMove: false,
 	mousewheel: false,
 	on: {
-		// На слайдчейнж проверяй есть ли прокрутка у текущего слайда.
-		// Если прокрутки нет, то включи маусмил. Если прокрутка есть — отключи маусвил
 		slideChange(swiper) {
 			toggleMouseWheel(swiper);
 		},
