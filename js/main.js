@@ -144,40 +144,28 @@ const homeSlider = new Swiper(".home-slider", {
 	simulateTouch: false,
 	keyboard: true,
 	allowTouchMove: false,
-	mousewheel: true,
+	// mousewheel: true,
 	on: {
 		init(swiper) {
 			swiper.slides.forEach((slider) => {
-				let timeId;
-				let touch;
+				slider.addEventListener("scroll", (evt) => {
+					const offsetHeight = evt.target.offsetHeight;
+					const scrollHeight = evt.target.scrollHeight;
+					const scrollTop = evt.target.scrollTop;
 
-				slider.addEventListener("wheel", (evt) => {
-					// moveSlide(evt.deltaY > 0);
-					moveSlide(evt.detail > 0 || evt.wheelDelta < 0);
-				});
-				slider.addEventListener("touchstart", (evt) => {
-					touch = evt.changedTouches[0].pageY;
-				});
-				slider.addEventListener("touchmove", (evt) => {
-					moveSlide(touch > evt.changedTouches[0].pageY);
-				});
+					const scrollResult =
+						scrollHeight - (offsetHeight + scrollTop);
 
-				function moveSlide(isTop) {
-					clearTimeout(timeId);
-
-					timeId = setTimeout(() => {
-						if (
-							slider.clientHeight + slider.scrollTop >=
-								slider.scrollHeight - 5 &&
-							isTop
-						) {
-							swiper.slideNext();
-						}
-						if (slider.scrollTop <= 5 && !isTop) {
-							swiper.slidePrev();
-						}
-					}, 100);
-				}
+					if (scrollResult == scrollHeight - offsetHeight) {
+						// Каким-то магическим образом это условие говорит, что скроллбар долистали до упора вверх
+						// console.log("prev", scrollResult);
+						swiper.slidePrev();
+					} else if (scrollResult == 0) {
+						// Каким-то магическим образом это условие говорит, что скроллбар долистали до упора вниз
+						// console.log("next", scrollResult);
+						swiper.slideNext();
+					}
+				});
 			});
 		},
 	},
