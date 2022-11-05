@@ -147,8 +147,8 @@ function toggleMouseWheel(swiper) {
 
 	const scrollResult = scrollHeight - (offsetHeight + scrollTop);
 
-	console.log(offsetHeight, scrollHeight, scrollTop);
-	console.log(scrollResult);
+	// console.log(offsetHeight, scrollHeight, scrollTop);
+	// console.log(scrollResult);
 	if (scrollTop == 0 && scrollResult == 0) {
 		// console.log("enable", swiper.mousewheel);
 		setTimeout(() => {
@@ -182,6 +182,9 @@ const homeSlider = new Swiper(".home-slider", {
 					const scrollResult =
 						scrollHeight - (offsetHeight + scrollTop);
 
+					document.querySelector(
+						".header__lang-btn"
+					).innerText = `${offsetHeight}, ${scrollHeight}, ${scrollTop}, ${scrollResult}`;
 					if (scrollResult == scrollHeight - offsetHeight) {
 						// Каким-то магическим образом это условие говорит, что скроллбар долистали до упора вверх
 						// console.log("prev", scrollResult);
