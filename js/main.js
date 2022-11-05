@@ -149,7 +149,7 @@ function toggleMouseWheel(swiper) {
 
 	// console.log(offsetHeight, scrollHeight, scrollTop);
 	// console.log(scrollResult);
-	if (scrollTop == 0 && scrollResult == 0) {
+	if (scrollTop < 1 && scrollResult < 1) {
 		// console.log("enable", swiper.mousewheel);
 		setTimeout(() => {
 			swiper.mousewheel.enable();
