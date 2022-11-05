@@ -189,7 +189,7 @@ const homeSlider = new Swiper(".home-slider", {
 						// Каким-то магическим образом это условие говорит, что скроллбар долистали до упора вверх
 						// console.log("prev", scrollResult);
 						swiper.slidePrev();
-					} else if (scrollResult == 0) {
+					} else if (scrollResult < 1) {
 						// Каким-то магическим образом это условие говорит, что скроллбар долистали до упора вниз
 						// console.log("next", scrollResult);
 						swiper.slideNext();
