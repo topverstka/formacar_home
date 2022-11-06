@@ -229,14 +229,14 @@ if (window.innerWidth > 576) {
 
 const slide1Tl = gsap
 	.timeline()
-	.to(".home-slider__slide-1 .section__title", { y: -ht1 })
+	.to(".home-slider__slide-1 .section__title", { y: -400, opacity: 0 })
 	.to(
 		".home-slider__slide-1 .home-slider__desc",
-		{ y: -slidesHeights[0] },
+		{ y: -400, opacity: 0 },
 		"<0.01"
 	)
-	.to(".home-slider__slide-1 .section__videos", { y: -ht1 }, "<")
-	.to(".home-slider__slide-1 .section__footer", { y: -ht1 }, "<")
+	.to(".home-slider__slide-1 .section__videos", { x: 400, opacity: 0 }, "<")
+	.to(".home-slider__slide-1 .section__footer", { y: -100 }, "<")
 	.from(".home-slider__slide-1 .section__fader", { opacity: 0 }, ">-0.22")
 	.to(".home-slider__slide-1", { opacity: 0, pointerEvents: "none" }, ">0.1");
 const slide1S = new ScrollMagic.Scene({
@@ -292,7 +292,7 @@ const slide2S = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
 	duration: slidesHeights[1] * 1.5,
 	triggerHook: "onEnter",
-	offset: slidesHeights[0] + slidesHeights[1] - 100,
+	offset: slidesHeights[0] - 100,
 })
 	.setTween(slide2Tl)
 	.addTo(scrollController)
@@ -325,7 +325,7 @@ const slide3S = new ScrollMagic.Scene({
 			.querySelector(".section")
 			.getBoundingClientRect().height * 1.5,
 	triggerHook: "onEnter",
-	offset: slidesHeights[0] + slidesHeights[1] + 350,
+	offset: slidesHeights[1] + 350,
 })
 	.setTween(slide3Tl)
 	.addTo(scrollController)
