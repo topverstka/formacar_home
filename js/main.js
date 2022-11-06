@@ -199,102 +199,118 @@ function makeDefaultScene(
 	}
 }
 
-window.addEventListener("DOMContentLoaded", (event) => {
-	const homeSlider = document.querySelector(".home-slider");
-	const homeSlides = homeSlider.querySelectorAll(".home-slider__slide");
+const homeSlider = document.querySelector(".home-slider");
+const homeSlides = homeSlider.querySelectorAll(".home-slider__slide");
 
-	let sliderHeight = 0;
-	let slidesHeights = [];
-	homeSlides.forEach((slide, index, array) => {
-		slide.style.zIndex = array.length + 1 - index + 1;
-		const height = slide
-			.querySelector(".section")
-			.getBoundingClientRect().height;
-		sliderHeight += height;
-		slidesHeights.push(height);
-	});
-
-	const scrollController = new ScrollMagic.Controller();
-	const sectionPin = new ScrollMagic.Scene({
-		triggerElement: ".home-slider",
-		duration: sliderHeight * 2,
-		triggerHook: "onLeave",
-	})
-		.setPin(".home-slider")
-		.addTo(scrollController);
-
-	const slide1Tl = gsap
-		.timeline()
-		.from(".home-slider__slide-1", { opacity: 1 })
-		.from(".home-slider__slide-1 .section__fader", { opacity: 0 })
-		.to(
-			".home-slider__slide-1 .section__title",
-			defaultParallaxTo(-350),
-			0.3
-		)
-		.to(
-			".home-slider__slide-1 .home-slider__desc",
-			defaultParallaxTo(-320),
-			0.3
-		)
-		.to(".home-slider__slide-1 .section__footer", { y: -100 }, 0.2)
-		.to(
-			".home-slider__slide-1 .section__videos",
-			defaultParallaxTo("-100%"),
-			0.3
-		)
-		.to(".home-slider__slide-1 .section__fader", { opacity: 1 }, 1)
-		.to(".home-slider__slide-1", { opacity: 0 }, 1);
-	const slide1S = new ScrollMagic.Scene({
-		triggerElement: ".home-slider",
-		duration:
-			2 *
-				document
-					.querySelector(".home-slider__slide-1")
-					.querySelector(".section")
-					.getBoundingClientRect().height -
-			300,
-		triggerHook: "onLeave",
-		offset: 100,
-	})
-		.setTween(slide1Tl)
-		.addTo(scrollController)
-		.addIndicators({ name: "s1" });
-	const slide1Content = gsap.timeline();
-
-	const slide2Tl = gsap
-		.timeline()
-		.to(".home-slider__slide-2 .section__fader", { opacity: 0 })
-		.to(".home-slider__slide-2", { opacity: 0 }, 2)
-		.to(".home-slider__slide-3 .section__fader", { opacity: 0 });
-	const slide2S = new ScrollMagic.Scene({
-		triggerElement: ".home-slider",
-		duration:
-			document
-				.querySelector(".home-slider__slide-2")
-				.querySelector(".section")
-				.getBoundingClientRect().height - 100,
-		triggerHook: "onLeave",
-		offset: slidesHeights[0],
-	})
-		.setTween(slide2Tl)
-		.addTo(scrollController)
-		.addIndicators({ name: "s2" });
-
-	const slide3Tl = gsap.timeline();
-	const slide3S = new ScrollMagic.Scene({
-		triggerElement: ".home-slider",
-		duration: document
-			.querySelector(".home-slider__slide-3")
-			.querySelector(".section")
-			.getBoundingClientRect().height,
-		triggerHook: "onLeave",
-		offset: slidesHeights[0] + slidesHeights[1] + 100,
-	})
-		.setTween(slide3Tl)
-		.addTo(scrollController)
-		.addIndicators({ name: "s3" });
+let sliderHeight = 0;
+let slidesHeights = [];
+homeSlides.forEach((slide, index, array) => {
+	slide.style.zIndex = array.length + 1 - index + 1;
+	const height = slide
+		.querySelector(".section")
+		.getBoundingClientRect().height;
+	sliderHeight += height;
+	slidesHeights.push(height);
 });
+
+const scrollController = new ScrollMagic.Controller();
+const sectionPin = new ScrollMagic.Scene({
+	triggerElement: ".home-slider",
+	duration: sliderHeight,
+	triggerHook: 0,
+})
+	.setPin(".home-slider")
+	.addTo(scrollController);
+
+let ht1 = slidesHeights[0];
+if (window.innerWidth > 576) {
+	ht1 = window.innerHeight + 100;
+}
+
+const slide1Tl = gsap
+	.timeline()
+	.to(".home-slider__slide-1 .section__title", { y: -ht1 })
+	.to(
+		".home-slider__slide-1 .home-slider__desc",
+		{ y: -slidesHeights[0] },
+		"<0.01"
+	)
+	.to(".home-slider__slide-1 .section__videos", { y: -ht1 }, "<")
+	.to(".home-slider__slide-1 .section__footer", { y: -ht1 }, "<")
+	.from(".home-slider__slide-1 .section__fader", { opacity: 0 }, ">-0.22")
+	.to(".home-slider__slide-1", { opacity: 0, pointerEvents: "none" }, ">0.1");
+const slide1S = new ScrollMagic.Scene({
+	triggerElement: ".home-slider",
+	duration:
+		document
+			.querySelector(".home-slider__slide-1")
+			.querySelector(".section")
+			.getBoundingClientRect().height - 200,
+	triggerHook: "onLeave",
+	// offset: slidesHeights[0],
+})
+	.setTween(slide1Tl)
+	.addTo(scrollController)
+	.addIndicators({ name: "s1" });
+
+let ht2 = slidesHeights[1];
+if (window.innerWidth > 576) {
+	ht1 = window.innerHeight + 100;
+}
+
+const slide2Tl = gsap
+	.timeline()
+	.to(".home-slider__slide-2 .section__fader", { opacity: 0 })
+	.from(".home-slider__slide-2 .section__title", { y: 300, opacity: 0 }, ">")
+	.from(
+		".home-slider__slide-2 .home-slider__desc",
+		{ y: 300, opacity: 0 },
+		"<"
+	)
+	.from(".home-slider__slide-2 .section__videos", { x: 300, opacity: 0 }, "<")
+	.from(".home-slider__slide-2 .section__footer", { y: 300, opacity: 0 }, "<")
+	.to(
+		".home-slider__slide-2 .section__title",
+		{ y: -300, opacity: 0, delay: 0.1 },
+		">+0.001"
+	)
+	.to(
+		".home-slider__slide-2 .home-slider__desc",
+		{ y: -300, opacity: 0, delay: 0.1 },
+		"<"
+	)
+	.to(
+		".home-slider__slide-2 .section__footer",
+		{ y: 300, opacity: 0, delay: 0.1 },
+		"<"
+	)
+	.to(".home-slider__slide-2 .section__videos", { x: 300, opacity: 0 }, "<")
+	.to(".home-slider__slide-2 .section__fader", { opacity: 1 }, "<-0.03")
+	.to(".home-slider__slide-2", { opacity: 0, pointerEvents: "none" }, "<");
+
+const slide2S = new ScrollMagic.Scene({
+	triggerElement: ".home-slider",
+	duration: slidesHeights[1] * 1.5,
+	triggerHook: "onEnter",
+	offset: slidesHeights[0] - 100,
+})
+	.setTween(slide2Tl)
+	.addTo(scrollController)
+	.addIndicators({ name: "s2" });
+
+const slide3Tl = gsap.timeline();
+const slide3S = new ScrollMagic.Scene({
+	triggerElement: ".home-slider",
+	duration: document
+		.querySelector(".home-slider__slide-3")
+		.querySelector(".section")
+		.getBoundingClientRect().height,
+	triggerHook: "onLeave",
+	offset: 2 * (slidesHeights[0] + slidesHeights[1] + slidesHeights[2]),
+})
+	.setTween(slide3Tl)
+	.addTo(scrollController)
+	.addIndicators({ name: "s3" });
 // #endregion gsap
 
 document.querySelectorAll(".section__videos").forEach((videoNode) => {
