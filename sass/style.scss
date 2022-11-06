@@ -1,53 +1,53 @@
-@import '_fonts'; // Шрифты
-@import '_variables'; // Переменные
-@import '_reset'; // Сброс css
+@import "_fonts"; // Шрифты
+@import "_variables"; // Переменные
+@import "_reset"; // Сброс css
 
 // Анимация
-@import './animation';
+@import "./animation";
 
 // Библиотеки
 // @import './libs/swiper';
 
 body {
-    font-family: $ffMain;
-    color: $main;
-    font-size: 16px;
-    font-weight: 400;
-    font-style: normal;
-    line-height: 1.5;
-    background: $bg-page;
+	font-family: $ffMain;
+	color: $main;
+	font-size: 16px;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 1.5;
+	background: $bg-page;
 
-    &._lock {
-        overflow: hidden;
-    }
+	&._lock {
+		overflow: hidden;
+	}
 }
 
 .wrapper {
-    position: relative;
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+	position: relative;
+	width: 100%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
 }
 
-@import '_grid'; // Сетка
+@import "_grid"; // Сетка
 
 // Компоненты
-@import './components/logo';
-@import './components/link';
-@import './components/buttons';
+@import "./components/logo";
+@import "./components/link";
+@import "./components/buttons";
 // @import './components/forms';
-@import './components/social';
-@import './components/download-app';
-@import './components/home-slider';
- 
+@import "./components/social";
+@import "./components/download-app";
+@import "./components/home-slider";
+
 // Текстовые компоненты
-@import './components/text/_text';
-@import './components/text/_titles';
+@import "./components/text/_text";
+@import "./components/text/_titles";
 
 // Секции
-@import './sections/_header';
-@import './sections/section';
+@import "./sections/_header";
+@import "./sections/section";
 
 // Страницы

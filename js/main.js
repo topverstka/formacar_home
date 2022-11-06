@@ -160,56 +160,83 @@ function toggleMouseWheel(swiper) {
 	}
 }
 
-const homeSlider = new Swiper(".home-slider", {
-	direction: "vertical",
-	effect: "fade",
-	simulateTouch: false,
-	keyboard: true,
-	allowTouchMove: false,
-	mousewheel: false,
-	on: {
-		slideChange(swiper) {
-			toggleMouseWheel(swiper);
-		},
-		init(swiper) {
-			toggleMouseWheel(swiper);
-			swiper.slides.forEach((slider) => {
-				slider.addEventListener("scroll", (evt) => {
-					const offsetHeight = evt.target.offsetHeight;
-					const scrollHeight = evt.target.scrollHeight;
-					const scrollTop = evt.target.scrollTop;
+// #region gsap
+const scrollController = new ScrollMagic.Controller();
 
-					const scrollResult =
-						scrollHeight - (offsetHeight + scrollTop);
+const homeSlider = document.querySelector(".home-slider");
+const homeSlides = homeSlider.querySelectorAll(".home-slider__slide");
 
-					document.querySelector(
-						".header__lang-btn"
-					).innerText = `${offsetHeight}, ${scrollHeight}, ${scrollTop}, ${scrollResult}`;
-					if (scrollResult == scrollHeight - offsetHeight) {
-						// Каким-то магическим образом это условие говорит, что скроллбар долистали до упора вверх
-						// console.log("prev", scrollResult);
-						swiper.slidePrev();
-					} else if (scrollResult < 1) {
-						// Каким-то магическим образом это условие говорит, что скроллбар долистали до упора вниз
-						// console.log("next", scrollResult);
-						swiper.slideNext();
-					}
-				});
-			});
-		},
-	},
-	navigation: {
-		nextEl: ".home-slider__next",
-		prevEl: ".home-slider__prev",
-	},
-	scrollbar: {
-		el: ".home-slider__scrollbar",
-		draggable: true,
-	},
-	thumbs: {
-		swiper: logoSlider,
-	},
+let sliderHeight = 0;
+let slidesHeights = [];
+homeSlides.forEach((slide, index, array) => {
+	slide.style.zIndex = array.length + 1 - index + 1;
+	const height = slide
+		.querySelector(".section")
+		.getBoundingClientRect().height;
+	sliderHeight += height;
+	slidesHeights.push(height);
 });
+
+const sectionPin = new ScrollMagic.Scene({
+	triggerElement: ".home-slider",
+	duration: sliderHeight * 1,
+	triggerHook: "onLeave",
+})
+	.setPin(".home-slider")
+	.addTo(scrollController);
+
+const slide1Tl = gsap
+	.timeline()
+	.from(".home-slider__slide-1", { opacity: 1 })
+	.from(".home-slider__slide-1 .section__fader", { opacity: 0 }, 2)
+	.to(".home-slider__slide-1", { opacity: 0 }, 2);
+const slide1S = new ScrollMagic.Scene({
+	triggerElement: ".home-slider",
+	duration: document
+		.querySelector(".home-slider__slide-1")
+		.querySelector(".section")
+		.getBoundingClientRect().height,
+	triggerHook: "onLeave",
+	offset: 100,
+})
+	.setTween(slide1Tl)
+	.addTo(scrollController)
+	.addIndicators({ name: "s1" });
+
+const slide2Tl = gsap
+	.timeline()
+	.to(".home-slider__slide-2 .section__fader", { opacity: 0 })
+	.to(".home-slider__slide-2", { opacity: 0 }, 2)
+	.to(".home-slider__slide-3 .section__fader", { opacity: 0 });
+const slide2S = new ScrollMagic.Scene({
+	triggerElement: ".home-slider",
+	duration:
+		document
+			.querySelector(".home-slider__slide-2")
+			.querySelector(".section")
+			.getBoundingClientRect().height - 100,
+	triggerHook: "onLeave",
+	offset: slidesHeights[0],
+})
+	.setTween(slide2Tl)
+	.addTo(scrollController)
+	.addIndicators({ name: "s2" });
+
+const slide3Tl = gsap.timeline();
+const slide3S = new ScrollMagic.Scene({
+	triggerElement: ".home-slider",
+	duration: document
+		.querySelector(".home-slider__slide-3")
+		.querySelector(".section")
+		.getBoundingClientRect().height,
+	triggerHook: "onLeave",
+	offset: slidesHeights[0] + slidesHeights[1] + 100,
+})
+	.setTween(slide3Tl)
+	.addTo(scrollController)
+	.addIndicators({ name: "s3" });
+
+// #endregion gsap
 
 document.querySelectorAll(".section__videos").forEach((videoNode) => {
 	lightGallery(videoNode, {
