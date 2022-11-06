@@ -292,21 +292,40 @@ const slide2S = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
 	duration: slidesHeights[1] * 1.5,
 	triggerHook: "onEnter",
-	offset: slidesHeights[0] - 100,
+	offset: slidesHeights[0] + slidesHeights[1] - 100,
 })
 	.setTween(slide2Tl)
 	.addTo(scrollController)
 	.addIndicators({ name: "s2" });
 
-const slide3Tl = gsap.timeline();
+const slide3Tl = gsap
+	.timeline()
+	.to(".home-slider__slide-3 .section__fader", { opacity: 0 })
+	.from(".home-slider__slide-3 .section__title", { y: 300, opacity: 0 }, ">")
+	.from(
+		".home-slider__slide-3 .home-slider__desc",
+		{ y: 300, opacity: 0 },
+		"<"
+	)
+	.from(
+		".home-slider__slide-3 .section__body-img",
+		{ x: 300, opacity: 0 },
+		"<"
+	)
+	.from(
+		".home-slider__slide-3 .section__footer",
+		{ y: 300, opacity: 0 },
+		"<"
+	);
 const slide3S = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
-	duration: document
-		.querySelector(".home-slider__slide-3")
-		.querySelector(".section")
-		.getBoundingClientRect().height,
-	triggerHook: "onLeave",
-	offset: 2 * (slidesHeights[0] + slidesHeights[1] + slidesHeights[2]),
+	duration:
+		document
+			.querySelector(".home-slider__slide-3")
+			.querySelector(".section")
+			.getBoundingClientRect().height * 1.5,
+	triggerHook: "onEnter",
+	offset: slidesHeights[0] + slidesHeights[1] + 350,
 })
 	.setTween(slide3Tl)
 	.addTo(scrollController)
