@@ -328,8 +328,8 @@ const slide3S = new ScrollMagic.Scene({
 	offset: slidesHeights[1] + 350,
 })
 	.setTween(slide3Tl)
-	.addTo(scrollController)
-	.addIndicators({ name: "s3" });
+	.addTo(scrollController);
+// .addIndicators({ name: "s3" });
 // #endregion gsap
 
 document.querySelectorAll(".section__videos").forEach((videoNode) => {
