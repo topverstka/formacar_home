@@ -276,7 +276,7 @@ if (window.innerWidth > 576) {
 	const tY = window.innerHeight * 1.2;
 	slide1Tl
 		.to(".home-slider__slide-1 .section__content", {
-			y: -tY,
+			y: -tY * 1.5,
 			autoAlpha: 0,
 		})
 		// .to(
