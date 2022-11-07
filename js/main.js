@@ -214,9 +214,13 @@ homeSlides.forEach((slide, index, array) => {
 });
 
 const scrollController = new ScrollMagic.Controller();
+let pinHeight = sliderHeight * 2 - 300,
+if (window.innerWidth < 576) {
+	pinHeight = sliderHeight * 2 - 500,
+}
 const sectionPin = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
-	duration: sliderHeight * 2 - 300,
+	duration: pinHeight,
 	triggerHook: 0,
 })
 	.setPin(".home-slider")
@@ -273,7 +277,7 @@ if (window.innerWidth > 576) {
 			">0.1"
 		);
 } else {
-	const tY = window.innerHeight * 1.2;
+	const tY = window.innerHeight * 1.2 - 300;
 	slide1Tl
 		.to(".home-slider__slide-1 .section__content", {
 			y: -tY * 1.5,
