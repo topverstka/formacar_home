@@ -198,10 +198,11 @@ const scrollShaft = document.querySelector(".home-slider__scrollbar-shaft");
 const shaftHeight = scrollShaft.getBoundingClientRect().height;
 
 let currentSlide = 0;
-function setLogo1(e) {
+function setLogo1(e, force = false) {
 	// console.log(e);
 	// if (e.type == "enter") {
-	if (window.pageYOffset < s1Duraction) {
+	if (window.pageYOffset < s1Duraction || force) {
+		currentSlide = 0;
 		logoSlider.slideTo(0);
 		// currentSlide = 0;
 		scrollShaft.style.transform = `translateY(0px)`;
@@ -460,6 +461,55 @@ const slide3S = new ScrollMagic.Scene({
 	})
 	.addIndicators({ name: "s3" });
 // #endregion s3
+
+document.querySelector(".home-slider__prev").addEventListener("click", () => {
+	if (currentSlide == 0) {
+		setLogo3({ type: "enter" });
+		window.scroll({
+			top: s1Duraction + slide2Duration + 600,
+			left: 0,
+			behavior: "smooth",
+		});
+	} else if (currentSlide == 1) {
+		setLogo1({ type: "enter" }, true);
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: "smooth",
+		});
+	} else if (currentSlide == 2) {
+		setLogo2({ type: "enter" });
+		window.scroll({
+			top: s1Duraction + 150,
+			left: 0,
+			behavior: "smooth",
+		});
+	}
+});
+document.querySelector(".home-slider__next").addEventListener("click", () => {
+	if (currentSlide == 0) {
+		setLogo2({ type: "enter" });
+		window.scroll({
+			top: s1Duraction + 150,
+			left: 0,
+			behavior: "smooth",
+		});
+	} else if (currentSlide == 1) {
+		setLogo3({ type: "enter" });
+		window.scroll({
+			top: s1Duraction + slide2Duration + 600,
+			left: 0,
+			behavior: "smooth",
+		});
+	} else if (currentSlide == 2) {
+		setLogo1({ type: "enter" }, true);
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: "smooth",
+		});
+	}
+});
 
 // #endregion gsap
 
