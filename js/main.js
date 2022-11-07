@@ -216,7 +216,7 @@ homeSlides.forEach((slide, index, array) => {
 const scrollController = new ScrollMagic.Controller();
 const sectionPin = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
-	duration: sliderHeight,
+	duration: sliderHeight * 3,
 	triggerHook: 0,
 })
 	.setPin(".home-slider")
@@ -244,7 +244,7 @@ if (window.innerWidth > 576) {
 			{ x: 400, autoAlpha: 0 },
 			"<"
 		)
-		.to(".home-slider__slide-1 .section__footer", { y: -100 }, "<")
+		.to(".home-slider__slide-1 .section__footer", { y: -400 }, "<")
 		.from(
 			".home-slider__slide-1 .section__fader",
 			{ autoAlpha: 0 },
@@ -283,16 +283,21 @@ if (window.innerWidth > 576) {
 const slide1S = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
 	duration:
-		document
-			.querySelector(".home-slider__slide-1")
-			.querySelector(".section")
-			.getBoundingClientRect().height - 200,
+		2 *
+			document
+				.querySelector(".home-slider__slide-1")
+				.querySelector(".section")
+				.getBoundingClientRect().height -
+		200,
 	triggerHook: "onLeave",
 	// offset: slidesHeights[0],
 })
 	.setTween(slide1Tl)
-	.addTo(scrollController);
-// .addIndicators({ name: "s1" });
+	.addTo(scrollController)
+	.on("enter leave", function (e) {
+		setLogo1(e);
+	})
+	.addIndicators({ name: "s1" });
 
 let ht2 = slidesHeights[1];
 if (window.innerWidth > 576) {
@@ -372,11 +377,12 @@ if (window.innerWidth > 576) {
 		);
 }
 
-let slide2Duration = slidesHeights[1] * 1.5;
-let s2Offset = slidesHeights[0] - 100;
+// let slide2Duration = slidesHeights[1] * 1.5;
+let slide2Duration = slidesHeights[1] * 2.5;
+let s2Offset = 2 * slidesHeights[0] - 100;
 if (window.innerWidth < 576) {
 	// slide2Duration = slidesHeights[1] * 1.1;
-	s2Offset = slidesHeights[0] - 100;
+	s2Offset = 2 * slidesHeights[0] - 100;
 }
 const slide2S = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
@@ -385,8 +391,11 @@ const slide2S = new ScrollMagic.Scene({
 	offset: s2Offset,
 })
 	.setTween(slide2Tl)
-	.addTo(scrollController);
-// .addIndicators({ name: "s2" });
+	.addTo(scrollController)
+	.on("enter leave", function (e) {
+		setLogo2(e);
+	})
+	.addIndicators({ name: "s2" });
 
 const slide3Tl = gsap.timeline();
 if (window.innerWidth) {
@@ -413,9 +422,27 @@ if (window.innerWidth) {
 			"<"
 		);
 }
-let s3Offset = slidesHeights[1] + 350;
+
+function setLogo1(e) {
+	if (e.type == "enter") {
+		logoSlider.slideTo(0);
+	}
+}
+function setLogo2(e) {
+	if (e.type == "enter") {
+		logoSlider.slideTo(1);
+	}
+}
+function setLogo3(e) {
+	if (e.type == "enter") {
+		logoSlider.slideTo(2);
+	}
+}
+
+// let s3Offset = 2.5 * slidesHeights[1] + 350;
+let s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) + 350;
 if (window.innerWidth < 576) {
-	s3Offset = slidesHeights[0] + slidesHeights[1] - 350;
+	s3Offset = 2.5 * (slidesHeights[0] + slidesHeights[1]) - 350;
 	slide3Tl.to(".home-slider__slide-3 .section__inner", { y: -200 });
 }
 const slide3S = new ScrollMagic.Scene({
@@ -424,13 +451,16 @@ const slide3S = new ScrollMagic.Scene({
 		document
 			.querySelector(".home-slider__slide-3")
 			.querySelector(".section")
-			.getBoundingClientRect().height * 1.5,
+			.getBoundingClientRect().height * 2,
 	triggerHook: "onEnter",
 	offset: s3Offset,
 })
 	.setTween(slide3Tl)
-	.addTo(scrollController);
-// .addIndicators({ name: "s3" });
+	.addTo(scrollController)
+	.on("enter leave", function (e) {
+		setLogo3(e);
+	})
+	.addIndicators({ name: "s3" });
 // #endregion gsap
 
 document.querySelectorAll(".section__videos").forEach((videoNode) => {
