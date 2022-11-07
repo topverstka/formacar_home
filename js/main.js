@@ -230,12 +230,15 @@ if (window.innerWidth > 576) {
 const slide1Tl = gsap.timeline();
 if (window.innerWidth > 576) {
 	slide1Tl
-		.to(".home-slider__slide-1 .section__title", { y: -400, autoAlpha: 0 })
-		.to(
-			".home-slider__slide-1 .home-slider__desc",
-			{ y: -400, autoAlpha: 0 },
-			"<0.01"
-		)
+		.to(".home-slider__slide-1 .section__content", {
+			y: -400,
+			autoAlpha: 0,
+		})
+		// .to(
+		// 	".home-slider__slide-1 .home-slider__desc",
+		// 	{ y: -400, autoAlpha: 0 },
+		// 	"<0.01"
+		// )
 		.to(
 			".home-slider__slide-1 .section__videos",
 			{ x: 400, autoAlpha: 0 },
@@ -255,15 +258,15 @@ if (window.innerWidth > 576) {
 } else {
 	const tY = window.innerHeight * 1.2;
 	slide1Tl
-		.to(".home-slider__slide-1 .section__title", {
+		.to(".home-slider__slide-1 .section__content", {
 			y: -tY,
 			autoAlpha: 0,
 		})
-		.to(
-			".home-slider__slide-1 .home-slider__desc",
-			{ y: -tY, autoAlpha: 0 },
-			"<"
-		)
+		// .to(
+		// 	".home-slider__slide-1 .home-slider__desc",
+		// 	{ y: -tY, autoAlpha: 0 },
+		// 	"<"
+		// )
 		.to(".home-slider__slide-1 .section__videos", { y: -tY }, "<")
 		.to(".home-slider__slide-1 .section__footer", { y: -tY }, "<")
 		.from(
@@ -288,8 +291,8 @@ const slide1S = new ScrollMagic.Scene({
 	// offset: slidesHeights[0],
 })
 	.setTween(slide1Tl)
-	.addTo(scrollController)
-	.addIndicators({ name: "s1" });
+	.addTo(scrollController);
+// .addIndicators({ name: "s1" });
 
 let ht2 = slidesHeights[1];
 if (window.innerWidth > 576) {
@@ -301,15 +304,15 @@ if (window.innerWidth > 576) {
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
 		.from(
-			".home-slider__slide-2 .section__title",
+			".home-slider__slide-2 .section__content",
 			{ y: 300, autoAlpha: 0 },
 			">"
 		)
-		.from(
-			".home-slider__slide-2 .home-slider__desc",
-			{ y: 300, autoAlpha: 0 },
-			"<"
-		)
+		// .from(
+		// 	".home-slider__slide-2 .home-slider__desc",
+		// 	{ y: 300, autoAlpha: 0 },
+		// 	"<"
+		// )
 		.from(
 			".home-slider__slide-2 .section__videos",
 			{ x: 300, autoAlpha: 0 },
@@ -321,15 +324,15 @@ if (window.innerWidth > 576) {
 			"<"
 		)
 		.to(
-			".home-slider__slide-2 .section__title",
+			".home-slider__slide-2 .section__content",
 			{ y: -300, autoAlpha: 0, delay: 0.1 },
 			">+0.001"
 		)
-		.to(
-			".home-slider__slide-2 .home-slider__desc",
-			{ y: -300, autoAlpha: 0, delay: 0.1 },
-			"<"
-		)
+		// .to(
+		// 	".home-slider__slide-2 .home-slider__desc",
+		// 	{ y: -300, autoAlpha: 0, delay: 0.1 },
+		// 	"<"
+		// )
 		.to(
 			".home-slider__slide-2 .section__footer",
 			{ y: 300, autoAlpha: 0, delay: 0.1 },
@@ -350,15 +353,15 @@ if (window.innerWidth > 576) {
 	const tY = window.innerHeight * 1.2;
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
-		.to(".home-slider__slide-2 .section__title", {
+		.to(".home-slider__slide-2 .section__content", {
 			y: -tY,
 			autoAlpha: 0,
 		})
-		.to(
-			".home-slider__slide-2 .home-slider__desc",
-			{ y: -tY, autoAlpha: 0 },
-			"<"
-		)
+		// .to(
+		// 	".home-slider__slide-2 .home-slider__desc",
+		// 	{ y: -tY, autoAlpha: 0 },
+		// 	"<"
+		// )
 		.to(".home-slider__slide-2 .section__videos", { y: -tY }, "<")
 		.to(".home-slider__slide-2 .section__footer", { y: -tY }, "<")
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, "<+0.1")
@@ -382,23 +385,23 @@ const slide2S = new ScrollMagic.Scene({
 	offset: s2Offset,
 })
 	.setTween(slide2Tl)
-	.addTo(scrollController)
-	.addIndicators({ name: "s2" });
+	.addTo(scrollController);
+// .addIndicators({ name: "s2" });
 
 const slide3Tl = gsap.timeline();
 if (window.innerWidth) {
 	slide3Tl
 		.to(".home-slider__slide-3 .section__fader", { autoAlpha: 0 })
 		.from(
-			".home-slider__slide-3 .section__title",
+			".home-slider__slide-3 .section__content",
 			{ y: 300, autoAlpha: 0 },
 			">"
 		)
-		.from(
-			".home-slider__slide-3 .home-slider__desc",
-			{ y: 300, autoAlpha: 0 },
-			"<"
-		)
+		// .from(
+		// 	".home-slider__slide-3 .home-slider__desc",
+		// 	{ y: 300, autoAlpha: 0 },
+		// 	"<"
+		// )
 		.from(
 			".home-slider__slide-3 .section__body-img",
 			{ x: 300, autoAlpha: 0 },
@@ -426,8 +429,8 @@ const slide3S = new ScrollMagic.Scene({
 	offset: s3Offset,
 })
 	.setTween(slide3Tl)
-	.addTo(scrollController)
-	.addIndicators({ name: "s3" });
+	.addTo(scrollController);
+// .addIndicators({ name: "s3" });
 // #endregion gsap
 
 document.querySelectorAll(".section__videos").forEach((videoNode) => {
