@@ -260,7 +260,7 @@ if (window.innerWidth > 576) {
 			{ x: 400, autoAlpha: 0 },
 			"<"
 		)
-		.to(".home-slider__slide-1 .section__footer", { y: -400 }, "<")
+		.to(".home-slider__slide-1 .section__footer", { y: 400 }, "<")
 		.from(
 			".home-slider__slide-1 .section__fader",
 			{ autoAlpha: 0 },
