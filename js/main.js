@@ -462,31 +462,39 @@ const slide3S = new ScrollMagic.Scene({
 	.addIndicators({ name: "s3" });
 // #endregion s3
 
+function handleSlidePrev() {
+	if (currentSlide == 0) {
+		// setLogo3({ type: "enter" });
+		// window.scroll({
+		// 	top: s1Duraction + slide2Duration + 600,
+		// 	left: 0,
+		// 	behavior: "smooth",
+		// });
+		// currentSlide = 3;
+	} else if (currentSlide == 1) {
+		setLogo1({ type: "enter" }, true);
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: "smooth",
+		});
+		currentSlide = 1;
+	} else if (currentSlide == 2) {
+		setLogo2({ type: "enter" });
+		window.scroll({
+			top: s1Duraction + 150,
+			left: 0,
+			behavior: "smooth",
+		});
+		currentSlide = 2;
+	}
+}
+
 document.querySelector(".home-slider__prev").addEventListener("click", () => {
-	if (currentSlide == 0) {
-		setLogo3({ type: "enter" });
-		window.scroll({
-			top: s1Duraction + slide2Duration + 600,
-			left: 0,
-			behavior: "smooth",
-		});
-	} else if (currentSlide == 1) {
-		setLogo1({ type: "enter" }, true);
-		window.scroll({
-			top: 0,
-			left: 0,
-			behavior: "smooth",
-		});
-	} else if (currentSlide == 2) {
-		setLogo2({ type: "enter" });
-		window.scroll({
-			top: s1Duraction + 150,
-			left: 0,
-			behavior: "smooth",
-		});
-	}
+	handleSlidePrev();
 });
-document.querySelector(".home-slider__next").addEventListener("click", () => {
+
+function handleSlideNext() {
 	if (currentSlide == 0) {
 		setLogo2({ type: "enter" });
 		window.scroll({
@@ -494,21 +502,36 @@ document.querySelector(".home-slider__next").addEventListener("click", () => {
 			left: 0,
 			behavior: "smooth",
 		});
+		currentSlide = 1;
 	} else if (currentSlide == 1) {
 		setLogo3({ type: "enter" });
 		window.scroll({
-			top: s1Duraction + slide2Duration + 600,
+			top: s1Duraction + slide2Duration + s3Duration,
 			left: 0,
 			behavior: "smooth",
 		});
+		currentSlide = 2;
 	} else if (currentSlide == 2) {
-		setLogo1({ type: "enter" }, true);
-		window.scroll({
-			top: 0,
-			left: 0,
-			behavior: "smooth",
-		});
+		// setLogo1({ type: "enter" }, true);
+		// window.scroll({
+		// 	top: 0,
+		// 	left: 0,
+		// 	behavior: "smooth",
+		// });
+		// currentSlide = 0;
 	}
+}
+
+document.querySelector(".home-slider__next").addEventListener("click", () => {
+	handleSlideNext();
+});
+
+window.addEventListener("wheel", (e) => {
+	// if (e.deltaY > 0) {
+	// 	handleSlideNext();
+	// } else if (e.deltaY < 0) {
+	// 	handleSlidePrev();
+	// }
 });
 
 // #endregion gsap
