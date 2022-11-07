@@ -378,7 +378,7 @@ if (window.innerWidth > 576) {
 			"<"
 		);
 } else {
-	const tY = window.innerHeight * 1.2 - 300;
+	const tY = window.innerHeight * 1.2 - 400;
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
 		.from(
@@ -406,7 +406,7 @@ if (window.innerWidth > 576) {
 		// )
 		.to(".home-slider__slide-2 .section__videos", { y: -tY }, "<")
 		.to(".home-slider__slide-2 .section__footer", { y: -tY }, "<")
-		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, "<+0.1")
+		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, "<+0.3")
 		.to(
 			".home-slider__slide-2",
 			{ autoAlpha: 0, pointerEvents: "none" },
