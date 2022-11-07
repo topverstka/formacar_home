@@ -1,16 +1,38 @@
-@mixin font($fname, $fstyle, $fweight, $furl_woff2){
-    @font-face{
-        font-family: $fname;
-        font-style: $fstyle;
-        font-weight: $fweight;
-        font-stretch: 100%;
-        font-display: swap;
-        src: url($furl_woff2) format('woff2');
-    }
+// @mixin font($fname, $fstyle, $fweight, $furl_woff2){
+//     @font-face{
+//         font-family: $fname;
+//         font-style: $fstyle;
+//         font-weight: $fweight;
+//         font-stretch: 100%;
+//         font-display: swap;
+//         src: url($furl_woff2) format('woff2');
+//     }
+// }
+@mixin font($fname, $fstyle, $fweight, $furl) {
+	@font-face {
+		font-family: $fname;
+		font-style: $fstyle;
+		font-weight: $fweight;
+		font-stretch: 100%;
+		src: url("#{$furl}.woff2") format("woff2"),
+			url("#{$furl}.woff") format("woff");
+
+		font-display: swap;
+	}
 }
 
-@include font('Montserrat', normal, 500, '../fonts/Montserrat/Montserrat-Medium.ttf');
-@include font('Montserrat', normal, 600, '../fonts/Montserrat/Montserrat-SemiBold.ttf');
-@include font('Montserrat', normal, 700, '../fonts/Montserrat/Montserrat-Bold.ttf');
-@include font('Steppe', normal, 400, '../fonts/Steppe/Steppe-Regular.ttf');
-@include font('Oswald', normal, 400, '../fonts/Oswald/Oswald-Regular.ttf');
+@include font(
+	"Montserrat",
+	normal,
+	500,
+	"../fonts/Montserrat/Montserrat-Medium"
+);
+@include font(
+	"Montserrat",
+	normal,
+	600,
+	"../fonts/Montserrat/Montserrat-SemiBold"
+);
+@include font("Montserrat", normal, 700, "../fonts/Montserrat/Montserrat-Bold");
+@include font("Steppe", normal, 400, "../fonts/Steppe/Steppe-Regular");
+@include font("Oswald", normal, 400, "../fonts/Oswald/Oswald-Regular");
