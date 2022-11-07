@@ -427,8 +427,8 @@ const slide2S = new ScrollMagic.Scene({
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo2(e);
-	})
-	.addIndicators({ name: "s2" });
+	});
+// .addIndicators({ name: "s2" });
 // #endregion s2
 
 // #region s3
@@ -478,8 +478,8 @@ const slide3S = new ScrollMagic.Scene({
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo3(e);
-	})
-	.addIndicators({ name: "s3" });
+	});
+// .addIndicators({ name: "s3" });
 // #endregion s3
 // #endregion gsap
 
