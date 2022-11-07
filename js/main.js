@@ -377,10 +377,24 @@ if (window.innerWidth > 576) {
 	const tY = window.innerHeight * 1.2;
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
-		.to(".home-slider__slide-2 .section__content", {
-			y: -tY,
-			autoAlpha: 0,
-		})
+		.from(
+			".home-slider__slide-2 .section__content",
+			{ y: 300, autoAlpha: 0 },
+			"<"
+		)
+		.from(
+			".home-slider__slide-2 .section__videos",
+			{ y: 300, autoAlpha: 0 },
+			"<"
+		)
+		.to(
+			".home-slider__slide-2 .section__content",
+			{
+				y: -tY,
+				autoAlpha: 0,
+			},
+			">"
+		)
 		// .to(
 		// 	".home-slider__slide-2 .home-slider__desc",
 		// 	{ y: -tY, autoAlpha: 0 },
@@ -447,7 +461,7 @@ if (window.innerWidth) {
 // let s3Offset = 2.5 * slidesHeights[1] + 350;
 let s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 350;
 if (window.innerWidth < 576) {
-	s3Offset = 2.5 * (slidesHeights[0] + slidesHeights[1]) - 350;
+	s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 350;
 	slide3Tl.to(".home-slider__slide-3 .section__inner", { y: -200 });
 }
 const slide3S = new ScrollMagic.Scene({
