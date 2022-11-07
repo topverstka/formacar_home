@@ -179,7 +179,7 @@ homeSlides.forEach((slide, index, array) => {
 const scrollController = new ScrollMagic.Controller();
 let pinHeight = sliderHeight * 2 - 700;
 if (window.innerWidth < 576) {
-	pinHeight = sliderHeight * 2 - 500;
+	pinHeight = sliderHeight * 2 - 1350;
 }
 const sectionPin = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
@@ -268,7 +268,7 @@ if (window.innerWidth > 576) {
 		.from(
 			".home-slider__slide-1 .section__fader",
 			{ autoAlpha: 0 },
-			"<-0.12"
+			"<+0.42"
 		)
 		.to(
 			".home-slider__slide-1",
@@ -276,18 +276,24 @@ if (window.innerWidth > 576) {
 			"<-0.1"
 		);
 }
-const s1Duraction =
+let s1Duraction =
 	1.5 *
 		document
 			.querySelector(".home-slider__slide-1")
 			.querySelector(".section")
 			.getBoundingClientRect().height -
 	200;
+
+let s1Offset = 300;
+if (window.innerWidth < 576) {
+	s1Offset = 0;
+}
+let s1Hook = "onLeave";
 const slide1S = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
 	duration: s1Duraction,
-	triggerHook: "onLeave",
-	offset: 300,
+	triggerHook: s1Hook,
+	offset: s1Offset,
 })
 	.setTween(slide1Tl)
 	// .on("enter leave", function (e) {
@@ -391,7 +397,7 @@ if (window.innerWidth > 576) {
 let slide2Duration = slidesHeights[1] * 2.3 - 500;
 let s2Offset = 2 * slidesHeights[0] - 300;
 if (window.innerWidth < 576) {
-	s2Offset = 2 * slidesHeights[0] - 100;
+	s2Offset = 1.5 * slidesHeights[0] - 100;
 }
 const slide2S = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
@@ -438,15 +444,14 @@ let s3Duration =
 		2 -
 	400;
 if (window.innerWidth < 576) {
-	s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 350;
+	s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 1250;
 	slide3Tl.to(".home-slider__slide-3 .section__inner", { y: -200 });
 	s3Duration =
+		2 *
 		document
 			.querySelector(".home-slider__slide-3")
 			.querySelector(".section")
-			.getBoundingClientRect().height *
-			2 -
-		200;
+			.getBoundingClientRect().height;
 }
 const slide3S = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
