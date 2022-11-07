@@ -216,7 +216,7 @@ homeSlides.forEach((slide, index, array) => {
 const scrollController = new ScrollMagic.Controller();
 const sectionPin = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
-	duration: sliderHeight * 3,
+	duration: sliderHeight * 2 - 300,
 	triggerHook: 0,
 })
 	.setPin(".home-slider")
