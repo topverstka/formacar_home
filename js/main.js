@@ -133,7 +133,18 @@ function menu() {
 }
 
 const logoSlider = new Swiper(".header__logo-slider", {
-	effect: "fade",
+	// effect: "fade",
+	effect: "creative",
+	speed: 700,
+	direction: "vertical",
+	creativeEffect: {
+		prev: {
+			translate: [0, 0, -400],
+		},
+		next: {
+			translate: [0, "100%", 0],
+		},
+	},
 	allowTouchMove: false,
 	watchSlidesProgress: true,
 });
