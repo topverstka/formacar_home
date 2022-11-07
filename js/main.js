@@ -312,8 +312,8 @@ const slide1S = new ScrollMagic.Scene({
 		if (window.pageYOffset < s1Duraction) {
 			// setLogo1(e);
 		}
-	});
-// .addIndicators({ name: "s1" });
+	})
+	.addIndicators({ name: "s1" });
 // #endregion s1
 
 // #region s2
@@ -343,12 +343,12 @@ if (window.innerWidth > 576) {
 		)
 		.to(
 			".home-slider__slide-2 .section__content",
-			{ y: -300, autoAlpha: 0, delay: 0.1 },
+			{ y: -300, autoAlpha: 0 },
 			">+0.001"
 		)
 		.to(
 			".home-slider__slide-2 .section__footer",
-			{ y: 300, autoAlpha: 0, delay: 0.1 },
+			{ y: 300, autoAlpha: 0 },
 			"<"
 		)
 		.to(
@@ -356,7 +356,7 @@ if (window.innerWidth > 576) {
 			{ x: 300, autoAlpha: 0 },
 			"<"
 		)
-		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, ">")
+		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, "<+0.5")
 		.to(
 			".home-slider__slide-2",
 			{ autoAlpha: 0, pointerEvents: "none" },
@@ -394,7 +394,7 @@ if (window.innerWidth > 576) {
 		);
 }
 
-let slide2Duration = slidesHeights[1] * 2.3 - 500;
+let slide2Duration = slidesHeights[1] * 2.2 - 200;
 let s2Offset = 2 * slidesHeights[0] - 300;
 if (window.innerWidth < 576) {
 	s2Offset = 1.5 * slidesHeights[0] - 100;
@@ -409,8 +409,8 @@ const slide2S = new ScrollMagic.Scene({
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo2(e);
-	});
-// .addIndicators({ name: "s2" });
+	})
+	.addIndicators({ name: "s2" });
 // #endregion s2
 
 // #region s3
@@ -435,7 +435,7 @@ if (window.innerWidth) {
 		);
 }
 
-let s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 350;
+let s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 650;
 let s3Duration =
 	document
 		.querySelector(".home-slider__slide-3")
@@ -463,8 +463,8 @@ const slide3S = new ScrollMagic.Scene({
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo3(e);
-	});
-// .addIndicators({ name: "s3" });
+	})
+	.addIndicators({ name: "s3" });
 // #endregion s3
 
 function handleSlidePrev() {
