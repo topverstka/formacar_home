@@ -226,7 +226,23 @@ let ht1 = slidesHeights[0];
 if (window.innerWidth > 576) {
 	ht1 = window.innerHeight + 100;
 }
+function setLogo1(e) {
+	if (e.type == "enter") {
+		logoSlider.slideTo(0);
+	}
+}
+function setLogo2(e) {
+	if (e.type == "enter") {
+		logoSlider.slideTo(1);
+	}
+}
+function setLogo3(e) {
+	if (e.type == "enter") {
+		logoSlider.slideTo(2);
+	}
+}
 
+// #region s1
 const slide1Tl = gsap.timeline();
 if (window.innerWidth > 576) {
 	slide1Tl
@@ -250,6 +266,7 @@ if (window.innerWidth > 576) {
 			{ autoAlpha: 0 },
 			">-0.22"
 		)
+		.to(".home-slider__slide-1 .section__footer", { opacity: 0 }, "<")
 		.to(
 			".home-slider__slide-1",
 			{ autoAlpha: 0, pointerEvents: "none" },
@@ -296,9 +313,11 @@ const slide1S = new ScrollMagic.Scene({
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo1(e);
-	})
-	.addIndicators({ name: "s1" });
+	});
+// .addIndicators({ name: "s1" });
+// #endregion s1
 
+// #region s2
 let ht2 = slidesHeights[1];
 if (window.innerWidth > 576) {
 	ht1 = window.innerHeight + 100;
@@ -348,7 +367,7 @@ if (window.innerWidth > 576) {
 			{ x: 300, autoAlpha: 0 },
 			"<"
 		)
-		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, "<-0.03")
+		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, ">")
 		.to(
 			".home-slider__slide-2",
 			{ autoAlpha: 0, pointerEvents: "none" },
@@ -378,7 +397,7 @@ if (window.innerWidth > 576) {
 }
 
 // let slide2Duration = slidesHeights[1] * 1.5;
-let slide2Duration = slidesHeights[1] * 2.5;
+let slide2Duration = slidesHeights[1] * 2.3 - 500;
 let s2Offset = 2 * slidesHeights[0] - 100;
 if (window.innerWidth < 576) {
 	// slide2Duration = slidesHeights[1] * 1.1;
@@ -396,7 +415,9 @@ const slide2S = new ScrollMagic.Scene({
 		setLogo2(e);
 	})
 	.addIndicators({ name: "s2" });
+// #endregion s2
 
+// #region s3
 const slide3Tl = gsap.timeline();
 if (window.innerWidth) {
 	slide3Tl
@@ -404,7 +425,7 @@ if (window.innerWidth) {
 		.from(
 			".home-slider__slide-3 .section__content",
 			{ y: 300, autoAlpha: 0 },
-			">"
+			"<"
 		)
 		// .from(
 		// 	".home-slider__slide-3 .home-slider__desc",
@@ -423,24 +444,8 @@ if (window.innerWidth) {
 		);
 }
 
-function setLogo1(e) {
-	if (e.type == "enter") {
-		logoSlider.slideTo(0);
-	}
-}
-function setLogo2(e) {
-	if (e.type == "enter") {
-		logoSlider.slideTo(1);
-	}
-}
-function setLogo3(e) {
-	if (e.type == "enter") {
-		logoSlider.slideTo(2);
-	}
-}
-
 // let s3Offset = 2.5 * slidesHeights[1] + 350;
-let s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) + 350;
+let s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 350;
 if (window.innerWidth < 576) {
 	s3Offset = 2.5 * (slidesHeights[0] + slidesHeights[1]) - 350;
 	slide3Tl.to(".home-slider__slide-3 .section__inner", { y: -200 });
@@ -461,6 +466,7 @@ const slide3S = new ScrollMagic.Scene({
 		setLogo3(e);
 	})
 	.addIndicators({ name: "s3" });
+// #endregion s3
 // #endregion gsap
 
 document.querySelectorAll(".section__videos").forEach((videoNode) => {
