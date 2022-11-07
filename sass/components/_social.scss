@@ -2,6 +2,9 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px 40px;
+	@media (min-width: 768px) {
+		min-width: 310px;
+	}
 
 	@media (max-width: 767px) {
 		justify-content: space-between;
@@ -23,15 +26,29 @@
 
 .social__link-text {
 	margin-left: 20px;
-	font-family: 'Oswald', sans-serif;
+	font-family: "Oswald", sans-serif;
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 27px;
 	letter-spacing: 0.015em;
 	text-transform: uppercase;
 
+	@media (min-width: 768px) {
+		margin-left: -70px;
+		transition: all 0.3s ease;
+		opacity: 0;
+		transform: scaleX(0);
+	}
+
 	@media (max-width: 767px) {
 		display: none;
+	}
+}
+.social__item:hover .social__link-text {
+	@media (any-hover: hover) and (min-width: 768px) {
+		margin-left: 20px;
+		opacity: 1;
+		transform: scaleX(1);
 	}
 }
 

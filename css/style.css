@@ -346,6 +346,11 @@ body._lock {
   flex-wrap: wrap;
   gap: 20px 40px;
 }
+@media (min-width: 768px) {
+  .social {
+    min-width: 310px;
+  }
+}
 @media (max-width: 767px) {
   .social {
     justify-content: space-between;
@@ -374,9 +379,25 @@ body._lock {
   letter-spacing: 0.015em;
   text-transform: uppercase;
 }
+@media (min-width: 768px) {
+  .social__link-text {
+    margin-left: -70px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
 @media (max-width: 767px) {
   .social__link-text {
     display: none;
+  }
+}
+
+@media (any-hover: hover) and (min-width: 768px) {
+  .social__item:hover .social__link-text {
+    margin-left: 20px;
+    opacity: 1;
+    transform: scaleX(1);
   }
 }
 
