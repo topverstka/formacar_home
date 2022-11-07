@@ -442,7 +442,7 @@ if (window.innerWidth) {
 		.to(".home-slider__slide-3 .section__fader", { autoAlpha: 0 })
 		.from(
 			".home-slider__slide-3 .section__content",
-			{ y: 240, autoAlpha: 0 },
+			{ y: 280, autoAlpha: 0 },
 			"<"
 		)
 		// .from(
@@ -457,7 +457,7 @@ if (window.innerWidth) {
 		)
 		.from(
 			".home-slider__slide-3 .section__footer",
-			{ y: 240, autoAlpha: 0 },
+			{ y: 280, autoAlpha: 0 },
 			"<"
 		);
 }
