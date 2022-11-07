@@ -982,6 +982,10 @@ html {
   }
 }
 
+.section__videos-item--top.section__videos-item_back .section__videos-item-bottom {
+  opacity: 1;
+}
+
 .section__videos-item-1.section__videos-item--bottom {
   z-index: 2;
   max-width: 88%;

@@ -561,9 +561,9 @@ document.querySelector(".home-slider__next").addEventListener("click", () => {
 });
 
 window.addEventListener("wheel", (e) => {
-	// if (e.deltaY > 0) {
+	// if (e.deltaY > 0 && currentSlide != 2) {
 	// 	handleSlideNext();
-	// } else if (e.deltaY < 0) {
+	// } else if (e.deltaY < 0 && currentSlide != 0) {
 	// 	handleSlidePrev();
 	// }
 });
