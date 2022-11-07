@@ -952,6 +952,7 @@ html {
   box-shadow: 0px 20px 50px rgba(57, 57, 63, 0.2);
   border-radius: 5px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .section__videos-item_back {
@@ -979,6 +980,18 @@ html {
     width: unset;
     opacity: 1;
   }
+}
+
+.section__videos-item-1.section__videos-item--bottom {
+  z-index: 2;
+  max-width: 88%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section__videos-item-2.section__videos-item--top {
+  z-index: 3;
+  width: 100%;
 }
 
 .section__videos-item-bottom {

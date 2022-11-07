@@ -140,6 +140,7 @@ const logoSlider = new Swiper(".header__logo-slider", {
 	creativeEffect: {
 		prev: {
 			translate: [0, 0, -400],
+			opacity: 0,
 		},
 		next: {
 			translate: [0, "100%", 0],
@@ -170,6 +171,23 @@ function toggleMouseWheel(swiper) {
 		swiper.mousewheel.disable();
 	}
 }
+
+const s1Videos = document.querySelectorAll(
+	".home-slider__slide-1 .section__videos-item"
+);
+s1Videos.forEach((video) => {
+	video.addEventListener("mouseenter", (e) => {
+		if (window.innerWidth < 576) return;
+
+		const oppositeVideo = [...s1Videos].filter((vid) => {
+			return vid != video;
+		})[0];
+		oppositeVideo.classList.add("section__videos-item--bottom");
+		oppositeVideo.classList.remove("section__videos-item--top");
+		video.classList.add("section__videos-item--top");
+		video.classList.remove("section__videos-item--bottom");
+	});
+});
 
 // #region gsap
 
@@ -323,8 +341,8 @@ const slide1S = new ScrollMagic.Scene({
 		if (window.pageYOffset < s1Duraction) {
 			// setLogo1(e);
 		}
-	})
-	.addIndicators({ name: "s1" });
+	});
+// .addIndicators({ name: "s1" });
 // #endregion s1
 
 // #region s2
@@ -420,8 +438,8 @@ const slide2S = new ScrollMagic.Scene({
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo2(e);
-	})
-	.addIndicators({ name: "s2" });
+	});
+// .addIndicators({ name: "s2" });
 // #endregion s2
 
 // #region s3
@@ -474,8 +492,8 @@ const slide3S = new ScrollMagic.Scene({
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo3(e);
-	})
-	.addIndicators({ name: "s3" });
+	});
+// .addIndicators({ name: "s3" });
 // #endregion s3
 
 function handleSlidePrev() {
