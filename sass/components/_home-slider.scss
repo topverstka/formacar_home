@@ -1,7 +1,7 @@
 .home-slider {
 	// height: 300vh;
 	margin: 0;
-	backface-visibility: visible;
+	backface-visibility: hidden;
 	// height: 100vh;
 	// overflow: hidden;
 	// overflow: auto;
@@ -18,20 +18,20 @@
 	width: 100%;
 	height: 100%;
 	// position: relative;
-	backface-visibility: visible;
+	backface-visibility: hidden;
 }
 .home-slider__title {
-	backface-visibility: visible;
+	backface-visibility: hidden;
 }
 .home-slider__desc {
-	backface-visibility: visible;
+	backface-visibility: hidden;
 }
 .home-slider .section__footer {
-	backface-visibility: visible;
+	backface-visibility: hidden;
 }
 .section__body-img,
 .section__videos {
-	backface-visibility: visible;
+	backface-visibility: hidden;
 }
 .home-slider__navigate {
 	position: fixed;

@@ -19,6 +19,7 @@
 	background-color: #0f141a;
 	pointer-events: none;
 	z-index: 3;
+	backface-visibility: hidden;
 }
 .section__bg {
 	position: absolute;
