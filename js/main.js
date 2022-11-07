@@ -214,9 +214,9 @@ homeSlides.forEach((slide, index, array) => {
 });
 
 const scrollController = new ScrollMagic.Controller();
-let pinHeight = sliderHeight * 2 - 300,
+let pinHeight = sliderHeight * 2 - 300;
 if (window.innerWidth < 576) {
-	pinHeight = sliderHeight * 2 - 500,
+	pinHeight = sliderHeight * 2 - 500;
 }
 const sectionPin = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
@@ -277,7 +277,7 @@ if (window.innerWidth > 576) {
 			">0.1"
 		);
 } else {
-	const tY = window.innerHeight * 1.2 - 300;
+	const tY = window.innerHeight * 1.2 - 100;
 	slide1Tl
 		.to(".home-slider__slide-1 .section__content", {
 			y: -tY * 1.5,
@@ -378,7 +378,7 @@ if (window.innerWidth > 576) {
 			"<"
 		);
 } else {
-	const tY = window.innerHeight * 1.2;
+	const tY = window.innerHeight * 1.2 - 300;
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
 		.from(
@@ -442,7 +442,7 @@ if (window.innerWidth) {
 		.to(".home-slider__slide-3 .section__fader", { autoAlpha: 0 })
 		.from(
 			".home-slider__slide-3 .section__content",
-			{ y: 300, autoAlpha: 0 },
+			{ y: 240, autoAlpha: 0 },
 			"<"
 		)
 		// .from(
@@ -457,24 +457,26 @@ if (window.innerWidth) {
 		)
 		.from(
 			".home-slider__slide-3 .section__footer",
-			{ y: 300, autoAlpha: 0 },
+			{ y: 240, autoAlpha: 0 },
 			"<"
 		);
 }
 
 // let s3Offset = 2.5 * slidesHeights[1] + 350;
 let s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 350;
+let s3Duration =
+	document
+		.querySelector(".home-slider__slide-3")
+		.querySelector(".section")
+		.getBoundingClientRect().height * 2;
 if (window.innerWidth < 576) {
 	s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 350;
 	slide3Tl.to(".home-slider__slide-3 .section__inner", { y: -200 });
+	s3Duration = s3Duration - 200;
 }
 const slide3S = new ScrollMagic.Scene({
 	triggerElement: ".home-slider",
-	duration:
-		document
-			.querySelector(".home-slider__slide-3")
-			.querySelector(".section")
-			.getBoundingClientRect().height * 2,
+	duration: s3Duration,
 	triggerHook: "onEnter",
 	offset: s3Offset,
 })
