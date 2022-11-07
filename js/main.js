@@ -284,8 +284,8 @@ if (window.innerWidth > 576) {
 		// 	{ y: -tY, autoAlpha: 0 },
 		// 	"<"
 		// )
-		.to(".home-slider__slide-1 .section__videos", { y: -tY }, "<")
-		.to(".home-slider__slide-1 .section__footer", { y: -tY }, "<")
+		.to(".home-slider__slide-1 .section__videos", { y: -tY * 1.5 }, "<")
+		.to(".home-slider__slide-1 .section__footer", { y: -tY * 1.5 }, "<")
 		.from(
 			".home-slider__slide-1 .section__fader",
 			{ autoAlpha: 0 },
