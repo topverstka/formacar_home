@@ -119,6 +119,9 @@
 	line-height: 90px;
 	text-transform: uppercase;
 
+	@media (min-width: 1200px) {
+		margin-left: -3px;
+	}
 	@media (max-width: 1599px) {
 		font-size: 64px;
 		line-height: 64px;
@@ -151,7 +154,8 @@
 }
 
 .section__list {
-	padding-left: 10px;
+	padding-left: 0;
+	margin-left: -14.31px;
 	margin-bottom: 18px;
 }
 

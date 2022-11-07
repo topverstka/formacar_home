@@ -16,10 +16,17 @@ body {
 	font-style: normal;
 	line-height: 1.5;
 	background: $bg-page;
+	-ms-overflow-style: none;
 
 	&._lock {
 		overflow: hidden;
 	}
+}
+body::-webkit-scrollbar {
+	display: none;
+}
+html {
+	scrollbar-width: none;
 }
 
 .wrapper {
