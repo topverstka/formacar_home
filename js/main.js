@@ -239,30 +239,21 @@ if (window.innerWidth > 576) {
 
 let currentSlide = 0;
 function setLogo1(e, force = false) {
-	// console.log(e);
-	// if (e.type == "enter") {
 	if (window.pageYOffset < s1Duraction || force) {
 		currentSlide = 0;
 		logoSlider.slideTo(0);
-		// currentSlide = 0;
-		// scrollShaft.style.transform = `translateY(0px)`;
 	}
-	// }
 }
 function setLogo2(e) {
 	if (e.type == "enter") {
 		logoSlider.slideTo(1);
 		currentSlide = 1;
-		// const shaftOffset = shaftHeight;
-		// scrollShaft.style.transform = `translateY(${shaftOffset}px)`;
 	}
 }
 function setLogo3(e) {
 	if (e.type == "enter") {
 		logoSlider.slideTo(2);
 		currentSlide = 2;
-		// const shaftOffset = shaftHeight * 2;
-		// scrollShaft.style.transform = `translateY(${shaftOffset}px)`;
 	}
 }
 
@@ -274,11 +265,6 @@ if (window.innerWidth > 576) {
 			y: -400,
 			autoAlpha: 0,
 		})
-		// .to(
-		// 	".home-slider__slide-1 .home-slider__desc",
-		// 	{ y: -400, autoAlpha: 0 },
-		// 	"<0.01"
-		// )
 		.to(
 			".home-slider__slide-1 .section__videos",
 			{ x: 400, autoAlpha: 0 },
@@ -336,22 +322,9 @@ const slide1S = new ScrollMagic.Scene({
 	offset: s1Offset,
 })
 	.setTween(slide1Tl)
-	// .on("enter leave", function (e) {
-	// 	console.log(e.type == "enter" ? "inside" : "outside");
-	// })
-	// .on("start end", function (e) {
-	// 	console.log(e.type == "start" ? "top" : "bottom");
-	// })
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo1(e);
-	})
-	.on("progress", function (e) {
-		// console.log(e, currentSlide);
-		// if (e.progress < 0.75) {
-		if (window.pageYOffset < s1Duraction) {
-			// setLogo1(e);
-		}
 	});
 // .addIndicators({ name: "s1" });
 // #endregion s1
@@ -543,7 +516,7 @@ function handleSlideNext() {
 	if (currentSlide == 0) {
 		setLogo2({ type: "enter" });
 		window.scroll({
-			top: s1Duraction + 150,
+			top: s1Duraction + 350,
 			left: 0,
 			behavior: "smooth",
 		});
