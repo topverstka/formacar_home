@@ -296,7 +296,7 @@ if (window.innerWidth > 576) {
 		.to(
 			".home-slider__slide-1",
 			{ autoAlpha: 0, pointerEvents: "none" },
-			">0.1"
+			">-0.1"
 		);
 } else {
 	const tY = window.innerHeight * 1.2 - 100;
@@ -358,7 +358,7 @@ if (window.innerWidth > 576) {
 		.from(
 			".home-slider__slide-2 .section__content",
 			{ y: 300, autoAlpha: 0 },
-			">"
+			">-0.2"
 		)
 		.from(
 			".home-slider__slide-2 .section__videos",
