@@ -96,7 +96,8 @@
 .home-slider__scrollbar {
 	margin: 20px 0;
 	width: 2px;
-	height: 65vh;
+	height: 70vh;
+	// height: 65vh;
 	background-color: rgba(255, 255, 255, 0.3);
 
 	.swiper-scrollbar-drag {
@@ -104,8 +105,12 @@
 	}
 
 	@media (max-width: 1599px) {
-		height: 40vh;
+		// height: 40vh;
+		height: 46vh;
 	}
+}
+.home-slider__arrow {
+	display: none;
 }
 .home-slider__scrollbar-shaft {
 	display: block;
