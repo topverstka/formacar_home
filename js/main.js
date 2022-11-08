@@ -490,21 +490,21 @@ function handleSlidePrev() {
 		// });
 		// currentSlide = 3;
 	} else if (currentSlide == 1) {
-		setLogo1({ type: "enter" }, true);
+		// setLogo1({ type: "enter" }, true);
 		window.scroll({
 			top: 0,
 			left: 0,
 			behavior: "smooth",
 		});
-		currentSlide = 0;
+		// currentSlide = 0;
 	} else if (currentSlide == 2) {
-		setLogo2({ type: "enter" });
+		// setLogo2({ type: "enter" });
 		window.scroll({
-			top: s1Duraction + 150,
+			top: s1Duraction + 310,
 			left: 0,
 			behavior: "smooth",
 		});
-		currentSlide = 1;
+		// currentSlide = 1;
 	}
 }
 
@@ -514,21 +514,21 @@ document.querySelector(".home-slider__prev").addEventListener("click", () => {
 
 function handleSlideNext() {
 	if (currentSlide == 0) {
-		setLogo2({ type: "enter" });
+		// setLogo2({ type: "enter" });
 		window.scroll({
-			top: s1Duraction + 350,
+			top: s1Duraction + 310,
 			left: 0,
 			behavior: "smooth",
 		});
-		currentSlide = 1;
+		// currentSlide = 1;
 	} else if (currentSlide == 1) {
-		setLogo3({ type: "enter" });
+		// setLogo3({ type: "enter" });
 		window.scroll({
 			top: s1Duraction + slide2Duration + s3Duration,
 			left: 0,
 			behavior: "smooth",
 		});
-		currentSlide = 2;
+		// currentSlide = 2;
 	} else if (currentSlide == 2) {
 		// setLogo1({ type: "enter" }, true);
 		// window.scroll({
