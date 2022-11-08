@@ -176,16 +176,22 @@ const s1Videos = document.querySelectorAll(
 	".home-slider__slide-1 .section__videos-item"
 );
 s1Videos.forEach((video) => {
+	video.addEventListener("mouseleave", (e) => {
+		if (window.innerWidth < 576) return;
+		video.classList.remove("section__videos-item--forbid-change");
+	});
 	video.addEventListener("mouseenter", (e) => {
 		if (window.innerWidth < 576) return;
+
+		if (video.classList.contains("section__videos-item--forbid-change"))
+			return;
 
 		const oppositeVideo = [...s1Videos].filter((vid) => {
 			return vid != video;
 		})[0];
-		oppositeVideo.classList.add("section__videos-item--bottom");
-		oppositeVideo.classList.remove("section__videos-item--top");
-		video.classList.add("section__videos-item--top");
-		video.classList.remove("section__videos-item--bottom");
+		oppositeVideo.classList.add("section__videos-item_back");
+		video.classList.remove("section__videos-item_back");
+		oppositeVideo.classList.add("section__videos-item--forbid-change");
 	});
 });
 
@@ -346,8 +352,8 @@ const slide1S = new ScrollMagic.Scene({
 		if (window.pageYOffset < s1Duraction) {
 			// setLogo1(e);
 		}
-	})
-	.addIndicators({ name: "s1" });
+	});
+// .addIndicators({ name: "s1" });
 // #endregion s1
 
 // #region s2
@@ -443,8 +449,8 @@ const slide2S = new ScrollMagic.Scene({
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo2(e);
-	})
-	.addIndicators({ name: "s2" });
+	});
+// .addIndicators({ name: "s2" });
 // #endregion s2
 
 // #region s3
@@ -497,8 +503,8 @@ const slide3S = new ScrollMagic.Scene({
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo3(e);
-	})
-	.addIndicators({ name: "s3" });
+	});
+// .addIndicators({ name: "s3" });
 // #endregion s3
 
 function handleSlidePrev() {
