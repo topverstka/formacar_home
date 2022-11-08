@@ -299,7 +299,10 @@ if (window.innerWidth > 576) {
 			">-0.1"
 		);
 } else {
-	const tY = window.innerHeight * 1.2 - 100;
+	let tY = window.innerHeight * 1.2 - 550;
+	if (window.innerHeight < 700) {
+		tY = window.innerHeight * 1.2 - 150;
+	}
 	slide1Tl
 		.to(".home-slider__slide-1 .section__content", {
 			y: -tY * 1.5,
@@ -392,7 +395,10 @@ if (window.innerWidth > 576) {
 			"<"
 		);
 } else {
-	const tY = window.innerHeight * 1.2 - 400;
+	let tY = window.innerHeight - 700;
+	if (window.innerHeight < 700) {
+		tY = window.innerHeight * 1.2 - 400;
+	}
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
 		.from(
