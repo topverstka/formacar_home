@@ -189,8 +189,20 @@ s1Videos.forEach((video) => {
 		const oppositeVideo = [...s1Videos].filter((vid) => {
 			return vid != video;
 		})[0];
-		oppositeVideo.classList.add("section__videos-item_back");
-		video.classList.remove("section__videos-item_back");
+
+		if (video.classList.contains("section__videos-item_back")) {
+			gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
+			gsap.to(video, { y: -90, width: "100%", zIndex: 2 }, "<");
+			gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
+			gsap.to(oppositeVideo, { y: 90, width: "88%", zIndex: 1 }, "<");
+		} else {
+			gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
+			gsap.to(video, { y: 0, width: "100%", zIndex: 2 });
+			gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
+			gsap.to(oppositeVideo, { y: 0, width: "88%", zIndex: 1 });
+		}
+		// oppositeVideo.classList.add("section__videos-item_back");
+		// video.classList.remove("section__videos-item_back");
 		oppositeVideo.classList.add("section__videos-item--forbid-change");
 	});
 });
