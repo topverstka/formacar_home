@@ -324,7 +324,7 @@ let s1Duraction =
 			.querySelector(".home-slider__slide-1")
 			.querySelector(".section")
 			.getBoundingClientRect().height -
-	200;
+	400;
 
 let s1Offset = 300;
 if (window.innerWidth < 576) {
