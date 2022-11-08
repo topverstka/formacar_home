@@ -496,7 +496,10 @@ function handleSlidePrev() {
 			left: 0,
 			behavior: "smooth",
 		});
-		// currentSlide = 0;
+		setTimeout(() => {
+			logoSlider.slideTo(0);
+			currentSlide = 0;
+		}, 100);
 	} else if (currentSlide == 2) {
 		// setLogo2({ type: "enter" });
 		window.scroll({
@@ -504,7 +507,10 @@ function handleSlidePrev() {
 			left: 0,
 			behavior: "smooth",
 		});
-		// currentSlide = 1;
+		setTimeout(() => {
+			logoSlider.slideTo(1);
+			currentSlide = 1;
+		}, 100);
 	}
 }
 
@@ -520,7 +526,10 @@ function handleSlideNext() {
 			left: 0,
 			behavior: "smooth",
 		});
-		// currentSlide = 1;
+		setTimeout(() => {
+			currentSlide = 1;
+			logoSlider.slideTo(1);
+		}, 100);
 	} else if (currentSlide == 1) {
 		// setLogo3({ type: "enter" });
 		window.scroll({
@@ -528,7 +537,10 @@ function handleSlideNext() {
 			left: 0,
 			behavior: "smooth",
 		});
-		// currentSlide = 2;
+		setTimeout(() => {
+			currentSlide = 2;
+			logoSlider.slideTo(2);
+		}, 100);
 	} else if (currentSlide == 2) {
 		// setLogo1({ type: "enter" }, true);
 		// window.scroll({
