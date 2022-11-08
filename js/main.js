@@ -176,34 +176,38 @@ const s1Videos = document.querySelectorAll(
 	".home-slider__slide-1 .section__videos-item"
 );
 s1Videos.forEach((video) => {
-	video.addEventListener("mouseleave", (e) => {
+	video.parentElement.addEventListener("mouseleave", (e) => {
 		if (window.innerWidth < 576) return;
-		video.classList.remove("section__videos-item--forbid-change");
+		s1Videos.forEach((video) => {
+			video.classList.remove("section__videos-item--forbid-change");
+		});
 	});
 	video.addEventListener("mouseenter", (e) => {
 		if (window.innerWidth < 576) return;
-
-		if (video.classList.contains("section__videos-item--forbid-change"))
-			return;
 
 		const oppositeVideo = [...s1Videos].filter((vid) => {
 			return vid != video;
 		})[0];
 
+		if (video.classList.contains("section__videos-item--forbid-change"))
+			return;
+		video.classList.add("section__videos-item--forbid-change");
+
+		oppositeVideo.classList.add("section__videos-item--forbid-change");
+
 		if (video.classList.contains("section__videos-item_back")) {
-			gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
-			gsap.to(video, { y: -90, width: "100%", zIndex: 2 }, "<");
-			gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
+			// gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
+			gsap.to(video, { y: -90, width: "100%", zIndex: 2 });
+			// gsap.fromTo(oppositeVideo, { autoAlpha: 0 }, { autoAlpha: 1 });
 			gsap.to(oppositeVideo, { y: 90, width: "88%", zIndex: 1 }, "<");
-		} else {
-			gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
+		} else if (e.target != oppositeVideo) {
+			// gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
 			gsap.to(video, { y: 0, width: "100%", zIndex: 2 });
-			gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
+			// gsap.fromTo(oppositeVideo, { autoAlpha: 0 }, { autoAlpha: 1 });
 			gsap.to(oppositeVideo, { y: 0, width: "88%", zIndex: 1 });
 		}
 		// oppositeVideo.classList.add("section__videos-item_back");
 		// video.classList.remove("section__videos-item_back");
-		oppositeVideo.classList.add("section__videos-item--forbid-change");
 	});
 });
 
