@@ -90,6 +90,9 @@
 	@media (max-width: 1179px) {
 		grid-template-columns: 1fr;
 	}
+	@media (max-width: 576px) {
+		row-gap: 10px;
+	}
 }
 
 .section__content {
@@ -107,6 +110,9 @@
 
 	@media (max-width: 1179px) {
 		padding-left: 0;
+	}
+	@media (max-width: 576px) {
+		line-height: 17px;
 	}
 }
 
@@ -151,6 +157,9 @@
 
 .section__paragraph {
 	margin-bottom: 18px;
+	@media (max-width: 576px) {
+		margin-bottom: 10px;
+	}
 }
 
 .section__list {
