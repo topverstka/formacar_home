@@ -228,7 +228,7 @@ homeSlides.forEach((slide, index, array) => {
 });
 
 const scrollController = new ScrollMagic.Controller();
-let pinHeight = sliderHeight * 2 - 700;
+let pinHeight = sliderHeight * 2 - 800;
 if (window.innerWidth < 576) {
 	pinHeight = sliderHeight * 2 - 1350;
 }
