@@ -299,7 +299,7 @@ if (window.innerWidth > 576) {
 			">-0.1"
 		);
 } else {
-	let tY = window.innerHeight * 1.2 - 550;
+	let tY = window.innerHeight * 1.2 - 450;
 	if (window.innerHeight < 700) {
 		tY = window.innerHeight * 1.2 - 150;
 	}

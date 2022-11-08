@@ -535,11 +535,35 @@ html {
 }
 
 @media (max-width: 576px) {
-  .home-slider__slide-3 .section__title {
-    margin-bottom: 10px;
-  }
-  .home-slider__slide-3 .section__subtitle {
+  .home-slider__slide .section__title {
     margin-bottom: 22px;
+  }
+}
+
+.home-slider__slide-3 .section__title {
+  margin-bottom: 10px;
+}
+@media (min-width: 1440px) {
+  .home-slider__slide-3 .section__title {
+    margin-bottom: 18px;
+  }
+}
+@media (min-width: 1920px) {
+  .home-slider__slide-3 .section__title {
+    margin-bottom: 30px;
+  }
+}
+.home-slider__slide-3 .section__subtitle {
+  margin-bottom: 22px;
+}
+@media (min-width: 1440px) {
+  .home-slider__slide-3 .section__subtitle {
+    margin-bottom: 30px;
+  }
+}
+@media (min-width: 1920px) {
+  .home-slider__slide-3 .section__subtitle {
+    margin-bottom: 50px;
   }
 }
 
