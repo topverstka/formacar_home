@@ -534,6 +534,15 @@ html {
   }
 }
 
+@media (max-width: 576px) {
+  .home-slider__slide-3 .section__title {
+    margin-bottom: 10px;
+  }
+  .home-slider__slide-3 .section__subtitle {
+    margin-bottom: 22px;
+  }
+}
+
 .home-slider__title {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;

@@ -474,7 +474,7 @@ let s3Duration =
 	400;
 if (window.innerWidth < 576) {
 	s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 1250;
-	slide3Tl.to(".home-slider__slide-3 .section__inner", { y: -200 });
+	// slide3Tl.to(".home-slider__slide-3 .section__inner", { y: -200 });
 	s3Duration =
 		2 *
 		document

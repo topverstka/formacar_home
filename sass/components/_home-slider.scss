@@ -55,6 +55,16 @@
 		}
 	}
 }
+.home-slider__slide-3 {
+	@media (max-width: 576px) {
+		.section__title {
+			margin-bottom: 10px;
+		}
+		.section__subtitle {
+			margin-bottom: 22px;
+		}
+	}
+}
 .home-slider__title {
 	backface-visibility: hidden;
 }
