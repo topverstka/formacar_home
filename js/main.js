@@ -496,7 +496,7 @@ function handleSlidePrev() {
 			left: 0,
 			behavior: "smooth",
 		});
-		currentSlide = 1;
+		currentSlide = 0;
 	} else if (currentSlide == 2) {
 		setLogo2({ type: "enter" });
 		window.scroll({
@@ -504,7 +504,7 @@ function handleSlidePrev() {
 			left: 0,
 			behavior: "smooth",
 		});
-		currentSlide = 2;
+		currentSlide = 1;
 	}
 }
 
