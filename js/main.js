@@ -172,44 +172,89 @@ function toggleMouseWheel(swiper) {
 	}
 }
 
+// #region videoSwap
 const s1Videos = document.querySelectorAll(
 	".home-slider__slide-1 .section__videos-item"
 );
-s1Videos.forEach((video) => {
-	video.parentElement.addEventListener("mouseleave", (e) => {
-		if (window.innerWidth < 576) return;
-		s1Videos.forEach((video) => {
-			video.classList.remove("section__videos-item--forbid-change");
+const FORBID_CHANGE_CLASS = "section__videos-item--forbid-change";
+const VIDEO_TOP_CLASS = "section__videos-item--top";
+
+function onVideoChangeStart() {
+	forbidVideoChanging();
+}
+function onVideoChangeEnd() {
+	setTimeout(() => {
+		allowVideoChanging();
+	}, 200);
+}
+function forbidVideoChanging() {
+	s1Videos.forEach((video) => video.classList.add(FORBID_CHANGE_CLASS));
+}
+function allowVideoChanging() {
+	s1Videos.forEach((video) => video.classList.remove(FORBID_CHANGE_CLASS));
+}
+function isVideoChangeAllowed(video) {
+	return !video.classList.contains(FORBID_CHANGE_CLASS);
+}
+
+function setVideoTop(video) {
+	video.classList.add(VIDEO_TOP_CLASS);
+
+	// Специфические стили для карточек
+	if (video.classList.contains("section__videos-item_back")) {
+		gsap.to(video, {
+			y: -90,
+			width: "100%",
+			zIndex: 2,
+			onStart: onVideoChangeStart,
+			onComplete: onVideoChangeEnd,
 		});
-	});
+	} else {
+		gsap.to(video, {
+			y: 0,
+			width: "100%",
+			zIndex: 2,
+			onStart: onVideoChangeStart,
+			onComplete: onVideoChangeEnd,
+		});
+	}
+}
+function setVideoBack(video) {
+	video.classList.remove(VIDEO_TOP_CLASS);
+
+	// Специфические стили для карточек
+	if (video.classList.contains("section__videos-item_back")) {
+		gsap.to(video, { y: 0, width: "88%", zIndex: 1 });
+	} else {
+		gsap.to(video, { y: 90, width: "88%", zIndex: 1 }, "<");
+	}
+}
+function isVideoBottom(video) {
+	return !video.classList.contains(VIDEO_TOP_CLASS);
+}
+function getOppositeVideoOf(video) {
+	return [...s1Videos].filter((vid) => {
+		return vid != video;
+	})[0];
+}
+
+s1Videos.forEach((video, index) => {
+	if (index === 0) {
+		video.classList.add(VIDEO_TOP_CLASS);
+	}
 	video.addEventListener("mouseenter", (e) => {
 		if (window.innerWidth < 576) return;
 
-		const oppositeVideo = [...s1Videos].filter((vid) => {
-			return vid != video;
-		})[0];
+		const oppositeVideo = getOppositeVideoOf(video);
 
-		if (video.classList.contains("section__videos-item--forbid-change"))
-			return;
-		video.classList.add("section__videos-item--forbid-change");
-
-		oppositeVideo.classList.add("section__videos-item--forbid-change");
-
-		if (video.classList.contains("section__videos-item_back")) {
-			// gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
-			gsap.to(video, { y: -90, width: "100%", zIndex: 2 });
-			// gsap.fromTo(oppositeVideo, { autoAlpha: 0 }, { autoAlpha: 1 });
-			gsap.to(oppositeVideo, { y: 90, width: "88%", zIndex: 1 }, "<");
-		} else if (e.target != oppositeVideo) {
-			// gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
-			gsap.to(video, { y: 0, width: "100%", zIndex: 2 });
-			// gsap.fromTo(oppositeVideo, { autoAlpha: 0 }, { autoAlpha: 1 });
-			gsap.to(oppositeVideo, { y: 0, width: "88%", zIndex: 1 });
+		if (isVideoBottom(video) && isVideoChangeAllowed(video)) {
+			// Меняет местами карточки
+			setVideoTop(video);
+			setVideoBack(oppositeVideo);
 		}
-		// oppositeVideo.classList.add("section__videos-item_back");
-		// video.classList.remove("section__videos-item_back");
 	});
 });
+// #endregion videoSwap
 
 // #region gsap
 
