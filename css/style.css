@@ -686,6 +686,11 @@ html {
   align-items: center;
   padding: 50px 0;
 }
+@media (max-width: 1280px) {
+  .header__inner {
+    padding: 40px 0 20px 0;
+  }
+}
 @media (max-width: 767px) {
   .header__inner {
     padding: 20px 0;
