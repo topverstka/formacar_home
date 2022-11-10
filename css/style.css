@@ -1041,6 +1041,8 @@ html {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .section__videos-item_back {
