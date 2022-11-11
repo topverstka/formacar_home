@@ -17,6 +17,7 @@ body {
 	line-height: 1.5;
 	background: $bg-page;
 	-ms-overflow-style: none;
+	-webkit-transform: translate3d(0, 0, 0);
 
 	&._lock {
 		overflow: hidden;

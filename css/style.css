@@ -265,6 +265,7 @@ body {
   line-height: 1.5;
   background: var(--bg-page);
   -ms-overflow-style: none;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 body._lock {
   overflow: hidden;
