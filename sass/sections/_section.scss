@@ -20,6 +20,7 @@
 	pointer-events: none;
 	z-index: 3;
 	backface-visibility: hidden;
+	transform: translate3d(0, 0, 0);
 }
 .section__bg {
 	position: absolute;
