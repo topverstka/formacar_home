@@ -261,10 +261,7 @@ s1Videos.forEach((video, index) => {
 
 const homeSlider = document.querySelector(".home-slider");
 const homeSlides = homeSlider.querySelectorAll(".home-slider__slide");
-const TABLET_BREAKPOINT = {
-	min: 576,
-	max: 1179,
-};
+const ANIMATIONS_WIDTH_BREAKPOINT = 1200;
 
 let sliderHeight = 0;
 let slidesHeights = [];
@@ -279,7 +276,7 @@ homeSlides.forEach((slide, index, array) => {
 
 const scrollController = new ScrollMagic.Controller();
 let pinHeight = sliderHeight * 2 - 800;
-if (window.innerWidth < ANIMATION_BREAKPOINT + 1) {
+if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 	pinHeight = sliderHeight * 2 - 1350;
 }
 
@@ -299,7 +296,7 @@ const sectionPin = new ScrollMagic.Scene({
 	.addTo(scrollController);
 
 let ht1 = slidesHeights[0];
-if (window.innerWidth > ANIMATION_BREAKPOINT) {
+if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 	ht1 = window.innerHeight + 100;
 }
 
@@ -325,7 +322,7 @@ function setLogo3(e) {
 
 // #region s1
 const slide1Tl = gsap.timeline();
-if (window.innerWidth > ANIMATION_BREAKPOINT) {
+if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 	slide1Tl
 		.to(".home-slider__slide-1 .section__content", {
 			y: -400,
@@ -348,32 +345,13 @@ if (window.innerWidth > ANIMATION_BREAKPOINT) {
 			{ autoAlpha: 0, pointerEvents: "none" },
 			">-0.1"
 		);
-} else if (window.innerWidth > TABLET_BREAKPOINT.min) {
-	let tY = window.innerHeight * 1.2 - 450;
-	if (window.innerHeight < 700) {
-		tY = window.innerHeight * 1.2 - 150;
-	}
-	slide1Tl
-		.to(".home-slider__slide-1 .section__content", {
-			y: -tY / 2,
-			autoAlpha: 0,
-		})
-		.to(".home-slider__slide-1 .section__videos", { y: -tY / 2 }, "<")
-		.to(".home-slider__slide-1 .section__footer", { y: -tY / 2 }, "<")
-		.from(
-			".home-slider__slide-1 .section__fader",
-			{ autoAlpha: 0 },
-			"<+0.42"
-		)
-		.to(
-			".home-slider__slide-1",
-			{ autoAlpha: 0, pointerEvents: "none" },
-			"<-0.1"
-		);
 } else {
 	let tY = window.innerHeight * 1.2 - 450;
 	if (window.innerHeight < 700) {
 		tY = window.innerHeight * 1.2 - 150;
+	}
+	if (window.innerHeight > 900 && window.innerWidth > 576) {
+		tY = window.innerHeight / 2 - 150;
 	}
 	slide1Tl
 		.to(".home-slider__slide-1 .section__content", {
@@ -402,7 +380,7 @@ let s1Duraction =
 	400;
 
 let s1Offset = 300;
-if (window.innerWidth < ANIMATION_BREAKPOINT + 1) {
+if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 	s1Offset = 0;
 }
 let s1Hook = "onLeave";
@@ -422,12 +400,12 @@ const slide1S = new ScrollMagic.Scene({
 
 // #region s2
 let ht2 = slidesHeights[1];
-if (window.innerWidth > ANIMATION_BREAKPOINT) {
+if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 	ht1 = window.innerHeight + 100;
 }
 
 const slide2Tl = gsap.timeline();
-if (window.innerWidth > ANIMATION_BREAKPOINT) {
+if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
 		.from(
@@ -471,6 +449,9 @@ if (window.innerWidth > ANIMATION_BREAKPOINT) {
 	if (window.innerHeight < 700) {
 		tY = window.innerHeight * 1.2 - 400;
 	}
+	if (window.innerHeight > 900 && window.innerWidth > 576) {
+		tY = window.innerHeight / 2 - 150;
+	}
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
 		.from(
@@ -480,6 +461,11 @@ if (window.innerWidth > ANIMATION_BREAKPOINT) {
 		)
 		.from(
 			".home-slider__slide-2 .section__videos",
+			{ y: 300, autoAlpha: 0 },
+			"<"
+		)
+		.from(
+			".home-slider__slide-2 .section__footer",
 			{ y: 300, autoAlpha: 0 },
 			"<"
 		)
@@ -503,7 +489,7 @@ if (window.innerWidth > ANIMATION_BREAKPOINT) {
 
 let slide2Duration = slidesHeights[1] * 2.2 - 200;
 let s2Offset = 2 * slidesHeights[0] - 500;
-if (window.innerWidth < ANIMATION_BREAKPOINT + 1) {
+if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 	s2Offset = 1.5 * slidesHeights[0] - 100;
 }
 const slide2S = new ScrollMagic.Scene({
@@ -550,7 +536,7 @@ let s3Duration =
 		.getBoundingClientRect().height *
 		2 -
 	400;
-if (window.innerWidth < ANIMATION_BREAKPOINT) {
+if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 	s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 1250;
 	slide3Tl.to(".home-slider__slide-3 .section__inner", { y: -100 });
 	s3Duration =
