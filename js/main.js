@@ -172,49 +172,96 @@ function toggleMouseWheel(swiper) {
 	}
 }
 
+// #region videoSwap
+const ANIMATION_BREAKPOINT = 1179;
 const s1Videos = document.querySelectorAll(
 	".home-slider__slide-1 .section__videos-item"
 );
-s1Videos.forEach((video) => {
-	video.parentElement.addEventListener("mouseleave", (e) => {
-		if (window.innerWidth < 576) return;
-		s1Videos.forEach((video) => {
-			video.classList.remove("section__videos-item--forbid-change");
+const FORBID_CHANGE_CLASS = "section__videos-item--forbid-change";
+const VIDEO_TOP_CLASS = "section__videos-item--top";
+
+function onVideoChangeStart() {
+	forbidVideoChanging();
+}
+function onVideoChangeEnd() {
+	setTimeout(() => {
+		allowVideoChanging();
+	}, 200);
+}
+function forbidVideoChanging() {
+	s1Videos.forEach((video) => video.classList.add(FORBID_CHANGE_CLASS));
+}
+function allowVideoChanging() {
+	s1Videos.forEach((video) => video.classList.remove(FORBID_CHANGE_CLASS));
+}
+function isVideoChangeAllowed(video) {
+	return !video.classList.contains(FORBID_CHANGE_CLASS);
+}
+
+function setVideoTop(video) {
+	video.classList.add(VIDEO_TOP_CLASS);
+
+	// Специфические стили для карточек
+	if (video.classList.contains("section__videos-item_back")) {
+		gsap.to(video, {
+			y: -90,
+			width: "100%",
+			zIndex: 2,
+			onStart: onVideoChangeStart,
+			onComplete: onVideoChangeEnd,
 		});
-	});
+	} else {
+		gsap.to(video, {
+			y: 0,
+			width: "100%",
+			zIndex: 2,
+			onStart: onVideoChangeStart,
+			onComplete: onVideoChangeEnd,
+		});
+	}
+}
+function setVideoBack(video) {
+	video.classList.remove(VIDEO_TOP_CLASS);
+
+	// Специфические стили для карточек
+	if (video.classList.contains("section__videos-item_back")) {
+		gsap.to(video, { y: 0, width: "88%", zIndex: 1 });
+	} else {
+		gsap.to(video, { y: 90, width: "88%", zIndex: 1 }, "<");
+	}
+}
+function isVideoBottom(video) {
+	return !video.classList.contains(VIDEO_TOP_CLASS);
+}
+function getOppositeVideoOf(video) {
+	return [...s1Videos].filter((vid) => {
+		return vid != video;
+	})[0];
+}
+
+s1Videos.forEach((video, index) => {
+	if (index === 0) {
+		video.classList.add(VIDEO_TOP_CLASS);
+	}
 	video.addEventListener("mouseenter", (e) => {
-		if (window.innerWidth < 576) return;
+		if (window.innerWidth < ANIMATION_BREAKPOINT) return;
 
-		const oppositeVideo = [...s1Videos].filter((vid) => {
-			return vid != video;
-		})[0];
+		const oppositeVideo = getOppositeVideoOf(video);
 
-		if (video.classList.contains("section__videos-item--forbid-change"))
-			return;
-		video.classList.add("section__videos-item--forbid-change");
-
-		oppositeVideo.classList.add("section__videos-item--forbid-change");
-
-		if (video.classList.contains("section__videos-item_back")) {
-			// gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
-			gsap.to(video, { y: -90, width: "100%", zIndex: 2 });
-			// gsap.fromTo(oppositeVideo, { autoAlpha: 0 }, { autoAlpha: 1 });
-			gsap.to(oppositeVideo, { y: 90, width: "88%", zIndex: 1 }, "<");
-		} else if (e.target != oppositeVideo) {
-			// gsap.fromTo(video, { autoAlpha: 0 }, { autoAlpha: 1 });
-			gsap.to(video, { y: 0, width: "100%", zIndex: 2 });
-			// gsap.fromTo(oppositeVideo, { autoAlpha: 0 }, { autoAlpha: 1 });
-			gsap.to(oppositeVideo, { y: 0, width: "88%", zIndex: 1 });
+		if (isVideoBottom(video) && isVideoChangeAllowed(video)) {
+			// Меняет местами карточки
+			setVideoTop(video);
+			setVideoBack(oppositeVideo);
 		}
-		// oppositeVideo.classList.add("section__videos-item_back");
-		// video.classList.remove("section__videos-item_back");
 	});
 });
+// #endregion videoSwap
 
 // #region gsap
 
 const homeSlider = document.querySelector(".home-slider");
 const homeSlides = homeSlider.querySelectorAll(".home-slider__slide");
+const ANIMATIONS_WIDTH_BREAKPOINT = 1200;
 
 let sliderHeight = 0;
 let slidesHeights = [];
@@ -229,7 +276,7 @@ homeSlides.forEach((slide, index, array) => {
 
 const scrollController = new ScrollMagic.Controller();
 let pinHeight = sliderHeight * 2 - 800;
-if (window.innerWidth < 576) {
+if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 	pinHeight = sliderHeight * 2 - 1350;
 }
 
@@ -249,7 +296,7 @@ const sectionPin = new ScrollMagic.Scene({
 	.addTo(scrollController);
 
 let ht1 = slidesHeights[0];
-if (window.innerWidth > 576) {
+if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 	ht1 = window.innerHeight + 100;
 }
 
@@ -275,7 +322,7 @@ function setLogo3(e) {
 
 // #region s1
 const slide1Tl = gsap.timeline();
-if (window.innerWidth > 576) {
+if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 	slide1Tl
 		.to(".home-slider__slide-1 .section__content", {
 			y: -400,
@@ -302,6 +349,9 @@ if (window.innerWidth > 576) {
 	let tY = window.innerHeight * 1.2 - 450;
 	if (window.innerHeight < 700) {
 		tY = window.innerHeight * 1.2 - 150;
+	}
+	if (window.innerHeight > 900 && window.innerWidth > 576) {
+		tY = window.innerHeight / 2 - 150;
 	}
 	slide1Tl
 		.to(".home-slider__slide-1 .section__content", {
@@ -330,7 +380,7 @@ let s1Duraction =
 	400;
 
 let s1Offset = 300;
-if (window.innerWidth < 576) {
+if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 	s1Offset = 0;
 }
 let s1Hook = "onLeave";
@@ -350,12 +400,12 @@ const slide1S = new ScrollMagic.Scene({
 
 // #region s2
 let ht2 = slidesHeights[1];
-if (window.innerWidth > 576) {
+if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 	ht1 = window.innerHeight + 100;
 }
 
 const slide2Tl = gsap.timeline();
-if (window.innerWidth > 576) {
+if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
 		.from(
@@ -399,6 +449,9 @@ if (window.innerWidth > 576) {
 	if (window.innerHeight < 700) {
 		tY = window.innerHeight * 1.2 - 400;
 	}
+	if (window.innerHeight > 900 && window.innerWidth > 576) {
+		tY = window.innerHeight / 2 - 150;
+	}
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
 		.from(
@@ -408,6 +461,11 @@ if (window.innerWidth > 576) {
 		)
 		.from(
 			".home-slider__slide-2 .section__videos",
+			{ y: 300, autoAlpha: 0 },
+			"<"
+		)
+		.from(
+			".home-slider__slide-2 .section__footer",
 			{ y: 300, autoAlpha: 0 },
 			"<"
 		)
@@ -431,7 +489,7 @@ if (window.innerWidth > 576) {
 
 let slide2Duration = slidesHeights[1] * 2.2 - 200;
 let s2Offset = 2 * slidesHeights[0] - 500;
-if (window.innerWidth < 576) {
+if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 	s2Offset = 1.5 * slidesHeights[0] - 100;
 }
 const slide2S = new ScrollMagic.Scene({
@@ -478,7 +536,7 @@ let s3Duration =
 		.getBoundingClientRect().height *
 		2 -
 	400;
-if (window.innerWidth < 576) {
+if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 	s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 1250;
 	slide3Tl.to(".home-slider__slide-3 .section__inner", { y: -100 });
 	s3Duration =
