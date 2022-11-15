@@ -950,6 +950,11 @@ html {
   }
 }
 
+.os-macos .section__content {
+  will-change: initial;
+  transition: initial;
+}
+
 .section__title {
   margin-bottom: 40px;
   color: var(--main);
@@ -1032,6 +1037,11 @@ html {
     margin: 0 auto;
     max-width: 800px;
   }
+}
+
+.os-macos .section__videos {
+  will-change: initial;
+  transition: initial;
 }
 
 .section__videos_bottom {
@@ -1166,6 +1176,11 @@ html {
   min-height: 100%;
 }
 
+.os-macos .section__body-img {
+  will-change: initial;
+  transition: initial;
+}
+
 .section__body-img-img {
   position: absolute;
   width: unset;
@@ -1210,6 +1225,11 @@ html {
     display: grid;
     justify-content: unset;
   }
+}
+
+.os-macos .section__footer {
+  will-change: initial;
+  transition: initial;
 }
 
 .section__footer-site {
