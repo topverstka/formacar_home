@@ -118,6 +118,10 @@
 		line-height: 17px;
 	}
 }
+.os-macos .section__content {
+	will-change: initial;
+	transition: initial;
+}
 
 .section__title {
 	margin-bottom: 40px;
@@ -194,6 +198,10 @@
 		margin: 0 auto;
 		max-width: 800px;
 	}
+}
+.os-macos .section__videos {
+	will-change: initial;
+	transition: initial;
 }
 
 .section__videos_bottom {
@@ -325,7 +333,10 @@
 	transition: all 0.3s;
 	min-height: 100%;
 }
-
+.os-macos .section__body-img {
+	will-change: initial;
+	transition: initial;
+}
 .section__body-img-img {
 	position: absolute;
 	width: unset;
@@ -366,6 +377,10 @@
 		display: grid;
 		justify-content: unset;
 	}
+}
+.os-macos .section__footer {
+	will-change: initial;
+	transition: initial;
 }
 
 .section__footer-site {

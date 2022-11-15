@@ -1,3 +1,11 @@
+let os = "Unknown";
+if (navigator.appVersion.indexOf("Win") != -1) os = "windows";
+if (navigator.appVersion.indexOf("Mac") != -1) os = "macos";
+if (navigator.appVersion.indexOf("X11") != -1) os = "unix";
+if (navigator.appVersion.indexOf("Linux") != -1) os = "linux";
+document.body.classList.add("os-" + os);
+return "os-" + os;
+
 // Служебные переменные
 const d = document;
 const body = document.querySelector("body");
