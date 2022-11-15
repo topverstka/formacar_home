@@ -489,14 +489,12 @@ html {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
-  will-change: transform;
   transition: all 0.3s;
   min-height: 100%;
 }
 
 .os-macos .home-slider {
   will-change: initial;
-  transition: initial;
 }
 
 .home-slider__slide {
@@ -509,12 +507,10 @@ html {
           backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
   will-change: transform;
-  transition: all 0.3s;
 }
 
 .os-macos .home-slider__slide {
   will-change: initial;
-  transition: initial;
 }
 
 @media (max-height: 900px) and (min-width: 1200px) {
@@ -928,7 +924,6 @@ html {
   font-size: 18px;
   line-height: 24px;
   will-change: transform;
-  transition: all 0.3s;
   min-height: 100%;
 }
 .section__content > :last-child {
@@ -952,7 +947,6 @@ html {
 
 .os-macos .section__content {
   will-change: initial;
-  transition: initial;
 }
 
 .section__title {
@@ -1027,7 +1021,6 @@ html {
 .section__videos {
   position: relative;
   will-change: transform;
-  transition: all 0.3s;
   min-height: 100%;
 }
 @media (max-width: 1179px) {
@@ -1041,7 +1034,6 @@ html {
 
 .os-macos .section__videos {
   will-change: initial;
-  transition: initial;
 }
 
 .section__videos_bottom {
@@ -1172,13 +1164,11 @@ html {
   display: flex;
   height: 100%;
   will-change: transform;
-  transition: all 0.3s;
   min-height: 100%;
 }
 
 .os-macos .section__body-img {
   will-change: initial;
-  transition: initial;
 }
 
 .section__body-img-img {
@@ -1217,7 +1207,6 @@ html {
   align-items: center;
   gap: 30px 60px;
   will-change: transform;
-  transition: all 0.3s;
   min-height: 100%;
 }
 @media (max-width: 1179px) {
@@ -1229,7 +1218,6 @@ html {
 
 .os-macos .section__footer {
   will-change: initial;
-  transition: initial;
 }
 
 .section__footer-site {

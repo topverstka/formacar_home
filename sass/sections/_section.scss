@@ -100,7 +100,7 @@
 	font-size: 18px;
 	line-height: 24px;
 	will-change: transform;
-	transition: all 0.3s;
+	// transition: all 0.3s;
 	min-height: 100%;
 
 	& > :last-child {
@@ -120,7 +120,7 @@
 }
 .os-macos .section__content {
 	will-change: initial;
-	transition: initial;
+	// transition: initial;
 }
 
 .section__title {
@@ -189,7 +189,7 @@
 .section__videos {
 	position: relative;
 	will-change: transform;
-	transition: all 0.3s;
+	// transition: all 0.3s;
 	min-height: 100%;
 
 	@media (max-width: 1179px) {
@@ -201,7 +201,7 @@
 }
 .os-macos .section__videos {
 	will-change: initial;
-	transition: initial;
+	// 	transition: initial;
 }
 
 .section__videos_bottom {
@@ -330,12 +330,12 @@
 	display: flex;
 	height: 100%;
 	will-change: transform;
-	transition: all 0.3s;
+	// transition: all 0.3s;
 	min-height: 100%;
 }
 .os-macos .section__body-img {
 	will-change: initial;
-	transition: initial;
+	// 	transition: initial;
 }
 .section__body-img-img {
 	position: absolute;
@@ -370,7 +370,7 @@
 	align-items: center;
 	gap: 30px 60px;
 	will-change: transform;
-	transition: all 0.3s;
+	// transition: all 0.3s;
 	min-height: 100%;
 
 	@media (max-width: 1179px) {
@@ -380,7 +380,7 @@
 }
 .os-macos .section__footer {
 	will-change: initial;
-	transition: initial;
+	// 	transition: initial;
 }
 
 .section__footer-site {

@@ -3,7 +3,7 @@ if (navigator.appVersion.indexOf("Win") != -1) os = "windows";
 if (navigator.appVersion.indexOf("Mac") != -1) os = "macos";
 if (navigator.appVersion.indexOf("X11") != -1) os = "unix";
 if (navigator.appVersion.indexOf("Linux") != -1) os = "linux";
-document.body.classList.add("os-" + os);
+// document.body.classList.add("os-" + os);
 
 // Служебные переменные
 const d = document;
@@ -407,7 +407,7 @@ const slide2Tl = gsap.timeline();
 if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
-		.to(".home-slider__slide-1", { pointerEvents: "none" }, "<")
+		// .to(".home-slider__slide-1", { pointerEvents: "none" }, "<")
 		.from(
 			".home-slider__slide-2 .section__content",
 			{ y: 300, autoAlpha: 0 },
@@ -495,8 +495,8 @@ const slide2S = new ScrollMagic.Scene({
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo2(e);
-	});
-// .addIndicators({ name: "s2" });
+	})
+	.addIndicators({ name: "s2" });
 // #endregion s2
 
 // #region s3
@@ -504,7 +504,7 @@ const slide3Tl = gsap.timeline();
 if (window.innerWidth) {
 	slide3Tl
 		.to(".home-slider__slide-3 .section__fader", { autoAlpha: 0 })
-		.to(".home-slider__slide-2", { pointerEvents: "none" }, "<")
+		// .to(".home-slider__slide-2", { pointerEvents: "none" }, "<")
 		.from(
 			".home-slider__slide-3 .section__content",
 			{ y: 280, autoAlpha: 0 },
@@ -531,7 +531,7 @@ let s3Duration =
 		2 -
 	400;
 if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
-	s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 1250;
+	s3Offset = 2 * (slidesHeights[0] + slidesHeights[1]) - 950;
 	slide3Tl.to(".home-slider__slide-3 .section__inner", { y: -100 });
 	s3Duration =
 		2 *
@@ -550,8 +550,8 @@ const slide3S = new ScrollMagic.Scene({
 	.addTo(scrollController)
 	.on("enter leave", function (e) {
 		setLogo3(e);
-	});
-// .addIndicators({ name: "s3" });
+	})
+	.addIndicators({ name: "s3" });
 // #endregion s3
 
 function handleSlidePrev() {
