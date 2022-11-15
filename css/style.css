@@ -1462,11 +1462,6 @@ html {
   transform: translate3d(0, 0, 0);
   will-change: transform;
 }
-@media (max-width: 1200px) {
-  .home-slider__slide {
-    position: static;
-  }
-}
 
 .os-macos .home-slider__slide {
   will-change: initial;
@@ -1785,11 +1780,6 @@ html {
   z-index: 3;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-}
-@media (max-width: 1200px) {
-  .section__fader {
-    display: none;
-  }
 }
 
 .section__bg {
