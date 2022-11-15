@@ -20,6 +20,9 @@
 	pointer-events: none;
 	z-index: 3;
 	backface-visibility: hidden;
+	@media (max-width: 1200px) {
+		display: none;
+	}
 }
 .section__bg {
 	position: absolute;

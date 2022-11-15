@@ -22,6 +22,9 @@
 	transform: translate3d(0, 0, 0);
 	will-change: transform;
 	// transition: all 0.3s;
+	@media (max-width: 1200px) {
+		position: static;
+	}
 }
 .os-macos .home-slider__slide {
 	will-change: initial;
