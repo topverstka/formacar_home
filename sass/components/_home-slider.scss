@@ -1,14 +1,14 @@
 .home-slider {
-	// height: 300vh;
 	margin: 0;
 	backface-visibility: hidden;
-	// height: 100vh;
-	// overflow: hidden;
-	// overflow: auto;
-
-	// .swiper-slide {
-	// 	overflow: auto;
-	// }
+	transform: translate3d(0, 0, 0);
+	will-change: transform;
+	transition: all 0.3s;
+	min-height: 100%;
+}
+.os-macos .home-slider {
+	will-change: initial;
+	transition: initial;
 }
 
 .home-slider__slide {
@@ -19,6 +19,13 @@
 	height: 100%;
 	// position: relative;
 	backface-visibility: hidden;
+	transform: translate3d(0, 0, 0);
+	will-change: transform;
+	transition: all 0.3s;
+}
+.os-macos .home-slider__slide {
+	will-change: initial;
+	transition: initial;
 }
 .home-slider__slide-1 {
 	@media (max-height: 900px) and (min-width: 1200px) {

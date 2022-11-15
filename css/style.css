@@ -488,6 +488,15 @@ html {
   margin: 0;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  transition: all 0.3s;
+  min-height: 100%;
+}
+
+.os-macos .home-slider {
+  will-change: initial;
+  transition: initial;
 }
 
 .home-slider__slide {
@@ -498,6 +507,14 @@ html {
   height: 100%;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  transition: all 0.3s;
+}
+
+.os-macos .home-slider__slide {
+  will-change: initial;
+  transition: initial;
 }
 
 @media (max-height: 900px) and (min-width: 1200px) {
@@ -910,6 +927,9 @@ html {
   padding-left: 100px;
   font-size: 18px;
   line-height: 24px;
+  will-change: transform;
+  transition: all 0.3s;
+  min-height: 100%;
 }
 .section__content > :last-child {
   margin-bottom: 0;
@@ -1001,6 +1021,9 @@ html {
 
 .section__videos {
   position: relative;
+  will-change: transform;
+  transition: all 0.3s;
+  min-height: 100%;
 }
 @media (max-width: 1179px) {
   .section__videos {
@@ -1138,6 +1161,9 @@ html {
   z-index: -1;
   display: flex;
   height: 100%;
+  will-change: transform;
+  transition: all 0.3s;
+  min-height: 100%;
 }
 
 .section__body-img-img {
@@ -1175,6 +1201,9 @@ html {
   justify-content: space-between;
   align-items: center;
   gap: 30px 60px;
+  will-change: transform;
+  transition: all 0.3s;
+  min-height: 100%;
 }
 @media (max-width: 1179px) {
   .section__footer {
