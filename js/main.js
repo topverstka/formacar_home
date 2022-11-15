@@ -340,11 +340,7 @@ if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 			">-0.22"
 		)
 		.to(".home-slider__slide-1 .section__footer", { opacity: 0 }, "<")
-		.to(
-			".home-slider__slide-1",
-			{ autoAlpha: 0, pointerEvents: "none" },
-			">-0.1"
-		);
+		.to(".home-slider__slide-1", { autoAlpha: 0 }, ">-0.1");
 } else {
 	let tY = window.innerHeight * 1.2 - 450;
 	if (window.innerHeight < 700) {
@@ -365,11 +361,7 @@ if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 			{ autoAlpha: 0 },
 			"<+0.42"
 		)
-		.to(
-			".home-slider__slide-1",
-			{ autoAlpha: 0, pointerEvents: "none" },
-			"<-0.1"
-		);
+		.to(".home-slider__slide-1", { autoAlpha: 0 }, "<-0.1");
 }
 let s1Duraction =
 	1.5 *
@@ -408,6 +400,7 @@ const slide2Tl = gsap.timeline();
 if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
+		.to(".home-slider__slide-1", { pointerEvents: "none" }, "<")
 		.from(
 			".home-slider__slide-2 .section__content",
 			{ y: 300, autoAlpha: 0 },
@@ -439,11 +432,7 @@ if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 			"<"
 		)
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, "<+0.02")
-		.to(
-			".home-slider__slide-2",
-			{ autoAlpha: 0, pointerEvents: "none" },
-			"<"
-		);
+		.to(".home-slider__slide-2", { autoAlpha: 0 }, "<");
 } else {
 	let tY = window.innerHeight - 700;
 	if (window.innerHeight < 700) {
@@ -454,6 +443,7 @@ if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 	}
 	slide2Tl
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
+		.to(".home-slider__slide-1", { pointerEvents: "none" }, "<")
 		.from(
 			".home-slider__slide-2 .section__content",
 			{ y: 300, autoAlpha: 0 },
@@ -480,11 +470,7 @@ if (window.innerWidth > ANIMATIONS_WIDTH_BREAKPOINT) {
 		.to(".home-slider__slide-2 .section__videos", { y: -tY }, "<")
 		.to(".home-slider__slide-2 .section__footer", { y: -tY }, "<")
 		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, "<+0.3")
-		.to(
-			".home-slider__slide-2",
-			{ autoAlpha: 0, pointerEvents: "none" },
-			"<"
-		);
+		.to(".home-slider__slide-2", { autoAlpha: 0 }, "<");
 }
 
 let slide2Duration = slidesHeights[1] * 2.2 - 200;
@@ -511,6 +497,7 @@ const slide3Tl = gsap.timeline();
 if (window.innerWidth) {
 	slide3Tl
 		.to(".home-slider__slide-3 .section__fader", { autoAlpha: 0 })
+		.to(".home-slider__slide-2", { pointerEvents: "none" }, "<")
 		.from(
 			".home-slider__slide-3 .section__content",
 			{ y: 280, autoAlpha: 0 },
