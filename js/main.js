@@ -761,6 +761,7 @@ if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 		document.querySelectorAll(".home-slider__desc"),
 		document.querySelectorAll(".section__body-img"),
 		document.querySelectorAll(".section__videos-poster"),
+		document.querySelectorAll(".section__videos-item"),
 		document.querySelectorAll(".section__footer-site"),
 		document.querySelectorAll(".download-app__link"),
 		document.querySelectorAll(".download-app__title"),
