@@ -1879,6 +1879,8 @@ html {
   line-height: 24px;
   will-change: transform;
   min-height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 .section__content > :last-child {
   margin-bottom: 0;
@@ -1911,6 +1913,8 @@ html {
   font-size: 96px;
   line-height: 90px;
   text-transform: uppercase;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 @media (min-width: 1200px) {
   .section__title {

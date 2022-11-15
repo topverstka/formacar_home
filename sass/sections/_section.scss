@@ -105,6 +105,7 @@
 	will-change: transform;
 	// transition: all 0.3s;
 	min-height: 100%;
+	backface-visibility: hidden;
 
 	& > :last-child {
 		margin-bottom: 0;
@@ -134,6 +135,7 @@
 	font-size: 96px;
 	line-height: 90px;
 	text-transform: uppercase;
+	backface-visibility: hidden;
 
 	@media (min-width: 1200px) {
 		margin-left: -3px;

@@ -754,6 +754,7 @@ function modal() {
 	}
 }
 
+/*
 if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 	// document.querySelector(".section__body-img").dataset.aos = "fade-left";
 	[
@@ -766,7 +767,12 @@ if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 		document.querySelectorAll(".download-app__link"),
 		document.querySelectorAll(".download-app__title"),
 	].forEach((nodeList) => {
-		nodeList.forEach((item) => (item.dataset.aos = "fade-up"));
+		nodeList.forEach((item, index, arr) => {
+			item.dataset.aos = "fade-up";
+			if (index > 0) {
+				item.dataset.aosOffset = 1000;
+			}
+		});
 	});
 
 	document
@@ -783,3 +789,4 @@ if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
 		});
 }
 AOS.init();
+*/
