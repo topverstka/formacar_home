@@ -340,20 +340,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.to(".home-slider__slide-3", { pointerEvents: "auto" }, "<");
 
 	if (window.innerWidth > ANIMATION_BREAKPOINT) {
-		s1.from(
-			".home-slider__slide-3 .section__inner",
-			{ yPercent: 30 },
-			">-0.4"
-		);
+		// desktop
+		s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, "<");
 	} else {
 		s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, "<");
 	}
 
 	s1.from(".home-slider__slide-3 .section__body-img", { xPercent: 120 }, "<");
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
-		s1.to(".home-slider__slide-3 .section__inner", { yPercent: -15 }, ">");
-	} else {
 		s1.to(".home-slider__slide-3 .section__inner", { yPercent: -15 }, "<");
+	} else {
+		// s1.to(".home-slider__slide-3 .section__inner", { yPercent: -15 }, "<");
 	}
 
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
