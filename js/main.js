@@ -311,7 +311,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			trigger: ".home-slider",
 			start: "top top",
 			end: `+=${pinHeight + 200}`,
-			// markers: true,
+			markers: true,
 			pin: true,
 			scrub: true,
 		},
@@ -327,7 +327,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			trigger: ".home-slider__slide-1",
 			start: "top top",
 			end: `+=${slides[0].h}`,
-			// markers: true,
+			markers: true,
 			scrub: true,
 		},
 	});
@@ -380,7 +380,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			trigger: ".home-slider__slide-2",
 			start: `${s2Start}`,
 			end: `+=${s2End}`,
-			// markers: true,
+			markers: true,
 			scrub: true,
 		},
 	});
@@ -426,7 +426,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			trigger: ".home-slider__slide-3",
 			start: `${s3Start}`,
 			end: `+=${slides[2].h}`,
-			// markers: true,
+			markers: true,
 		},
 	});
 	s3.to(".home-slider__slide-2", { pointerEvents: "none" }).to(

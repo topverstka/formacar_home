@@ -59,3 +59,10 @@ html {
 @import "./sections/section";
 
 // Страницы
+
+.gsap-marker-scroller-start,
+.gsap-marker-scroller-end,
+.gsap-marker-start,
+.gsap-marker-end {
+	opacity: 0 !important;
+}
