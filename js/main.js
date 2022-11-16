@@ -283,21 +283,28 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		return height + h;
 	}, pinHeight);
 
-	document.querySelector(".home-slider").style.height = `${
-		pinHeight - 200
-	}px`;
+	let pinHeightModifier = 200;
+	if (window.innerWidth < ANIMATION_BREAKPOINT && window.innerHeight > 850) {
+		pinHeightModifier = -400;
+	}
+	// document.querySelector(".home-slider").style.height = `${
+	// 	pinHeight - pinHeightModifier
+	// }px`;
 	gsap.registerPlugin(ScrollTrigger);
 	// gsap.defaults({ ease: "none", duration: 2 });
 
 	let slideOffsetModifier = 500;
 	pinHeight = pinHeight - slideOffsetModifier * 2;
+	document.querySelector(".home-slider").style.height = `${
+		pinHeight - pinHeightModifier
+	}px`;
 
 	gsap.timeline({
 		scrollTrigger: {
 			trigger: ".home-slider",
 			start: "top top",
-			end: `+=${pinHeight}`,
-			// markers: true,
+			end: `+=${pinHeight + 200}`,
+			markers: true,
 			pin: true,
 		},
 	});
@@ -312,10 +319,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		},
 	});
 	let s1Y = slides[0].h / 2;
+	if (window.innerHeight < 850) {
+		s1Y = s1Y + 100;
+	}
 
 	gsap.to(".home-slider__slide-1 .section__fader", {
 		autoAlpha: 0,
 	});
+	s1.to(".home-slider__slide-1 .section__fader", { autoAlpha: 0 });
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
 		s1.to(".home-slider__slide-1 .section__content", { y: -s1Y }, "<")
 			.to(
@@ -325,36 +336,78 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			)
 			.to(".home-slider__slide-1 .section__footer", { y: -s1Y }, "<");
 	}
-	s1.to(".home-slider__slide-1 .section__fader", { autoAlpha: 0 }, "<")
-		.to(".home-slider__slide-1 .section__fader", { autoAlpha: 1 }, ">")
-		.to(".home-slider__slide-1", { autoAlpha: 0 }, ">");
+	s1.to(".home-slider__slide-1 .section__fader", { autoAlpha: 1 }, ">").to(
+		".home-slider__slide-1",
+		{ autoAlpha: 0 },
+		">-0.2"
+	);
 
 	let s2Start = slides[0].h - slideOffsetModifier;
 	let s2End = slides[1].h + slideOffsetModifier;
+	if (window.innerWidth < ANIMATION_BREAKPOINT) {
+		s2End = s2End - slideOffsetModifier / 2;
+	}
 	let s2 = gsap.timeline({
 		scrollTrigger: {
 			trigger: ".home-slider__slide-2",
 			start: `${s2Start}`,
 			end: `+=${s2End}`,
-			// markers: true,
+			markers: true,
 			scrub: true,
 		},
 	});
-	s2.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
-		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, ">")
-		.to(".home-slider__slide-2", { autoAlpha: 0 }, ">");
+	s2.to(".home-slider__slide-1", { pointerEvents: "none" }).to(
+		".home-slider__slide-2 .section__fader",
+		{ autoAlpha: 0 },
+		"<+0.5"
+	);
 
-	let s3Start = slides[0].h + slides[1].h - slideOffsetModifier * 2;
+	let s2Y = slides[1].h / 4;
+	if (window.innerHeight < 850) {
+		s2Y = s2Y + 100;
+	}
+	if (window.innerWidth < ANIMATION_BREAKPOINT) {
+		s2.from(
+			".home-slider__slide-2 .section__content",
+			{ y: s2Y / 2 },
+			">-0.5"
+		);
+		s2.from(".home-slider__slide-2 .section__videos", { y: s2Y / 2 }, "<");
+		s2.from(".home-slider__slide-2 .section__footer", { y: s2Y / 2 }, "<");
+		s2.to(".home-slider__slide-2 .section__content", { y: -s2Y }, ">");
+		s2.to(".home-slider__slide-2 .section__videos", { y: -s2Y }, "<");
+		s2.to(".home-slider__slide-2 .section__footer", { y: -s2Y }, "<");
+	}
+
+	s2.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, ">").to(
+		".home-slider__slide-2",
+		{ autoAlpha: 0 },
+		">"
+	);
+
+	let s3Start = slides[0].h + slides[1].h - slideOffsetModifier / 2;
 	let s3 = gsap.timeline({
 		scrollTrigger: {
 			trigger: ".home-slider__slide-3",
 			start: `${s3Start}`,
 			end: `+=${slides[2].h}`,
-			// markers: true,
+			markers: true,
 		},
 	});
-	s3.to(".home-slider__slide-3 .section__fader", { autoAlpha: 0 });
+	s3.to(".home-slider__slide-2", { pointerEvents: "none" }).to(
+		".home-slider__slide-3 .section__fader",
+		{ autoAlpha: 0 },
+		"<"
+	);
+	if (window.innerWidth < ANIMATION_BREAKPOINT) {
+		// s3.from(
+		// 	".home-slider__slide-3 .section__content",
+		// 	{ y: 300 },
+		// 	">+5"
+		// ).from(".home-slider__slide-3 .section__footer", { y: 300 }, "<");
+	}
 });
+
 // let sliderPin = gsap.timeline({
 // 	scrollTrigger: {
 // 		trigger: ".home-slider",
