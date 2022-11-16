@@ -55,14 +55,9 @@
 .section__inner {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
 	padding-top: 118px;
 	padding-bottom: 50px;
 	min-height: 100vh;
-
-	@media (max-width: 1179px) {
-		gap: 43px;
-	}
 
 	@media (max-width: 767px) {
 		padding-top: 90px;
@@ -73,6 +68,10 @@
 	flex-grow: 1;
 	display: flex;
 	align-items: center;
+	margin-bottom: 20px;
+	@media (max-width: 1179px) {
+		margin-bottom: 43px;
+	}
 }
 
 .section__body-inner {
@@ -206,7 +205,6 @@
 }
 .os-macos .section__videos {
 	will-change: initial;
-	// 	transition: initial;
 }
 
 .section__videos_bottom {
@@ -373,9 +371,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 30px 60px;
 	will-change: transform;
-	// transition: all 0.3s;
 	min-height: 100%;
 
 	@media (max-width: 1179px) {
@@ -396,4 +392,7 @@
 	line-height: 27px;
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
+	@media (max-width: 1179px) {
+		margin-bottom: 20px;
+	}
 }
