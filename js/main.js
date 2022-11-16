@@ -211,7 +211,7 @@ function setVideoTop(video) {
 	// Специфические стили для карточек
 	if (video.classList.contains("section__videos-item_back")) {
 		gsap.to(video, {
-			y: -90,
+			y: -135,
 			width: "100%",
 			zIndex: 2,
 			onStart: onVideoChangeStart,
@@ -234,7 +234,7 @@ function setVideoBack(video) {
 	if (video.classList.contains("section__videos-item_back")) {
 		gsap.to(video, { y: 0, width: "88%", zIndex: 1 });
 	} else {
-		gsap.to(video, { y: 90, width: "88%", zIndex: 1 }, "<");
+		gsap.to(video, { y: 180, width: "88%", zIndex: 1 }, "<");
 	}
 }
 function isVideoBottom(video) {
@@ -341,7 +341,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, ">-0.4");
 
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
-		s1.to(".home-slider__slide-3 .section__inner", { yPercent: -15 }, ">");
+		s1.to(".home-slider__slide-3 .section__inner", { yPercent: -15 }, "<");
 	}
 	s1.from(".home-slider__slide-3 .section__body-img", { xPercent: 120 }, "<");
 	s1.to(".home-slider__slide-3 .section__body-img", { xPercent: 0 }, ">");
