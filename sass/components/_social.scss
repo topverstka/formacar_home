@@ -19,6 +19,9 @@
 	display: flex;
 	align-items: center;
 	color: $main;
+	@media (min-width: 1178px) {
+		margin-right: 30px;
+	}
 }
 
 .social__icon {

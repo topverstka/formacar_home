@@ -315,27 +315,37 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	if (window.innerHeight > 850) {
 		// Tall iphones
 		s1.to(".home-slider__slide-1", { yPercent: -40 });
+		s1.to(".home-slider__slide-1 .section__bg", { yPercent: 40 }, "<");
 	} else {
 		s1.to(".home-slider__slide-1", { yPercent: -55 });
+		s1.to(".home-slider__slide-1 .section__bg", { yPercent: 55 }, "<");
+	}
+	if (window.innerWidth < ANIMATION_BREAKPOINT) {
+		s1.to(".home-slider__slide-1", { autoAlpha: 0 }, ">");
+	} else {
+		s1.to(".home-slider__slide-1", { autoAlpha: 0 }, "<");
 	}
 
-	s1.to(".home-slider__slide-1", { opacity: 0 }, ">");
-
-	s1.from(".home-slider__slide-2", { opacity: 0 }, "<");
-	s1.to(".home-slider__slide-2 .section__fader", { opacity: 0 }, "<+0.5");
+	s1.from(".home-slider__slide-2", { autoAlpha: 0 }, "<");
+	s1.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 }, "<+0.3");
 	s1.to(".home-slider__slide-1", { pointerEvents: "none" }, "<");
 	s1.to(".home-slider__slide-2", { pointerEvents: "auto" }, "<");
 	s1.from(".home-slider__slide-2 .section__inner", { yPercent: 10 }, "<");
 	s1.to(".home-slider__slide-2 .section__inner", { yPercent: -20 }, ">");
-	s1.to(".home-slider__slide-2", { opacity: 0 }, ">");
+	s1.to(".home-slider__slide-2", { autoAlpha: 0 }, ">");
 
-	s1.from(".home-slider__slide-3", { opacity: 0 }, "<");
-	s1.to(".home-slider__slide-3 .section__fader", { opacity: 0 }, "<+0.4");
+	s1.from(".home-slider__slide-3", { autoAlpha: 0 }, "<");
+	s1.to(".home-slider__slide-3 .section__fader", { autoAlpha: 0 }, "<+0.4");
 	s1.to(".home-slider__slide-2", { pointerEvents: "none" }, "<");
 	s1.to(".home-slider__slide-3", { pointerEvents: "auto" }, "<");
-	s1.from(".home-slider__slide-3 .section__inner", { yPercent: 10 }, ">-0.4");
-	s1.to(".home-slider__slide-3 .section__inner", { yPercent: -15 }, ">-0.4");
-	s1.to(".home-slider__slide-3", { opacity: 1 });
+	s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, ">-0.4");
+
+	if (window.innerWidth < ANIMATION_BREAKPOINT) {
+		s1.to(".home-slider__slide-3 .section__inner", { yPercent: -15 }, ">");
+	}
+	s1.from(".home-slider__slide-3 .section__body-img", { xPercent: 120 }, "<");
+	s1.to(".home-slider__slide-3 .section__body-img", { xPercent: 0 }, ">");
+	s1.to(".home-slider__slide-3", { autoAlpha: 1 }, ">");
 
 	document.querySelector(".home-slider").style.height = `${pinHeight}px`;
 
