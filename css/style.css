@@ -498,7 +498,7 @@ html {
 }
 
 .home-slider__slide {
-  position: fixed;
+  position: static;
   left: 0;
   top: 0;
   width: 100%;
@@ -820,7 +820,6 @@ html {
   display: block;
   top: 0;
   left: 0;
-  background-color: #0f141a;
   pointer-events: none;
   z-index: 3;
   -webkit-backface-visibility: hidden;
@@ -1231,11 +1230,4 @@ html {
   line-height: 27px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-}
-
-.gsap-marker-scroller-start,
-.gsap-marker-scroller-end,
-.gsap-marker-start,
-.gsap-marker-end {
-  opacity: 0 !important;
 }/*# sourceMappingURL=style.css.map */

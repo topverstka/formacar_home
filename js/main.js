@@ -283,6 +283,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		return height + h;
 	}, pinHeight);
 
+	console.log(slides);
+	console.log(pinHeight);
 	let pinHeightModifier = 200;
 	if (window.innerWidth < ANIMATION_BREAKPOINT && window.innerHeight > 850) {
 		pinHeightModifier = -400;
@@ -294,25 +296,25 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	// gsap.defaults({ ease: "none", duration: 2 });
 
 	let slideOffsetModifier = 500;
-	pinHeight = pinHeight - slideOffsetModifier * 2;
+	// pinHeight = pinHeight - slideOffsetModifier * 2;
 
-	if (window.innerWidth < ANIMATION_BREAKPOINT) {
-		document.querySelector(".home-slider").style.height = `${
-			pinHeight - pinHeightModifier * 1.9
-		}px`;
-	} else {
-		document.querySelector(".home-slider").style.height = `${
-			(pinHeight - pinHeightModifier) * 2
-		}px`;
-	}
+	// if (window.innerWidth < ANIMATION_BREAKPOINT) {
+	// 	document.querySelector(".home-slider").style.height = `${
+	// 		pinHeight - pinHeightModifier * 1.9
+	// 	}px`;
+	// } else {
+	// 	document.querySelector(".home-slider").style.height = `${
+	// 		(pinHeight - pinHeightModifier) * 2
+	// 	}px`;
+	// }
 
 	const pinTimeline = gsap.timeline({
 		scrollTrigger: {
 			trigger: ".home-slider",
 			start: "top top",
-			end: `+=${pinHeight + 200}`,
-			markers: true,
-			pin: true,
+			end: `+=${pinHeight}`,
+			// markers: true,
+			// pin: true,
 			scrub: true,
 		},
 	});
@@ -327,7 +329,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			trigger: ".home-slider__slide-1",
 			start: "top top",
 			end: `+=${slides[0].h}`,
-			markers: true,
+			// markers: true,
 			scrub: true,
 		},
 	});
@@ -340,26 +342,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		autoAlpha: 0,
 	});
 	s1.to(".home-slider__slide-1 .section__fader", { autoAlpha: 0 });
-	s1.to(".home-slider__slide-1 .section__content", { y: -s1Y }, "<")
-		.to(".home-slider__slide-1 .section__videos_bottom", { y: -s1Y }, "<")
-		.to(".home-slider__slide-1 .section__footer", { y: -s1Y }, "<");
+	s1.to(".home-slider__slide-1 .section__section__body", { y: -s1Y }, "<");
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
 	} else {
 		s1.to(
-			".home-slider__slide-1 .section__content",
+			".home-slider__slide-1 .section__body",
 			{ autoAlpha: 0 },
 			"<-0.1"
-		)
-			.to(
-				".home-slider__slide-1 .section__videos_bottom",
-				{ autoAlpha: 0 },
-				"<"
-			)
-			.to(
-				".home-slider__slide-1 .section__footer",
-				{ autoAlpha: 0 },
-				"<"
-			);
+		);
 	}
 	s1.to(".home-slider__slide-1 .section__fader", { autoAlpha: 1 }, ">");
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
@@ -370,17 +360,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		s1.to(".home-slider__slide-1", { autoAlpha: 0 }, "<-0.1");
 	}
 
-	let s2Start = slides[0].h - slideOffsetModifier * 1.7;
-	let s2End = slides[1].h + slideOffsetModifier;
-	if (window.innerWidth < ANIMATION_BREAKPOINT) {
-		s2End = s2End - slideOffsetModifier / 2;
-	}
+	let s2Start = slides[0].h;
+	let s2End = slides[1].h;
+	// let s2Start = slides[0].h - slideOffsetModifier * 1.7;
+	// let s2End = slides[1].h + slideOffsetModifier;
+	// if (window.innerWidth < ANIMATION_BREAKPOINT) {
+	// 	s2End = s2End - slideOffsetModifier / 2;
+	// }
 	let s2 = gsap.timeline({
 		scrollTrigger: {
 			trigger: ".home-slider__slide-2",
 			start: `${s2Start}`,
 			end: `+=${s2End}`,
-			markers: true,
+			// markers: true,
 			scrub: true,
 		},
 	});
@@ -395,24 +387,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		s2Y = s2Y + 100;
 	}
 	// if (window.innerWidth < ANIMATION_BREAKPOINT) {
-	s2.from(".home-slider__slide-2 .section__content", { y: s2Y / 2 }, ">-0.5");
-	s2.from(".home-slider__slide-2 .section__videos", { y: s2Y / 2 }, "<");
-	s2.from(".home-slider__slide-2 .section__footer", { y: s2Y / 2 }, "<");
-	s2.to(".home-slider__slide-2 .section__content", { y: -s2Y }, ">");
-	s2.to(".home-slider__slide-2 .section__videos", { y: -s2Y }, "<");
-	s2.to(".home-slider__slide-2 .section__footer", { y: -s2Y }, "<")
-		.to(
-			".home-slider__slide-1 .section__content",
-			{ autoAlpha: 0 },
-			"<-0.1"
-		)
-		.to(
-			".home-slider__slide-1 .section__videos_bottom",
-			{ autoAlpha: 0 },
-			"<"
-		)
-		.to(".home-slider__slide-1 .section__footer", { autoAlpha: 0 }, "<");
-	// }
+	s2.from(".home-slider__slide-2 .section__body", { y: s2Y / 2 }, ">-0.5");
+	s2.to(".home-slider__slide-2 .section__body", { y: -s2Y }, "<").to(
+		".home-slider__slide-1 .section__body",
+		{ autoAlpha: 0 },
+		"<-0.1"
+	);
 
 	s2.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, ">").to(
 		".home-slider__slide-2",
@@ -420,13 +400,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		">"
 	);
 
-	let s3Start = slides[0].h + slides[1].h - slideOffsetModifier / 2;
+	// let s3Start = slides[0].h + slides[1].h - slideOffsetModifier / 2;
+	let s3Start = slides[0].h + slides[1].h;
 	let s3 = gsap.timeline({
 		scrollTrigger: {
 			trigger: ".home-slider__slide-3",
 			start: `${s3Start}`,
 			end: `+=${slides[2].h}`,
-			markers: true,
+			// markers: true,
 		},
 	});
 	s3.to(".home-slider__slide-2", { pointerEvents: "none" }).to(
