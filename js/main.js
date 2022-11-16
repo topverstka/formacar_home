@@ -295,9 +295,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 	let slideOffsetModifier = 500;
 	pinHeight = pinHeight - slideOffsetModifier * 2;
-	document.querySelector(".home-slider").style.height = `${
-		(pinHeight - pinHeightModifier) * 2
-	}px`;
+
+	if (window.innerWidth < ANIMATION_BREAKPOINT) {
+		document.querySelector(".home-slider").style.height = `${
+			pinHeight - pinHeightModifier * 1.9
+		}px`;
+	} else {
+		document.querySelector(".home-slider").style.height = `${
+			(pinHeight - pinHeightModifier) * 2
+		}px`;
+	}
 
 	const pinTimeline = gsap.timeline({
 		scrollTrigger: {
@@ -335,18 +342,25 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.to(".home-slider__slide-1 .section__fader", { autoAlpha: 0 });
 	s1.to(".home-slider__slide-1 .section__content", { y: -s1Y }, "<")
 		.to(".home-slider__slide-1 .section__videos_bottom", { y: -s1Y }, "<")
-		.to(".home-slider__slide-1 .section__footer", { y: -s1Y }, "<")
-		.to(
+		.to(".home-slider__slide-1 .section__footer", { y: -s1Y }, "<");
+	if (window.innerWidth < ANIMATION_BREAKPOINT) {
+	} else {
+		s1.to(
 			".home-slider__slide-1 .section__content",
 			{ autoAlpha: 0 },
 			"<-0.1"
 		)
-		.to(
-			".home-slider__slide-1 .section__videos_bottom",
-			{ autoAlpha: 0 },
-			"<"
-		)
-		.to(".home-slider__slide-1 .section__footer", { autoAlpha: 0 }, "<");
+			.to(
+				".home-slider__slide-1 .section__videos_bottom",
+				{ autoAlpha: 0 },
+				"<"
+			)
+			.to(
+				".home-slider__slide-1 .section__footer",
+				{ autoAlpha: 0 },
+				"<"
+			);
+	}
 	s1.to(".home-slider__slide-1 .section__fader", { autoAlpha: 1 }, ">");
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
 		// Mobile
