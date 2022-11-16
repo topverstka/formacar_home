@@ -498,11 +498,10 @@ html {
 }
 
 .home-slider__slide {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   transform: translate3d(0, 0, 0);

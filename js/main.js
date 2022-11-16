@@ -266,6 +266,122 @@ s1Videos.forEach((video, index) => {
 
 // #region gsap
 
+// gsap.to(".home-slider__slide-2 .section__fader", {
+// 	scrollTrigger: ".home-slider__slide-1 .section__fader",
+// 	opacity: 1,
+// });
+
+window.addEventListener("DOMContentLoaded", (event) => {
+	const slides = [];
+	let pinHeight = 0;
+	const totalSlides = [...document.querySelectorAll(".home-slider__slide")];
+	pinHeight = totalSlides.reduce((height, slide, index, array) => {
+		slide.style.zIndex = array.length + 1 - index + 1;
+
+		let h = slide.offsetHeight;
+		slides.push({ h });
+		return height + h;
+	}, pinHeight);
+
+	document.querySelector(".home-slider").style.height = `${
+		pinHeight - 200
+	}px`;
+	gsap.registerPlugin(ScrollTrigger);
+	// gsap.defaults({ ease: "none", duration: 2 });
+
+	let slideOffsetModifier = 500;
+	pinHeight = pinHeight - slideOffsetModifier * 2;
+
+	gsap.timeline({
+		scrollTrigger: {
+			trigger: ".home-slider",
+			start: "top top",
+			end: `+=${pinHeight}`,
+			// markers: true,
+			pin: true,
+		},
+	});
+
+	let s1 = gsap.timeline({
+		scrollTrigger: {
+			trigger: ".home-slider__slide-1",
+			start: "top top",
+			end: `+=${slides[0].h}`,
+			// markers: true,
+			scrub: true,
+		},
+	});
+	let s1Y = slides[0].h / 2;
+
+	gsap.to(".home-slider__slide-1 .section__fader", {
+		autoAlpha: 0,
+	});
+	if (window.innerWidth < ANIMATION_BREAKPOINT) {
+		s1.to(".home-slider__slide-1 .section__content", { y: -s1Y }, "<")
+			.to(
+				".home-slider__slide-1 .section__videos_bottom",
+				{ y: -s1Y },
+				"<"
+			)
+			.to(".home-slider__slide-1 .section__footer", { y: -s1Y }, "<");
+	}
+	s1.to(".home-slider__slide-1 .section__fader", { autoAlpha: 0 }, "<")
+		.to(".home-slider__slide-1 .section__fader", { autoAlpha: 1 }, ">")
+		.to(".home-slider__slide-1", { autoAlpha: 0 }, ">");
+
+	let s2Start = slides[0].h - slideOffsetModifier;
+	let s2End = slides[1].h + slideOffsetModifier;
+	let s2 = gsap.timeline({
+		scrollTrigger: {
+			trigger: ".home-slider__slide-2",
+			start: `${s2Start}`,
+			end: `+=${s2End}`,
+			// markers: true,
+			scrub: true,
+		},
+	});
+	s2.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 })
+		.to(".home-slider__slide-2 .section__fader", { autoAlpha: 1 }, ">")
+		.to(".home-slider__slide-2", { autoAlpha: 0 }, ">");
+
+	let s3Start = slides[0].h + slides[1].h - slideOffsetModifier * 2;
+	let s3 = gsap.timeline({
+		scrollTrigger: {
+			trigger: ".home-slider__slide-3",
+			start: `${s3Start}`,
+			end: `+=${slides[2].h}`,
+			// markers: true,
+		},
+	});
+	s3.to(".home-slider__slide-3 .section__fader", { autoAlpha: 0 });
+});
+// let sliderPin = gsap.timeline({
+// 	scrollTrigger: {
+// 		trigger: ".home-slider",
+// 		pinned
+// 		pin: true,
+// 		start: "top top",
+// 		end: "+=1900",
+// 		scrub: 1,
+// 		snap: {
+// 			snapTo: "labels",
+// 			duration: { min: 0.2, max: 3 },
+// 			delay: 0.2,
+// 			ease: "power1.inOut",
+// 		},
+// 	},
+// });
+// sliderPin
+// 	.addLabel("start")
+// 	.from(".home-slider__slide-1 .section__fader", { autoAlpha: 0 })
+// 	.to(".home-slider__slide-1 .section__fader", { autoAlpha: 1 });
+// .addLabel("color")
+// .from(".home-slider__slide-1", { backgroundColor: "#28a92b" })
+// .addLabel("spin")
+// .to(".home-slider__slide-1", { rotation: 360 })
+// .addLabel("end");
+
+/*
 const homeSlider = document.querySelector(".home-slider");
 const homeSlides = homeSlider.querySelectorAll(".home-slider__slide");
 const ANIMATIONS_WIDTH_BREAKPOINT = 1200;
@@ -638,6 +754,7 @@ window.addEventListener("wheel", (e) => {
 	// }
 });
 
+*/
 // #endregion gsap
 
 document.querySelectorAll(".section__videos").forEach((videoNode) => {
@@ -646,145 +763,3 @@ document.querySelectorAll(".section__videos").forEach((videoNode) => {
 		plugins: [lgVideo],
 	});
 });
-
-// Функции для модальных окон
-modal();
-function modal() {
-	// Открытие модальных окон при клике по кнопке
-	openModalWhenClickingOnBtn();
-	function openModalWhenClickingOnBtn() {
-		const btnsOpenModal = document.querySelectorAll("[data-modal-open]");
-
-		for (let i = 0; i < btnsOpenModal.length; i++) {
-			const btn = btnsOpenModal[i];
-
-			btn.addEventListener("click", (e) => {
-				const dataBtn = btn.dataset.modalOpen;
-				const modal = document.querySelector(`#${dataBtn}`);
-
-				openModal(modal);
-				window.location.hash = dataBtn;
-			});
-		}
-	}
-
-	// Открытие модального окна, если в url указан его id
-	openModalHash();
-	function openModalHash() {
-		if (window.location.hash) {
-			const hash = window.location.hash.substring(1);
-			const modal = document.querySelector(`.modal#${hash}`);
-
-			if (modal) openModal(modal);
-		}
-	}
-
-	// Показываем/убираем модальное окно при изменения хеша в адресной строке
-	checkHash();
-	function checkHash() {
-		window.addEventListener("hashchange", (e) => {
-			const hash = window.location.hash;
-			const modal = document.querySelector(`.modal${hash}`);
-
-			if (find(".modal._show"))
-				find(".modal._show").classList.remove("_show");
-			if (modal && hash != "") openModal(modal);
-		});
-	}
-
-	// Закрытие модального окна при клике по заднему фону
-	closeModalWhenClickingOnBg();
-	function closeModalWhenClickingOnBg() {
-		document.addEventListener("click", (e) => {
-			const target = e.target;
-			const modal = document.querySelector(".modal._show");
-
-			if (modal && target.classList.contains("modal__body"))
-				closeModal(modal);
-		});
-	}
-
-	// Закрытие модальных окон при клике по крестику
-	closeModalWhenClickingOnCross();
-	function closeModalWhenClickingOnCross() {
-		const modalElems = document.querySelectorAll(".modal");
-		for (let i = 0; i < modalElems.length; i++) {
-			const modal = modalElems[i];
-			const closeThisModal = modal.querySelector(".modal__close");
-
-			closeThisModal.addEventListener("click", () => {
-				closeModal(modal);
-			});
-		}
-	}
-
-	// Закрытие модальных окон при нажатии по клавише ESC
-	closeModalWhenClickingOnESC();
-	function closeModalWhenClickingOnESC() {
-		const modalElems = document.querySelectorAll(".modal");
-		for (let i = 0; i < modalElems.length; i++) {
-			const modal = modalElems[i];
-
-			document.addEventListener("keydown", (e) => {
-				if (e.key === "Escape") closeModal(modal);
-			});
-		}
-	}
-
-	// Сброс id модального окна в url
-	function resetHash() {
-		const windowTop = window.pageYOffset;
-		window.location.hash = "";
-		window.scrollTo(0, windowTop);
-	}
-
-	// Открытие модального окна
-	function openModal(modal) {
-		modal.classList.add("_show");
-		bodyLock(true);
-	}
-
-	// Закрытие модального окна
-	function closeModal(modal) {
-		modal.classList.remove("_show");
-		bodyLock(false);
-		resetHash();
-	}
-}
-
-/*
-if (window.innerWidth < ANIMATIONS_WIDTH_BREAKPOINT) {
-	// document.querySelector(".section__body-img").dataset.aos = "fade-left";
-	[
-		document.querySelectorAll(".section__title"),
-		document.querySelectorAll(".home-slider__desc"),
-		// document.querySelectorAll(".section__body-img"),
-		document.querySelectorAll(".section__videos-poster"),
-		document.querySelectorAll(".section__videos-item"),
-		document.querySelectorAll(".section__footer-site"),
-		document.querySelectorAll(".download-app__link"),
-		document.querySelectorAll(".download-app__title"),
-	].forEach((nodeList) => {
-		nodeList.forEach((item, index, arr) => {
-			item.dataset.aos = "fade-up";
-			if (index > 0) {
-				item.dataset.aosOffset = 1000;
-			}
-		});
-	});
-
-	document
-		.querySelectorAll(".social")
-		.forEach((socials, socialsIndex, arr) => {
-			const links = socials.querySelectorAll(".social__link");
-			links.forEach((link, index) => {
-				link.dataset.aos = "fade-up";
-				link.dataset.aosDelay = 50 * index;
-				if (socialsIndex == arr.length - 1) {
-					link.dataset.aosOffset = 0;
-				}
-			});
-		});
-}
-AOS.init();
-*/
