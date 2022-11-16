@@ -349,11 +349,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, "<");
 	}
 
+	s1.from(".home-slider__slide-3 .section__body-img", { xPercent: 120 }, "<");
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
+		s1.to(".home-slider__slide-3 .section__inner", { yPercent: -15 }, ">");
+	} else {
 		s1.to(".home-slider__slide-3 .section__inner", { yPercent: -15 }, "<");
 	}
-	s1.from(".home-slider__slide-3 .section__body-img", { xPercent: 120 }, "<");
-	s1.to(".home-slider__slide-3 .section__body-img", { xPercent: 0 }, ">");
+
+	if (window.innerWidth < ANIMATION_BREAKPOINT) {
+	} else {
+		s1.to(".home-slider__slide-3 .section__body-img", { xPercent: 0 }, ">");
+	}
+
 	s1.to(".home-slider__slide-3", { autoAlpha: 1 }, ">");
 
 	document.querySelector(".home-slider").style.height = `${pinHeight}px`;
