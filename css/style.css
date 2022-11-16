@@ -871,8 +871,6 @@ html {
 }
 
 .section__inner {
-  display: flex;
-  flex-direction: column;
   padding-top: 118px;
   padding-bottom: 50px;
   min-height: 100vh;
