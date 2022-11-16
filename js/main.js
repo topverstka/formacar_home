@@ -338,7 +338,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.to(".home-slider__slide-3 .section__fader", { autoAlpha: 0 }, "<+0.4");
 	s1.to(".home-slider__slide-2", { pointerEvents: "none" }, "<");
 	s1.to(".home-slider__slide-3", { pointerEvents: "auto" }, "<");
-	s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, ">-0.4");
+
+	if (window.innerWidth > ANIMATION_BREAKPOINT) {
+		s1.from(
+			".home-slider__slide-3 .section__inner",
+			{ yPercent: 30 },
+			">-0.4"
+		);
+	} else {
+		s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, "<");
+	}
 
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
 		s1.to(".home-slider__slide-3 .section__inner", { yPercent: -15 }, "<");
