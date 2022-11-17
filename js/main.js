@@ -293,7 +293,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.to(".logo-2", { autoAlpha: 0 }, "<");
 	s1.to(".logo-3", { autoAlpha: 0 }, "<");
 
-	if (window.innerHeight >= 870 && window.innerWidth < 576) {
+	if (window.innerHeight >= 920 && window.innerWidth < 576) {
+		s1.to(".home-slider__slide-1", { yPercent: -37 }, "<");
+		s1.to(".home-slider__slide-1 .section__bg", { yPercent: 37 }, "<");
+	} else if (window.innerHeight >= 870 && window.innerWidth < 576) {
 		// Телефон портретный с высотой экрана
 		s1.to(".home-slider__slide-1", { yPercent: -40 }, "<");
 		s1.to(".home-slider__slide-1 .section__bg", { yPercent: 40 }, "<");
