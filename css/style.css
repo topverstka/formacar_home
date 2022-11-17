@@ -644,6 +644,7 @@ html {
   right: 0;
   z-index: 10;
   height: 100vh;
+  pointer-events: none;
 }
 @media (max-width: 1179px) {
   .home-slider__navigate {
