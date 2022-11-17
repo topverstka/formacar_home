@@ -359,7 +359,7 @@ html {
     min-width: 400px;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 1079px) {
   .social {
     justify-content: space-between;
     margin-bottom: 20px;
@@ -375,7 +375,7 @@ html {
   align-items: center;
   color: var(--main);
 }
-@media (min-width: 1178px) {
+@media (min-width: 576px) {
   .social__link {
     margin-right: 30px;
   }

@@ -270,7 +270,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	let pinHeight = 0;
 	const totalSlides = [...document.querySelectorAll(".home-slider__slide")];
 	pinHeight = totalSlides.reduce((height, slide, index, array) => {
-		// slide.style.zIndex = array.length + 1 - index + 1;
+		slide.style.zIndex = array.length + 1 - index + 1;
 
 		let h = slide.offsetHeight;
 		slides.push({ h });
@@ -280,92 +280,48 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	gsap.registerPlugin(ScrollTrigger);
 	// gsap.defaults({ duration: 1 });
 
-	// const pinTimeline = gsap.timeline({
-	// 	scrollTrigger: {
-	// 		trigger: ".home-slider",
-	// 		start: "top top",
-	// 		end: `+=${pinHeight}`,
-	// 		// markers: true,
-	// 		// pin: true,
-	// 		scrub: true,
-	// 	},
-	// });
-	// const scrollShaft = document.querySelector(".home-slider__scrollbar-shaft");
-	// const shaftHeight = scrollShaft.getBoundingClientRect().height;
-	// pinTimeline.to(".home-slider__scrollbar-shaft", {
-	// 	y: shaftHeight * 2 + 5,
-	// });
-
 	let s1 = gsap.timeline();
-	gsap.to(".home-slider__slide-1 .section__fader", {
-		autoAlpha: 0,
-	});
+	gsap.to(".home-slider__slide-1 .section__fader", { autoAlpha: 0 });
 
-	gsap.to(".logo-1", {
-		autoAlpha: 1,
-	});
-	gsap.to(".home-slider__slide-2", {
-		pointerEvents: "none",
-	});
-	gsap.to(".home-slider__slide-3", {
-		pointerEvents: "none",
-	});
-	s1.from(
-		".logo-1",
-		{
-			autoAlpha: 1,
-		},
-		"<"
-	);
-	s1.to(
-		".logo-1",
-		{
-			autoAlpha: 1,
-		},
-		"<"
-	);
-	s1.to(
-		".logo-2",
-		{
-			autoAlpha: 0,
-		},
-		"<"
-	);
-	s1.to(
-		".logo-3",
-		{
-			autoAlpha: 0,
-		},
-		"<"
-	);
+	gsap.to(".logo-1", { autoAlpha: 1 });
+	gsap.to(".home-slider__slide-2", { pointerEvents: "none" });
+	gsap.to(".home-slider__slide-3", { pointerEvents: "none" });
+	s1.from(".logo-1", { autoAlpha: 1 }, "<");
+	s1.to(".logo-1", { autoAlpha: 1 }, "<");
+	s1.to(".logo-2", { autoAlpha: 0 }, "<");
+	s1.to(".logo-3", { autoAlpha: 0 }, "<");
 
-	if (window.innerHeight >= 870) {
-		if (window.innerWidth < 576) {
-			s1.to(".home-slider__slide-1", { yPercent: -40 }, "<");
-			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 40 }, "<");
-		}
-	} else if (window.innerHeight >= 800) {
-		if (window.innerWidth < 576) {
-			// Tall iphones
-			s1.to(".home-slider__slide-1", { yPercent: -45 }, "<");
-			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 45 }, "<");
-		}
+	if (window.innerHeight >= 870 && window.innerWidth < 576) {
+		// Телефон портретный с высотой экрана
+		s1.to(".home-slider__slide-1", { yPercent: -40 }, "<");
+		s1.to(".home-slider__slide-1 .section__bg", { yPercent: 40 }, "<");
+	} else if (window.innerHeight >= 800 && window.innerWidth < 576) {
+		// Телефон портретный с высотой экрана
+		s1.to(".home-slider__slide-1", { yPercent: -45 }, "<");
+		s1.to(".home-slider__slide-1 .section__bg", { yPercent: 45 }, "<");
 	} else if (window.innerHeight > 710) {
 		if (window.innerWidth < 576) {
-			console.log(710, 576);
-			// Tall iphones
+			// Телефон портретный
 			s1.to(".home-slider__slide-1", { yPercent: -50 }, "<");
 			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 50 }, "<");
 		} else {
-			console.log(710);
+			// Комп
 			s1.to(".home-slider__slide-1", { yPercent: -50 }, "<");
 			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 50 }, "<");
 		}
 	} else {
-		console.log(800);
-		s1.to(".home-slider__slide-1", { yPercent: -55 }, "<");
-		s1.to(".home-slider__slide-1 .section__bg", { yPercent: 55 }, "<");
+		// Не телефоны портретные
+		if (window.innerHeight < 500) {
+			// Телефоны альбомные
+			s1.to(".home-slider__slide-1", { yPercent: -80 }, "<");
+			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 80 }, "<");
+		} else {
+			s1.to(".home-slider__slide-1", { yPercent: -55 }, "<");
+			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 55 }, "<");
+		}
 	}
+
+	// Slide 2
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
 		s1.to(".home-slider__slide-1", { autoAlpha: 0 }, ">");
 	} else {
@@ -375,35 +331,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	const scrollShaft = document.querySelector(".home-slider__scrollbar-shaft");
 	const shaftHeight = scrollShaft.getBoundingClientRect().height;
 	if (window.innerWidth > ANIMATION_BREAKPOINT) {
-		s1.to(
-			".home-slider__scrollbar-shaft",
-			{
-				y: shaftHeight,
-			},
-			"<"
-		);
+		s1.to(".home-slider__scrollbar-shaft", { y: shaftHeight }, "<");
 	}
-	s1.to(
-		".logo-1",
-		{
-			autoAlpha: 0,
-		},
-		"<"
-	);
-	s1.to(
-		".logo-2",
-		{
-			autoAlpha: 1,
-		},
-		"<"
-	);
-	s1.to(
-		".logo-3",
-		{
-			autoAlpha: 0,
-		},
-		"<"
-	);
+	s1.to(".logo-1", { autoAlpha: 0 }, "<");
+	s1.to(".logo-2", { autoAlpha: 1 }, "<");
+	s1.to(".logo-3", { autoAlpha: 0 }, "<");
 
 	s1.from(".home-slider__slide-2", { autoAlpha: 0 }, "<");
 	s1.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 }, "<+0.3");
@@ -411,6 +343,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.to(".home-slider__slide-2", { pointerEvents: "auto" }, "<");
 	s1.from(".home-slider__slide-2 .section__inner", { yPercent: 10 }, "<");
 	if (window.innerHeight > 690) {
+	} else if (window.innerHeight < 500) {
+		s1.to(".home-slider__slide-2 .section__inner", { yPercent: -65 }, ">");
 	} else {
 		s1.to(".home-slider__slide-2 .section__inner", { yPercent: -20 }, ">");
 	}
@@ -422,37 +356,23 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.to(".home-slider__slide-3", { pointerEvents: "auto" }, "<");
 
 	if (window.innerWidth > ANIMATION_BREAKPOINT) {
-		s1.to(
-			".home-slider__scrollbar-shaft",
-			{
-				y: shaftHeight * 2,
-			},
-			"<"
-		);
+		s1.to(".home-slider__scrollbar-shaft", { y: shaftHeight * 2 }, "<");
 	}
-	s1.to(
-		".logo-1",
-		{
-			autoAlpha: 0,
-		},
-		"<"
-	);
-	s1.to(
-		".logo-2",
-		{
-			autoAlpha: 0,
-		},
-		"<"
-	);
-	s1.to(
-		".logo-3",
-		{
-			autoAlpha: 1,
-		},
-		"<"
-	);
+
+	s1.to(".logo-1", { autoAlpha: 0 }, "<");
+	s1.to(".logo-2", { autoAlpha: 0 }, "<");
+	s1.to(".logo-3", { autoAlpha: 1 }, "<");
+
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
-		if (window.innerHeight < 800) {
+		if (window.innerHeight < 500) {
+			// console.log("phone album");
+			s1.fromTo(
+				".home-slider__slide-3 .section__inner",
+				{ yPercent: 30 },
+				{ yPercent: -25 },
+				"<"
+			);
+		} else if (window.innerHeight < 800) {
 			s1.fromTo(
 				".home-slider__slide-3 .section__inner",
 				{ yPercent: 30 },
@@ -472,23 +392,33 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, "<");
 	}
 
+	if (window.innerHeight < 500 && window.innerWidth > 576) {
+		s1.to(
+			".home-slider__slide-3 .section__body-img",
+			{ yPercent: -20 },
+			"<"
+		);
+	}
 	s1.from(".home-slider__slide-3 .section__body-img", { xPercent: 120 }, "<");
 
-	if (window.innerWidth < ANIMATION_BREAKPOINT) {
-		if (window.innerWidth < 576) {
-			if (window.innerHeight < 700) {
-				s1.to(
-					".home-slider__slide-3 .section__inner",
-					{ yPercent: -10 },
-					">"
-				);
-			} else {
-				s1.to(
-					".home-slider__slide-3 .section__inner",
-					{ yPercent: 15 },
-					">"
-				);
-			}
+	if (window.innerWidth < 576) {
+		if (window.innerHeight < 700) {
+			console.log(-10);
+			s1.to(
+				".home-slider__slide-3 .section__inner",
+				{ yPercent: -10 },
+				">"
+			);
+		} else {
+			console.log(15);
+			s1.to(
+				".home-slider__slide-3 .section__inner",
+				{ yPercent: 15 },
+				">"
+			);
+		}
+	} else {
+		if (window.innerHeight < 500) {
 		} else {
 			s1.to(
 				".home-slider__slide-3 .section__inner",
@@ -496,8 +426,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 				">"
 			);
 		}
-	} else {
-		// s1.to(".home-slider__slide-3 .section__inner", { yPercent: -15 }, "<");
 	}
 
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
