@@ -311,7 +311,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		}
 	} else {
 		// Не телефоны портретные
-		if (window.innerHeight < 500) {
+		if (window.innerHeight < 400) {
+			// Телефоны альбомные маленькие
+			s1.to(".home-slider__slide-1", { yPercent: -79 }, "<");
+			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 79 }, "<");
+		} else if (window.innerHeight < 500) {
 			// Телефоны альбомные
 			s1.to(".home-slider__slide-1", { yPercent: -80 }, "<");
 			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 80 }, "<");
