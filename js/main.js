@@ -345,7 +345,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		"<"
 	);
 
-	if (window.innerHeight > 850) {
+	if (window.innerHeight > 810) {
 		if (window.innerWidth < 576) {
 			// Tall iphones
 			s1.to(".home-slider__slide-1", { yPercent: -40 }, "<");
