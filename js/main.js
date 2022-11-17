@@ -345,7 +345,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		"<"
 	);
 
-	if (window.innerHeight > 810) {
+	if (window.innerHeight > 690) {
 		if (window.innerWidth < 576) {
 			// Tall iphones
 			s1.to(".home-slider__slide-1", { yPercent: -40 }, "<");
@@ -402,7 +402,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.to(".home-slider__slide-1", { pointerEvents: "none" }, "<");
 	s1.to(".home-slider__slide-2", { pointerEvents: "auto" }, "<");
 	s1.from(".home-slider__slide-2 .section__inner", { yPercent: 10 }, "<");
-	if (window.innerHeight > 820) {
+	if (window.innerHeight > 690) {
 	} else {
 		s1.to(".home-slider__slide-2 .section__inner", { yPercent: -20 }, ">");
 	}
