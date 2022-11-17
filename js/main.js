@@ -339,16 +339,30 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		"<"
 	);
 
-	if (window.innerHeight > 690) {
+	if (window.innerHeight >= 870) {
 		if (window.innerWidth < 576) {
-			// Tall iphones
 			s1.to(".home-slider__slide-1", { yPercent: -40 }, "<");
 			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 40 }, "<");
+		}
+	} else if (window.innerHeight >= 800) {
+		if (window.innerWidth < 576) {
+			// Tall iphones
+			s1.to(".home-slider__slide-1", { yPercent: -45 }, "<");
+			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 45 }, "<");
+		}
+	} else if (window.innerHeight > 710) {
+		if (window.innerWidth < 576) {
+			console.log(710, 576);
+			// Tall iphones
+			s1.to(".home-slider__slide-1", { yPercent: -50 }, "<");
+			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 50 }, "<");
 		} else {
+			console.log(710);
 			s1.to(".home-slider__slide-1", { yPercent: -50 }, "<");
 			s1.to(".home-slider__slide-1 .section__bg", { yPercent: 50 }, "<");
 		}
 	} else {
+		console.log(800);
 		s1.to(".home-slider__slide-1", { yPercent: -55 }, "<");
 		s1.to(".home-slider__slide-1 .section__bg", { yPercent: 55 }, "<");
 	}
