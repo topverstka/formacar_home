@@ -453,11 +453,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
 		if (window.innerWidth < 576) {
-			// s1.to(
-			// 	".home-slider__slide-3 .section__inner",
-			// 	{ yPercent: 15 },
-			// 	">"
-			// );
+			if (window.innerHeight < 700) {
+				s1.to(
+					".home-slider__slide-3 .section__inner",
+					{ yPercent: -10 },
+					">"
+				);
+			} else {
+				s1.to(
+					".home-slider__slide-3 .section__inner",
+					{ yPercent: 15 },
+					">"
+				);
+			}
 		} else {
 			s1.to(
 				".home-slider__slide-3 .section__inner",
