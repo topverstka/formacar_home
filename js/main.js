@@ -284,6 +284,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	gsap.to(".home-slider__slide-1 .section__fader", { autoAlpha: 0 });
 
 	gsap.to(".logo-1", { autoAlpha: 1 });
+	gsap.to(".logo-2", { autoAlpha: 0 });
+	gsap.to(".logo-3", { autoAlpha: 0 });
 	gsap.to(".home-slider__slide-2", { pointerEvents: "none" });
 	gsap.to(".home-slider__slide-3", { pointerEvents: "none" });
 	s1.from(".logo-1", { autoAlpha: 1 }, "<");
@@ -435,7 +437,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	} else {
 		if (window.innerHeight < 500) {
 		} else {
-			console.log("la");
 			s1.to(
 				".home-slider__slide-3 .section__inner",
 				{ yPercent: -5 },

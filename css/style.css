@@ -630,6 +630,12 @@ html {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
+@media (min-width: 1700px) {
+  .home-slider .section__footer {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
 
 .section__body-img,
 .section__videos {
@@ -903,6 +909,11 @@ html {
     flex-direction: column;
     align-items: space-between;
     justify-content: space-between;
+  }
+}
+@media (min-width: 1200px) and (min-height: 901px) {
+  .section__inner {
+    padding-top: 140px;
   }
 }
 

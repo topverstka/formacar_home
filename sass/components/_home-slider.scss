@@ -117,6 +117,10 @@
 }
 .home-slider .section__footer {
 	backface-visibility: hidden;
+	@media (min-width: 1700px) {
+		padding-left: 120px;
+		padding-right: 120px;
+	}
 }
 .section__body-img,
 .section__videos {
