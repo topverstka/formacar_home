@@ -452,12 +452,21 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		"<"
 	);
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
-		s1.fromTo(
-			".home-slider__slide-3 .section__inner",
-			{ yPercent: 30 },
-			{ yPercent: 15 },
-			"<"
-		);
+		if (window.innerHeight < 800) {
+			s1.fromTo(
+				".home-slider__slide-3 .section__inner",
+				{ yPercent: 30 },
+				{ yPercent: -5 },
+				"<"
+			);
+		} else {
+			s1.fromTo(
+				".home-slider__slide-3 .section__inner",
+				{ yPercent: 30 },
+				{ yPercent: 15 },
+				"<"
+			);
+		}
 	} else {
 		// desktop
 		s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, "<");
