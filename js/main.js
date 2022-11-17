@@ -402,7 +402,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.to(".home-slider__slide-1", { pointerEvents: "none" }, "<");
 	s1.to(".home-slider__slide-2", { pointerEvents: "auto" }, "<");
 	s1.from(".home-slider__slide-2 .section__inner", { yPercent: 10 }, "<");
-	s1.to(".home-slider__slide-2 .section__inner", { yPercent: -20 }, ">");
+	if (window.innerHeight > 820) {
+	} else {
+		s1.to(".home-slider__slide-2 .section__inner", { yPercent: -20 }, ">");
+	}
 	s1.to(".home-slider__slide-2", { autoAlpha: 0 }, ">");
 
 	s1.from(".home-slider__slide-3", { autoAlpha: 0 }, "<");
@@ -441,7 +444,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		"<"
 	);
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
-		s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, "<");
+		s1.fromTo(
+			".home-slider__slide-3 .section__inner",
+			{ yPercent: 30 },
+			{ yPercent: 15 },
+			"<"
+		);
 	} else {
 		// desktop
 		s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, "<");
@@ -451,9 +459,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
 		if (window.innerWidth < 576) {
+			// s1.to(
+			// 	".home-slider__slide-3 .section__inner",
+			// 	{ yPercent: 15 },
+			// 	">"
+			// );
+		} else {
 			s1.to(
 				".home-slider__slide-3 .section__inner",
-				{ yPercent: -15 },
+				{ yPercent: -5 },
 				">"
 			);
 		}
@@ -475,7 +489,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		animation: s1,
 		trigger: ".home-slider",
 		start: "top top",
-		end: `+=${scrollEnd}`,
+		end: `+=${scrollEnd - 500}`,
 		pin: true,
 		markers: true,
 		scrub: true,
