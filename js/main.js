@@ -300,6 +300,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		// Телефон портретный с высотой экрана
 		s1.to(".home-slider__slide-1", { yPercent: -40 }, "<");
 		s1.to(".home-slider__slide-1 .section__bg", { yPercent: 40 }, "<");
+	} else if (window.innerHeight >= 820 && window.innerWidth < 576) {
+		s1.to(".home-slider__slide-1", { yPercent: -40 }, "<");
+		s1.to(".home-slider__slide-1 .section__bg", { yPercent: 40 }, "<");
 	} else if (window.innerHeight >= 800 && window.innerWidth < 576) {
 		// Телефон портретный с высотой экрана
 		s1.to(".home-slider__slide-1", { yPercent: -45 }, "<");
@@ -350,7 +353,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 }, "<+0.3");
 	s1.to(".home-slider__slide-1", { pointerEvents: "none" }, "<");
 	s1.to(".home-slider__slide-2", { pointerEvents: "auto" }, "<");
-	s1.from(".home-slider__slide-2 .section__inner", { yPercent: 10 }, "<");
+
+	if (window.innerWidth < 600 && window.innerHeight > 800) {
+		s1.fromTo(
+			".home-slider__slide-2 .section__inner",
+			{ yPercent: 10 },
+			{ yPercent: -2 },
+			"<"
+		);
+	} else {
+		s1.from(".home-slider__slide-2 .section__inner", { yPercent: 10 }, "<");
+	}
+
 	if (window.innerHeight > 690) {
 	} else if (window.innerHeight < 500) {
 		s1.to(".home-slider__slide-2 .section__inner", { yPercent: -65 }, ">");
