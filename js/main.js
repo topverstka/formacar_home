@@ -375,9 +375,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	console.log(s3Y);
 	s3Y = s3Y == 0 ? window.innerHeight * s3YModifier : s3Y + 50; //ok 375×667
 
-	s3Y = s3Y < 40 ? window.innerHeight * 0.07 : s3Y;
-	s3Y = s3Y > 50 ? window.innerHeight * 0.09 : s3Y;
-	s3Y = s3Y > 60 ? window.innerHeight * 0.12 : s3Y;
+	if (window.innerWidth < 576) {
+		s3Y = s3Y < 40 ? window.innerHeight * 0.07 : s3Y;
+		s3Y = s3Y > 50 ? window.innerHeight * 0.09 : s3Y;
+		s3Y = s3Y > 60 ? window.innerHeight * 0.12 : s3Y;
+	}
 	if (window.innerWidth < 330) {
 		s3Y = s3Y > 50 ? window.innerHeight * 0.26 : s3Y;
 	}
