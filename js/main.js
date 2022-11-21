@@ -310,7 +310,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			.height -
 		window.innerHeight +
 		5;
-	s1Y = s1Y <= window.innerHeight / 3 ? window.innerHeight / 3 : s1Y;
+	s1Y <= window.innerHeight / 3 ? window.innerHeight / 3 : s1Y;
 
 	s1.to(".home-slider__slide-1", { y: -s1Y }, "<");
 	s1.to(".home-slider__slide-1 .section__bg", { y: s1Y }, "<");
@@ -334,30 +334,51 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.to(".home-slider__slide-1", { pointerEvents: "none" }, "<");
 	s1.to(".home-slider__slide-2", { pointerEvents: "auto" }, "<");
 
-	if (window.innerWidth < 600 && window.innerHeight > 800) {
-		s1.fromTo(
-			".home-slider__slide-2 .section__inner",
-			{ yPercent: 10 },
-			{ yPercent: -2 },
-			"<"
-		);
-	} else {
-		s1.fromTo(
-			".home-slider__slide-2 .section__inner",
-			{ yPercent: 10 },
-			{ yPercent: -2 },
-			"<"
-		);
-	}
+	let s2Y =
+		document.querySelector(".home-slider__slide-2").getBoundingClientRect()
+			.height - window.innerHeight;
+	s2Y = s2Y == 0 ? -20 : s2Y;
 
-	if (window.innerHeight > 690) {
-	} else if (window.innerHeight < 500) {
-		s1.to(".home-slider__slide-2 .section__inner", { yPercent: -65 }, ">");
-	} else {
-		s1.to(".home-slider__slide-2 .section__inner", { yPercent: -20 }, ">");
-	}
+	s1.fromTo(
+		".home-slider__slide-2 .section__inner",
+		{ y: window.innerHeight + s2Y },
+		{ y: -s2Y },
+		"<+0.1"
+	);
+	console.log(s2Y);
+	// s1Y <= window.innerHeight / 3 ? window.innerHeight / 3 : s1Y;
+	// s1.fromTo(
+	// 	".home-slider__slide-2 .section__bg",
+	// 	{ y: s2Y / 3 },
+	// 	{ y: s2Y },
+	// 	"<"
+	// );
+
+	// if (window.innerWidth < 600 && window.innerHeight > 800) {
+	// 	s1.fromTo(
+	// 		".home-slider__slide-2 .section__inner",
+	// 		{ yPercent: 10 },
+	// 		{ yPercent: -2 },
+	// 		"<"
+	// 	);
+	// } else {
+	// 	s1.fromTo(
+	// 		".home-slider__slide-2 .section__inner",
+	// 		{ yPercent: 10 },
+	// 		{ yPercent: -2 },
+	// 		"<"
+	// 	);
+	// }
+
+	// if (window.innerHeight > 690) {
+	// } else if (window.innerHeight < 500) {
+	// 	s1.to(".home-slider__slide-2 .section__inner", { yPercent: -65 }, ">");
+	// } else {
+	// 	s1.to(".home-slider__slide-2 .section__inner", { yPercent: -20 }, ">");
+	// }
+
+	// Finish slide2
 	s1.to(".home-slider__slide-2", { autoAlpha: 0 }, ">");
-
 	s1.from(".home-slider__slide-3", { autoAlpha: 0 }, "<");
 	s1.to(".home-slider__slide-3 .section__fader", { autoAlpha: 0 }, "<+0.4");
 	s1.to(".home-slider__slide-2", { pointerEvents: "none" }, "<");
