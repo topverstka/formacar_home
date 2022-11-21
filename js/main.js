@@ -310,7 +310,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			.height -
 		window.innerHeight +
 		5;
-	s1Y <= window.innerHeight / 3 ? window.innerHeight / 3 : s1Y;
+	if (window.innerWidth > 1200) {
+		s1Y <= window.innerHeight / 3 ? window.innerHeight / 3 : s1Y;
+	}
 
 	s1.to(".home-slider__slide-1", { y: -s1Y }, "<");
 	s1.to(".home-slider__slide-1 .section__bg", { y: s1Y }, "<");
@@ -338,44 +340,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		document.querySelector(".home-slider__slide-2").getBoundingClientRect()
 			.height - window.innerHeight;
 	s2Y = s2Y == 0 ? -20 : s2Y;
-
 	s1.fromTo(
 		".home-slider__slide-2 .section__inner",
 		{ y: window.innerHeight + s2Y },
 		{ y: -s2Y },
 		"<+0.1"
 	);
-	console.log(s2Y);
-	// s1Y <= window.innerHeight / 3 ? window.innerHeight / 3 : s1Y;
-	// s1.fromTo(
-	// 	".home-slider__slide-2 .section__bg",
-	// 	{ y: s2Y / 3 },
-	// 	{ y: s2Y },
-	// 	"<"
-	// );
-
-	// if (window.innerWidth < 600 && window.innerHeight > 800) {
-	// 	s1.fromTo(
-	// 		".home-slider__slide-2 .section__inner",
-	// 		{ yPercent: 10 },
-	// 		{ yPercent: -2 },
-	// 		"<"
-	// 	);
-	// } else {
-	// 	s1.fromTo(
-	// 		".home-slider__slide-2 .section__inner",
-	// 		{ yPercent: 10 },
-	// 		{ yPercent: -2 },
-	// 		"<"
-	// 	);
-	// }
-
-	// if (window.innerHeight > 690) {
-	// } else if (window.innerHeight < 500) {
-	// 	s1.to(".home-slider__slide-2 .section__inner", { yPercent: -65 }, ">");
-	// } else {
-	// 	s1.to(".home-slider__slide-2 .section__inner", { yPercent: -20 }, ">");
-	// }
 
 	// Finish slide2
 	s1.to(".home-slider__slide-2", { autoAlpha: 0 }, ">");
@@ -384,92 +354,48 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	s1.to(".home-slider__slide-2", { pointerEvents: "none" }, "<");
 	s1.to(".home-slider__slide-3", { pointerEvents: "auto" }, "<");
 
+	// Start Slide 3
 	if (window.innerWidth > ANIMATION_BREAKPOINT) {
 		s1.to(".home-slider__scrollbar-shaft", { y: shaftHeight * 2 }, "<");
 	}
 
 	useLogo(3);
 
-	if (window.innerWidth < ANIMATION_BREAKPOINT) {
-		if (window.innerHeight < 400) {
-			s1.fromTo(
-				".home-slider__slide-3 .section__inner",
-				{ yPercent: 30 },
-				{ yPercent: -45 },
-				"<"
-			);
-			s1.to(
-				".home-slider__slide-3 .section__footer",
-				{ yPercent: -375 },
-				"<"
-			);
-		} else if (window.innerHeight < 500) {
-			console.log("phone album");
-			s1.fromTo(
-				".home-slider__slide-3 .section__inner",
-				{ yPercent: 30 },
-				{ yPercent: -45 },
-				"<"
-			);
-			s1.to(".home-slider__slide-3 .section__footer", { y: -145 }, "<");
-		} else if (window.innerHeight < 800) {
-			s1.fromTo(
-				".home-slider__slide-3 .section__inner",
-				{ yPercent: 30 },
-				{ yPercent: -5 },
-				"<"
-			);
-		} else {
-			s1.fromTo(
-				".home-slider__slide-3 .section__inner",
-				{ yPercent: 30 },
-				{ yPercent: 15 },
-				"<"
-			);
-		}
-	} else {
-		// desktop
-		s1.from(".home-slider__slide-3 .section__inner", { yPercent: 30 }, "<");
+	let s3Y =
+		document.querySelector(".home-slider__slide-3").getBoundingClientRect()
+			.height - window.innerHeight;
+	// ели высота меньше 600, то правила такие
+	// s3Y = s3Y == 0 ? window.innerHeight * 0.05 : s3Y + 50; //ok 375×667
+
+	let s3YModifier = 0.05;
+	if (window.innerWidth > 1200) {
+		s3YModifier = 0.3;
 	}
 
-	if (window.innerHeight < 500 && window.innerWidth > 576) {
-		s1.to(
-			".home-slider__slide-3 .section__body-img",
-			{ yPercent: -20 },
-			"<"
-		);
-	}
-	s1.from(".home-slider__slide-3 .section__body-img", { xPercent: 120 }, "<");
+	console.log(s3Y);
+	s3Y = s3Y == 0 ? window.innerHeight * s3YModifier : s3Y + 50; //ok 375×667
 
-	if (window.innerWidth < 576) {
-		if (window.innerHeight < 700) {
-			s1.to(
-				".home-slider__slide-3 .section__inner",
-				{ yPercent: -10 },
-				">"
-			);
-		} else {
-			s1.to(
-				".home-slider__slide-3 .section__inner",
-				{ yPercent: 15 },
-				">"
-			);
-		}
-	} else {
-		if (window.innerHeight < 500) {
-		} else {
-			s1.to(
-				".home-slider__slide-3 .section__inner",
-				{ yPercent: -5 },
-				">"
-			);
-		}
-	}
+	s3Y = s3Y < 40 ? window.innerHeight * 0.07 : s3Y;
 
-	if (window.innerWidth < ANIMATION_BREAKPOINT) {
-	} else {
-		s1.to(".home-slider__slide-3 .section__body-img", { xPercent: 0 }, ">");
-	}
+	console.log(s3Y);
+	s1.fromTo(
+		".home-slider__slide-3 .section__inner",
+		{ y: window.innerHeight + s3Y },
+		{ y: -s3Y },
+		"<+0.1"
+	);
+
+	const s3Img = document.querySelector(
+		".home-slider__slide-3 .section__body-img"
+	);
+	const s3ImgX = window.innerWidth + s3Img.getBoundingClientRect().width;
+	s1.from(
+		".home-slider__slide-3 .section__body-img",
+		{
+			x: s3ImgX / 2,
+		},
+		"<"
+	);
 
 	s1.to(".home-slider__slide-3", { autoAlpha: 1 }, ">");
 
