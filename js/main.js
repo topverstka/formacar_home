@@ -313,7 +313,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	if (window.innerWidth > 1200) {
 		s1Y <= window.innerHeight / 3 ? window.innerHeight / 3 : s1Y;
 	} else {
-		s1Y = s1Y + 242;
+		s1Y = s1Y + 402;
 	}
 
 	s1.to(".home-slider__slide-1", { y: -s1Y }, "<");
