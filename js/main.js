@@ -348,6 +348,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		{ y: -s2Y },
 		"<+0.1"
 	);
+	if (s2Y < 1200) {
+		s2Y = s2Y + 150;
+	}
 
 	// Finish slide2
 	s1.to(".home-slider__slide-2", { autoAlpha: 0 }, ">");
@@ -386,7 +389,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	}
 
 	s3Y = s3Y + 60;
-	console.log(s3Y);
+
+	if (s2Y < 1200) {
+		s2Y = s2Y + 150;
+	}
 	s1.fromTo(
 		".home-slider__slide-3 .section__inner",
 		{ y: window.innerHeight + s3Y },
