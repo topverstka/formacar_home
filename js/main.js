@@ -308,8 +308,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	let s1Y =
 		document.querySelector(".home-slider__slide-1").getBoundingClientRect()
 			.height -
-		window.innerHeight +
-		5;
+		document.documentElement.clientHeight +
+		60;
 	if (window.innerWidth > 1200) {
 		s1Y <= window.innerHeight / 3 ? window.innerHeight / 3 : s1Y;
 	} else {
@@ -340,11 +340,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 	let s2Y =
 		document.querySelector(".home-slider__slide-2").getBoundingClientRect()
-			.height - window.innerHeight;
+			.height -
+		document.documentElement.clientHeight +
+		10;
 	s2Y = s2Y == 0 ? -20 : s2Y;
 	s1.fromTo(
 		".home-slider__slide-2 .section__inner",
-		{ y: window.innerHeight + s2Y },
+		{ y: document.documentElement.clientHeight + s2Y },
 		{ y: -s2Y },
 		"<+0.1"
 	);
@@ -368,7 +370,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 	let s3Y =
 		document.querySelector(".home-slider__slide-3").getBoundingClientRect()
-			.height - window.innerHeight;
+			.height - document.documentElement.clientHeight;
 	// ели высота меньше 600, то правила такие
 	// s3Y = s3Y == 0 ? window.innerHeight * 0.05 : s3Y + 50; //ok 375×667
 
@@ -377,15 +379,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		s3YModifier = 0.3;
 	}
 
-	s3Y = s3Y == 0 ? window.innerHeight * s3YModifier : s3Y + 50; //ok 375×667
+	s3Y =
+		s3Y == 0
+			? document.documentElement.clientHeight * s3YModifier
+			: s3Y + 50; //ok 375×667
 
 	if (window.innerWidth < 576) {
-		s3Y = s3Y < 40 ? window.innerHeight * 0.07 : s3Y;
-		s3Y = s3Y > 50 ? window.innerHeight * 0.09 : s3Y;
-		s3Y = s3Y > 60 ? window.innerHeight * 0.12 : s3Y;
+		s3Y = s3Y < 40 ? document.documentElement.clientHeight * 0.07 : s3Y;
+		s3Y = s3Y > 50 ? document.documentElement.clientHeight * 0.09 : s3Y;
+		s3Y = s3Y > 60 ? document.documentElement.clientHeight * 0.12 : s3Y;
 	}
 	if (window.innerWidth < 330) {
-		s3Y = s3Y > 50 ? window.innerHeight * 0.26 : s3Y;
+		s3Y = s3Y > 50 ? document.documentElement.clientHeight * 0.26 : s3Y;
 	}
 
 	s3Y = s3Y + 60;
