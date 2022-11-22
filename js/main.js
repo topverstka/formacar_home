@@ -313,7 +313,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	if (window.innerWidth > 1200) {
 		s1Y <= window.innerHeight / 3 ? window.innerHeight / 3 : s1Y;
 	} else {
-		s1Y = s1Y + 362;
+		// s1Y = s1Y + 362;
 	}
 
 	s1.to(".home-slider__slide-1", { y: -s1Y }, "<");
@@ -348,9 +348,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		{ y: -s2Y },
 		"<+0.1"
 	);
-	if (s2Y < 1200) {
-		s2Y = s2Y + 150;
-	}
+	// if (s2Y < 1200) {
+	// 	s2Y = s2Y + 150;
+	// }
 
 	// Finish slide2
 	s1.to(".home-slider__slide-2", { autoAlpha: 0 }, ">");
