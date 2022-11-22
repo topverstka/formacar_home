@@ -312,6 +312,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		5;
 	if (window.innerWidth > 1200) {
 		s1Y <= window.innerHeight / 3 ? window.innerHeight / 3 : s1Y;
+	} else {
+		s1Y = s1Y + 121;
 	}
 
 	s1.to(".home-slider__slide-1", { y: -s1Y }, "<");
@@ -372,7 +374,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		s3YModifier = 0.3;
 	}
 
-	console.log(s3Y);
 	s3Y = s3Y == 0 ? window.innerHeight * s3YModifier : s3Y + 50; //ok 375×667
 
 	if (window.innerWidth < 576) {
@@ -384,6 +385,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		s3Y = s3Y > 50 ? window.innerHeight * 0.26 : s3Y;
 	}
 
+	s3Y = s3Y + 60;
 	console.log(s3Y);
 	s1.fromTo(
 		".home-slider__slide-3 .section__inner",
