@@ -266,171 +266,82 @@ s1Videos.forEach((video, index) => {
 
 // #region gsap
 window.addEventListener("DOMContentLoaded", (event) => {
-	const slides = [];
-	let pinHeight = 0;
-	const totalSlides = [...document.querySelectorAll(".home-slider__slide")];
-	pinHeight = totalSlides.reduce((height, slide, index, array) => {
-		slide.style.zIndex = array.length + 1 - index + 1;
+	// const slides = [];
+	// let pinHeight = 0;
+	// const totalSlides = [...document.querySelectorAll(".home-slider__slide")];
+	// pinHeight = totalSlides.reduce((height, slide, index, array) => {
+	// 	slide.style.zIndex = array.length + 1 - index + 1;
 
-		let h = slide.offsetHeight;
-		slides.push({ h });
-		return height + h;
-	}, pinHeight);
+	// 	let h = slide.offsetHeight;
+	// 	slides.push({ h });
+	// 	return height + h;
+	// }, pinHeight);
+	const socials = document.querySelectorAll(".social");
+	socials.forEach((bar) => {
+		bar.querySelectorAll(".social__item").forEach((link, index) => {
+			link.dataset.aos = "fade-up";
+			link.dataset.aosDelay = index * 100;
+			link.dataset.aosOffset = -200;
+		});
+	});
+
+	if (window.innerWidth < ANIMATION_BREAKPOINT) {
+		const videos = document.querySelectorAll(
+			".home-slider__slide-1 .section__videos-poster"
+		);
+		videos.forEach((video) => {
+			video.dataset.aos = "fade-up";
+		});
+	}
+	setTimeout(() => {
+		AOS.init({
+			once: false,
+			mirror: true,
+		});
+	}, 200);
 
 	gsap.registerPlugin(ScrollTrigger);
 	// gsap.defaults({ duration: 1 });
 
+	const scrollShaft = document.querySelector(".home-slider__scrollbar-shaft");
+	const shaftHeight = scrollShaft.getBoundingClientRect().height;
 	let s1 = gsap.timeline();
+	s1.from(".logo-1", { autoAlpha: 1 }, "<");
+	useLogo(1);
 	function useLogo(slideNumber) {
 		if (slideNumber == 1) {
-			s1.to(".logo-1", { autoAlpha: 1 }, "<");
-			s1.to(".logo-2", { autoAlpha: 0 }, "<");
-			s1.to(".logo-3", { autoAlpha: 0 }, "<");
+			gsap.to(".logo-1", { autoAlpha: 1 }, "<");
+			gsap.to(".logo-2", { autoAlpha: 0 }, "<");
+			gsap.to(".logo-3", { autoAlpha: 0 }, "<");
+			gsap.to(".home-slider__scrollbar-shaft", { y: 0 }, "<");
 		} else if (slideNumber == 2) {
-			s1.to(".logo-1", { autoAlpha: 0 }, "<");
-			s1.to(".logo-2", { autoAlpha: 1 }, "<");
-			s1.to(".logo-3", { autoAlpha: 0 }, "<");
+			gsap.to(".logo-1", { autoAlpha: 0 }, "<");
+			gsap.to(".logo-2", { autoAlpha: 1 }, "<");
+			gsap.to(".logo-3", { autoAlpha: 0 }, "<");
+			gsap.to(".home-slider__scrollbar-shaft", { y: shaftHeight }, "<");
 		} else if (slideNumber == 3) {
-			s1.to(".logo-1", { autoAlpha: 0 }, "<");
-			s1.to(".logo-2", { autoAlpha: 0 }, "<");
-			s1.to(".logo-3", { autoAlpha: 1 }, "<");
+			gsap.to(".logo-1", { autoAlpha: 0 }, "<");
+			gsap.to(".logo-2", { autoAlpha: 0 }, "<");
+			gsap.to(".logo-3", { autoAlpha: 1 }, "<");
+			gsap.to(
+				".home-slider__scrollbar-shaft",
+				{ y: shaftHeight * 2 + 10 },
+				"<"
+			);
 		}
 	}
 
-	// Sets initial slider position
-	gsap.to(".home-slider__slide-1 .section__fader", { autoAlpha: 0 });
-	gsap.to(".home-slider__slide-2", { pointerEvents: "none" });
-	gsap.to(".home-slider__slide-3", { pointerEvents: "none" });
-	useLogo(1);
-	s1.from(".logo-1", { autoAlpha: 1 }, "<");
-
-	useLogo(1);
-	let s1Y =
-		document.querySelector(".home-slider__slide-1").getBoundingClientRect()
-			.height -
-		document.documentElement.clientHeight +
-		60;
-	if (window.innerWidth > 1200) {
-		s1Y <= window.innerHeight / 3 ? window.innerHeight / 3 : s1Y;
-	} else {
-		// s1Y = s1Y + 362;
-	}
-
-	s1.to(".home-slider__slide-1", { y: -s1Y }, "<");
-	s1.to(".home-slider__slide-1 .section__bg", { y: s1Y }, "<");
-
-	// Slide 2
-	if (window.innerWidth < ANIMATION_BREAKPOINT) {
-		s1.to(".home-slider__slide-1", { autoAlpha: 0 }, ">");
-	} else {
-		s1.to(".home-slider__slide-1", { autoAlpha: 0 }, "<");
-	}
-
-	const scrollShaft = document.querySelector(".home-slider__scrollbar-shaft");
-	const shaftHeight = scrollShaft.getBoundingClientRect().height;
-	if (window.innerWidth > ANIMATION_BREAKPOINT) {
-		s1.to(".home-slider__scrollbar-shaft", { y: shaftHeight }, "<");
-	}
-	useLogo(2);
-
-	s1.from(".home-slider__slide-2", { autoAlpha: 0 }, "<");
-	s1.to(".home-slider__slide-2 .section__fader", { autoAlpha: 0 }, "<+0.3");
-	s1.to(".home-slider__slide-1", { pointerEvents: "none" }, "<");
-	s1.to(".home-slider__slide-2", { pointerEvents: "auto" }, "<");
-
-	let s2Y =
-		document.querySelector(".home-slider__slide-2").getBoundingClientRect()
-			.height -
-		document.documentElement.clientHeight +
-		10;
-	s2Y = s2Y == 0 ? -20 : s2Y;
-	s1.fromTo(
-		".home-slider__slide-2 .section__inner",
-		{ y: document.documentElement.clientHeight + s2Y },
-		{ y: -s2Y },
-		"<+0.1"
-	);
-	// if (s2Y < 1200) {
-	// 	s2Y = s2Y + 150;
-	// }
-
-	// Finish slide2
-	s1.to(".home-slider__slide-2", { autoAlpha: 0 }, ">");
-	s1.from(".home-slider__slide-3", { autoAlpha: 0 }, "<");
-	s1.to(".home-slider__slide-3 .section__fader", { autoAlpha: 0 }, "<+0.4");
-	s1.to(".home-slider__slide-2", { pointerEvents: "none" }, "<");
-	s1.to(".home-slider__slide-3", { pointerEvents: "auto" }, "<");
-
-	// Start Slide 3
-	if (window.innerWidth > ANIMATION_BREAKPOINT) {
-		s1.to(".home-slider__scrollbar-shaft", { y: shaftHeight * 2 }, "<");
-	}
-
-	useLogo(3);
-
-	let s3Y =
-		document.querySelector(".home-slider__slide-3").getBoundingClientRect()
-			.height - document.documentElement.clientHeight;
-	// ели высота меньше 600, то правила такие
-	// s3Y = s3Y == 0 ? window.innerHeight * 0.05 : s3Y + 50; //ok 375×667
-
-	let s3YModifier = 0.05;
-	if (window.innerWidth > 1200) {
-		s3YModifier = 0.3;
-	}
-
-	s3Y =
-		s3Y == 0
-			? document.documentElement.clientHeight * s3YModifier
-			: s3Y + 50; //ok 375×667
-
-	if (window.innerWidth < 576) {
-		s3Y = s3Y < 40 ? document.documentElement.clientHeight * 0.07 : s3Y;
-		s3Y = s3Y > 50 ? document.documentElement.clientHeight * 0.09 : s3Y;
-		s3Y = s3Y > 60 ? document.documentElement.clientHeight * 0.12 : s3Y;
-	}
-	if (window.innerWidth < 330) {
-		s3Y = s3Y > 50 ? document.documentElement.clientHeight * 0.26 : s3Y;
-	}
-
-	s3Y = s3Y + 60;
-
-	if (s2Y < 1200) {
-		s2Y = s2Y + 150;
-	}
-	s1.fromTo(
-		".home-slider__slide-3 .section__inner",
-		{ y: window.innerHeight + s3Y },
-		{ y: -s3Y },
-		"<+0.1"
-	);
-
-	const s3Img = document.querySelector(
-		".home-slider__slide-3 .section__body-img"
-	);
-	const s3ImgX = window.innerWidth + s3Img.getBoundingClientRect().width;
-	s1.from(
-		".home-slider__slide-3 .section__body-img",
-		{
-			x: s3ImgX / 2,
-		},
-		"<"
-	);
-
-	s1.to(".home-slider__slide-3", { autoAlpha: 1 }, ">");
-
-	document.querySelector(".home-slider").style.height = `${pinHeight}px`;
-
-	let scrollEnd = pinHeight + window.innerHeight;
-	ScrollTrigger.create({
-		animation: s1,
-		trigger: ".home-slider",
-		start: "top top",
-		end: `+=${scrollEnd - 500}`,
-		pin: true,
-		markers: true,
-		scrub: true,
-		anticipatePin: 1,
+	const sections = document.querySelectorAll(".home-slider__slide");
+	sections.forEach((section, index) => {
+		window.addEventListener("scroll", (e) => {
+			const top = section
+				.querySelector(".section__title")
+				.getBoundingClientRect().top;
+			if (top > 100 && top < 400) {
+				console.log(index + 1);
+				useLogo(index + 1);
+			}
+		});
 	});
 });
 // #endregion gsap

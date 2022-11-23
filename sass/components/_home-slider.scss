@@ -1,7 +1,7 @@
 .home-slider {
 	margin: 0;
 	backface-visibility: hidden;
-	transform: translate3d(0, 0, 0);
+	// transform: translate3d(0, 0, 0);
 	transition: all 0.3s;
 	min-height: 100%;
 }
@@ -10,7 +10,7 @@
 }
 
 .home-slider__slide {
-	position: absolute;
+	position: static;
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -44,7 +44,7 @@
 	}
 	@media (max-height: 690px) and (min-width: 1200px) {
 		.section__inner {
-			padding-top: 108px;
+			padding-top: 178px;
 		}
 		.section__title {
 			font-size: 45px;
@@ -148,7 +148,7 @@
 .home-slider__navigate-inner {
 	height: 100%;
 	position: absolute;
-	top: 0;
+	top: 40px;
 	// transform: translateY(-100%);
 	display: flex;
 	flex-direction: column;

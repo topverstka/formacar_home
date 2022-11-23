@@ -7,7 +7,7 @@
 
 // Библиотеки
 // @import './libs/swiper';
-// @import "./libs/aos";
+@import "./libs/aos";
 
 body {
 	font-family: $ffMain;
@@ -64,5 +64,5 @@ html {
 .gsap-marker-scroller-end,
 .gsap-marker-start,
 .gsap-marker-end {
-	opacity: 0 !important;
+	// opacity: 0 !important;
 }

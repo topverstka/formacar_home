@@ -16,7 +16,7 @@
 	display: block;
 	top: 0;
 	left: 0;
-	background-color: #0f141a;
+	// background-color: #0f141a;
 	pointer-events: none;
 	z-index: 3;
 	backface-visibility: hidden;
@@ -384,6 +384,12 @@
 	@media (max-width: 1179px) {
 		display: grid;
 		justify-content: unset;
+	}
+	@media (min-width: 1400px) {
+		max-width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
 	}
 }
 .os-macos .section__footer {
