@@ -287,7 +287,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 	if (window.innerWidth < ANIMATION_BREAKPOINT) {
 		const videos = document.querySelectorAll(
-			".home-slider__slide-1 .section__videos-poster"
+			".home-slider__slide-1 .section__videos-item"
 		);
 		videos.forEach((video) => {
 			video.dataset.aos = "fade-up";

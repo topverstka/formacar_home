@@ -263,12 +263,14 @@
 	}
 
 	@media (max-width: 1179px) {
-		position: relative;
-		left: unset;
-		right: unset;
-		transform: unset;
-		width: unset;
-		opacity: 1;
+		position: static;
+		width: 100%;
+		// position: relative;
+		// left: unset;
+		// right: unset;
+		// transform: unset;
+		// width: unset;
+		// opacity: 1;
 	}
 }
 
@@ -371,6 +373,7 @@
 		margin-top: -20px;
 		max-height: unset;
 		max-width: 125%;
+		width: 125%;
 	}
 }
 

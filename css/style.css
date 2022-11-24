@@ -2083,12 +2083,8 @@ html {
 }
 @media (max-width: 1179px) {
   .section__videos-item_back {
-    position: relative;
-    left: unset;
-    right: unset;
-    transform: unset;
-    width: unset;
-    opacity: 1;
+    position: static;
+    width: 100%;
   }
 }
 
@@ -2195,6 +2191,7 @@ html {
     margin-top: -20px;
     max-height: unset;
     max-width: 125%;
+    width: 125%;
   }
 }
 
