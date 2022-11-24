@@ -371,9 +371,10 @@
 	@media (max-width: 1179px) {
 		position: relative;
 		margin-top: -20px;
-		max-height: unset;
+		// max-height: unset;
 		max-width: 125%;
 		width: 125%;
+		min-width: 125%;
 	}
 }
 

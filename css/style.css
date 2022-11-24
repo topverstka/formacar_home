@@ -2189,9 +2189,9 @@ html {
   .section__body-img-img {
     position: relative;
     margin-top: -20px;
-    max-height: unset;
     max-width: 125%;
     width: 125%;
+    min-width: 125%;
   }
 }
 
